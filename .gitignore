@@ -1,4 +1,5 @@
 #ignore the following
 data/*
 # is not needed on repo
-d3.v4.js
+libs/*
+

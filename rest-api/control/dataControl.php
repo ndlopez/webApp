@@ -9,12 +9,19 @@ class DataController extends BaseController{
         if(strtoupper($requestMethod) == 'GET'){
             try{
                 $dataModel = new DataModel();
-                $intLimit = 10;
-                if(isset($arrQueryStringParams['limit']) && $arrQueryStringParams['limit']){
+                //$intLimit = 10;
+                $myDate = '2022-08-29';
+                /*if(isset($arrQueryStringParams['limit']) && $arrQueryStringParams['limit']){
                     $intLimit = $arrQueryStringParams['limit'];
+                }*/
+                if(isset($arrQueryStringParams['thisDate']) && $arrQueryStringParams['thisDate']){
+                    $myDate = $arrQueryStringParams['thisDate'];
                 }
-                $arrData = $dataModel->getData($intLimit);
-                $responseData = json_encode($arrData);
+                //$arrData = $dataModel->getData($intLimit);
+                $dateData = $dataModel->get_by_date($myDate);
+                //$responseData = json_encode($arrData);
+                $responseData = json_encode($dateData);
+
             }catch(Error $e){
                 $strErrorDesc = $e->getMessage().'sth went wrong';
                 $strErrorHeader = 'HTTP/1.1 500 kinda internal server error?';

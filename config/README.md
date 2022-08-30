@@ -12,6 +12,12 @@ Move/Update *conf* files to:<br>
 Also link them to:<br>
 	$ ln -s 000-default.conf /etc/apache2/sites-enabled/ <br>
 
+Link developing directory to server:/var/www/public directory:<br>
+	$sudo ln -s /path/to/dev/dir public
+
+To remove symbolic-link:<br>
+	$ sudo rm -i public
+
 ## Rest-api
 When using the api it is necessary the following file:<br>
 <strong>htaccess</strong><br>

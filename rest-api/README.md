@@ -1,6 +1,7 @@
 # REST API using PHP
 
 Head to:<br>
+## Endpoint: limit=int(number)
 
 [Limit output](http://webapp.physics/rest-api/index.php/datos/list?limit=10)
 
@@ -10,14 +11,26 @@ SyntaxError: JSON.parse: unexpected character at line 1 column 1 of the JSON dat
 
 The above was due to I put *var_dump* somewhere in the code by removing it, JSON file is just fine.
 
+## Endpoint: thisDate=str(YYYY-MM-DD)
+
 [Sort by date](http://webapp.physics/rest-api/index.php/datos/thisDate=2022-08-29)
 
 ~~The above api has a bug, it does not return the requested date, instead returns data for already setup date(inside code).~~
 
+## Access Page
 
 I also made a [simple page](http://webapp.physics/rest-api/get_data.php) to actually display requested data and ease on the display.
 
-<img src="../static/rest-api_prev.png" alt="Rest-Api on mobile" height="400">
+<img src="../static/rest-api_prev.png" alt="Rest-Api on mobile" height="600">
+
+## Needed features
+
+Although GET is possible, the follow is needed:<br>
+1. POST: Update DB by uploading CSV file
+2. DELETE: Remove records from DB
+3. Obviusly a *login page* is needed to perform the above.
+
+---
 
 ## PHP help
 Found on stuckUnderFlow (by Mayur Shah):<br>
@@ -28,6 +41,7 @@ ob_end_clean() empties the buffer and frees some memory. We don't need the sourc
 Then, lastly, by doing a simple find & replace on your page's source code ($pageContents) for any instances of '' and replace them to whatever the $pageTitle variable was set to. Of course, it will then replace <title><!--TITLE--></title> with Your Page's Title. After that, echo the $pageContents, just like the browser would have.
 
 ---
-Environment: Panasonic Let'sNote/Linux Fedora 34<br>
-Languages: PHP, Python, JavaScript, Ruby, and Shell<br>
-Editors: VIM and Emacs
+## Running Environment
+Server: Debian 11 on WSL, Apache2, Mariadb, PHP 7.2<br>
+Languages: PHP, Python, JavaScript, Shell<br>
+Editors: VIM and VSCode

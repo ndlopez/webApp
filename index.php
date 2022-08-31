@@ -48,8 +48,8 @@ $myMsg = "Good Morning";
   <nav>
      <ul>
         <li><a target="blank" href="/phpmyadmin">My PHP Admin</a></li>
-        <li><a href="/dashboard">WSL Server</a></li>
-        <li><a target="blank" href="https://github.com/ndlopez/weather_app">
+        <li><a href="/rest-api/get_data.php">Rest-Api</a></li>
+        <li><a target="blank" href="https://github.com/ndlopez/webApp">
           WebMaster</a></li>
         <li><a href="https://ndlopez.github.io/jumble_game">Play Jumble</a></li>
      </ul>

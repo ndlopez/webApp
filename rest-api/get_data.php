@@ -48,7 +48,10 @@ $humanDate = date('l jS \of F Y',strtotime($_POST["myDate"]));
 //str_getcsv($_POST["myDate"],"-"); split string by param="-"
 
 echo "<h3>Weather report for ".$humanDate."</h3>";
+echo "<h4>Get these data in <a href='/rest-api/index.php/datos/list?thisDate=".$_POST["myDate"]."'>JSON format </a></h4>";
 ?>
+</div>
+<div class="clearfix" style="padding:0px;">
 <table id="myday">
     <tr>
         <th>時刻</th><th>天気</th>
@@ -77,19 +80,15 @@ if(!empty($_POST["myDate"]))
 //$result = mysqli_query($dbhandle, $query);
 }
 
-else
-{ 
-echo "Please input date";
-//$result = mysqli_query($dbhandle, "SELECT * FROM weather_data;" );
-
+else{
+    echo "Please input date";
+    //$result = mysqli_query($dbhandle, "SELECT * FROM weather_data;" );
 }
-
 mysqli_close($dbhandle);
-
 }
 
 ?>
-
+<h4>Go back <a href="http://webapp.physics">Home</a></h4>
 </body>
 
 </form>

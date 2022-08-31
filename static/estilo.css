@@ -65,6 +65,7 @@ label{display: inline-block;}
 span{padding-left: 7px;color:bisque;}
 input:invalid+span:after{content:'x';}
 input:valid+span:after{content: '✓';}
+div table{padding: 0px;}
 .bottom-left{
   border:0px;
   position:absolute;

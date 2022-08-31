@@ -9,7 +9,7 @@ function getWeather(str){
                 document.getElementById("dispDat").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET","http://webapp.physics/rest-api/api.php?name="+str,true);
+        xmlhttp.open("GET","http://webapp.physics/rest-api/index.php/datos/thisDate="+str,true);
         xmlhttp.send();
     }
 }

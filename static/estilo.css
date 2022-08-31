@@ -61,7 +61,10 @@ h1{color:#2e4054;}
     display:table;
     clear:both;padding:0px;
 }
-
+label{display: inline-block;}
+span{padding-left: 7px;color:bisque;}
+input:invalid+span:after{content:'x';}
+input:valid+span:after{content: '✓';}
 .bottom-left{
   border:0px;
   position:absolute;

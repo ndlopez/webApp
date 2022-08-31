@@ -15,12 +15,10 @@ class DataController extends BaseController{
                     $intLimit = $arrQueryStringParams['limit'];
                 }*/
                 if(isset($arrQueryStringParams['thisDate']) && $arrQueryStringParams['thisDate']){
-                    $myDate = $arrQueryStringParams['thisDate'];
-                    
-                }/*else{
-                    var_dump("myDate: ".$myDate);
-                    var_dump("isSET:".isset($arrQueryStringParams['thisDate']));
-                }*/
+                    $myDate = $arrQueryStringParams['thisDate'];    
+                }else{
+                    var_dump("Couldnt get input date: ".$myDate);
+                }
                 //$arrData = $dataModel->getData($intLimit);
                 $dateData = $dataModel->get_by_date($myDate);
                 //$responseData = json_encode($arrData);

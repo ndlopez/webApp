@@ -3,7 +3,7 @@ class DataController extends BaseController{
     /* /data/list/ */
     public function listAction(){
         $strErrorDesc = '';
-        $requestMethod = $_SERVER["REQUEST_METHOD"];
+        $requestMethod = $_SERVER['REQUEST_METHOD'];
         $arrQueryStringParams = $this->getQueryStringParams();
 
         if(strtoupper($requestMethod) == 'GET'){

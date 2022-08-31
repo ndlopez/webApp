@@ -17,7 +17,7 @@ The above was due to I put *var_dump* somewhere in the code by removing it, JSON
 
 I also made a [simple page](http://webapp.physics/rest-api/get_data.php) to actually display requested data and ease on the display.
 
-<img src="../static/rest-api_prev.png" alt="Rest-Api on mobile" height="200">
+<img src="../static/rest-api_prev.png" alt="Rest-Api on mobile" height="400">
 
 ## PHP help
 Found on stuckUnderFlow (by Mayur Shah):<br>

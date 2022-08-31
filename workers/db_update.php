@@ -1,51 +1,26 @@
 <?php
+//This page does not work!
 ini_set('display_errors',1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Update Database</title>
+<title>webApp: Update Database</title>
 <meta charset="utf-8"/>
-<!--meta http-equiv="refresh" content="3600"-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="../static/estilo.css">
-<script src="../static/digi_clock.js"></script>
 </head>
 
 <body>
+<div class="header"><h2>Today's weather</h2><h3>Nagoyashi, Naka-ku</h3></div>
+<div class="clearfix">
 <?php
 date_default_timezone_set("Asia/Tokyo");/*$heure = $heure + 8;*//*Japan*/
 $heute = date("Y-m-d");
 $heure = date("H");
 $myMsg = "Good Morning";
-?>  
-  <header class="sticky row">
-    <div class="half"><p>
-      <?php
-      if ($heure > 12){
-        $myMsg="Good Afternoon";
-      }
-      echo $myMsg;
-      ?></p>
-    </div>
-    <div class="counter"><h2 id="currtime"></h2></div>
-  </header>
 
-  <div class="header"><h2>Today's weather</h2><h3>Nagoyashi, Naka-ku</h3></div>
-
-  <nav>
-     <ul>
-        <li><a target="blank" href="/phpmyadmin">Home</a></li>
-        <li><a href="/dashboard">WSL Server</a></li>
-        <li><a target="blank" href="https://github.com/ndlopez/weather_app">
-          WebMaster</a></li>
-        <li><a href="https://ndlopez.github.io/jumble_game">Play Jumble</a></li>
-     </ul>
-  </nav>
-
-<div class="clearfix">
-<?php
-$dbTable = weather_data;
+$dbTable = "weather_data";
 include_once('../config/myconfig.php');
 
 if(isset($_POST['add'])){

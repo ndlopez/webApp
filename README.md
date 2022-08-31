@@ -51,7 +51,7 @@ The above was due to I put *var_dump* somewhere in the code by removing it, JSON
 The above api has a bug, it does not return the requested date, instead returns data for already setup date(inside code).
 
 
-Regardless, I also made a simple page <rest-api/get_data.php> to actually display requested data and ease on the display.
+Regardless, I also made a [simple page](http://webapp.physics/rest-api/get_data.php) to actually display requested data and ease on the display.
 
 ## PHP help
 Found on stuckUnderFlow (by Mayur Shah):<br>

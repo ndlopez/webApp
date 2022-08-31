@@ -17,10 +17,10 @@ class DataController extends BaseController{
                 if(isset($arrQueryStringParams['thisDate']) && $arrQueryStringParams['thisDate']){
                     $myDate = $arrQueryStringParams['thisDate'];
                     
-                }else{
+                }/*else{
                     var_dump("myDate: ".$myDate);
                     var_dump("isSET:".isset($arrQueryStringParams['thisDate']));
-                }
+                }*/
                 //$arrData = $dataModel->getData($intLimit);
                 $dateData = $dataModel->get_by_date($myDate);
                 //$responseData = json_encode($arrData);

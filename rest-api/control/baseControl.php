@@ -13,9 +13,9 @@ class BaseController{
     }
     /* get queryStr params */
     protected function getQueryStringParams(){
-        //$query="";
-        var_dump($_SERVER['QUERY_STRING']." parsed:".parse_str($_SERVER['QUERY_STRING'],$query));
-        return parse_str($_SERVER['QUERY_STRING'],$query);
+        //var_dump($_SERVER['QUERY_STRING']." parsed:".parse_str($_SERVER['QUERY_STRING'],$query));
+        parse_str($_SERVER['QUERY_STRING'],$query);
+        return $query;
     }
     /*send api out */
     protected function sendOutput($data,$httpHeaders=array()){

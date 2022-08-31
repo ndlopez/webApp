@@ -14,7 +14,7 @@ ini_set('display_errors',1);
     <h2>Search for data into DB</h2>
     <p>Enter date</p>
         <form method="post">
-            <div class="clearfix">
+            <div>
             <label>Year: 2022 </label>
             <select name="monty" id="monty">
                 <option>Month</option>
@@ -35,7 +35,7 @@ ini_set('display_errors',1);
                 ?>
             </select></div>
             <!--input type="text" name="myDate" min="07-29" max="08-31" required-->
-            <div class="clearfix">
+            <div>
                 <input type="submit" value="SUBMIT" name="Submit1">
             </div>
         </form>
@@ -59,6 +59,10 @@ if($dbhandle === false){
 
 $dbTable = "weather_data";
 
+if($_POST["monty"] == "Month" || $_POST["tag"] == "Day"){
+    echo "<p>Please select a month and a day.</p>";
+    exit;
+}
 $buildDate = "2022-".$_POST["monty"]."-".$_POST["tag"];
 //previously an input text: $query = "SELECT * FROM weather_data WHERE date='".$_POST["myDate"] ."';";
 

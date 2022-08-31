@@ -12,14 +12,32 @@ ini_set('display_errors',1);
 <body>
     <div class="clearfix">
     <h2>Search for data into DB</h2>
+    <p>Enter date</p>
         <form method="post">
-
-            <label>Enter Date: (YYYY-MM-DD) </label>
-            <input type="text" name="myDate" min="2022-07-29" max="2022-08-31" required> 
-            <span class="validity"></span>
-            <br/>
-            <input type="submit" value="SELECT" name="Submit1"> <br/>
-
+            <div class="clearfix">
+            <label>Year: 2022 </label>
+            <select name="monty" id="monty">
+                <option>Month</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+            </select>
+            <!--label>Day:</label-->
+            <select name="tag" id="tag">
+                <option>Day</option>
+                <?php
+                for ($idx=1; $idx <= 31; $idx++) {
+                    $strIdx = $idx;
+                    if ($idx < 10){
+                        $strIdx = "0".$idx;
+                    }
+                    echo "<option value='".$strIdx."'>".$idx."</option>";
+                }
+                ?>
+            </select></div>
+            <!--input type="text" name="myDate" min="07-29" max="08-31" required-->
+            <div class="clearfix">
+                <input type="submit" value="SUBMIT" name="Submit1">
+            </div>
         </form>
     </div>
     <div class="clearfix">
@@ -41,14 +59,16 @@ if($dbhandle === false){
 
 $dbTable = "weather_data";
 
-$query = "SELECT * FROM weather_data WHERE date='".$_POST["myDate"] ."';";
-//echo "\nyour query: ".$query;
+$buildDate = "2022-".$_POST["monty"]."-".$_POST["tag"];
+//previously an input text: $query = "SELECT * FROM weather_data WHERE date='".$_POST["myDate"] ."';";
 
-$humanDate = date('l jS \of F Y',strtotime($_POST["myDate"]));
+$query = "SELECT * FROM weather_data WHERE date='". $buildDate ."';";
+
+$humanDate = date('l jS \of F Y',strtotime($buildDate));
 //str_getcsv($_POST["myDate"],"-"); split string by param="-"
 
 echo "<h3>Weather report for ".$humanDate."</h3>";
-echo "<h4>Get these data in <a href='/rest-api/index.php/datos/list?thisDate=".$_POST["myDate"]."'>JSON format </a></h4>";
+echo "<h4>Get these data in <a href='/rest-api/index.php/datos/list?thisDate=".$buildDate."'>JSON format </a></h4>";
 ?>
 </div>
 <div class="clearfix" style="padding:0px;">
@@ -62,7 +82,8 @@ echo "<h4>Get these data in <a href='/rest-api/index.php/datos/list?thisDate=".$
         <th>風向</th>
     </tr>
 <?php
-if(!empty($_POST["myDate"]))
+//if(!empty($_POST["myDate"]))
+if(!empty($buildDate))
 {
     if ($result = mysqli_query($dbhandle,$query)){
         foreach ($result as $row){

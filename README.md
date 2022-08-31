@@ -37,11 +37,21 @@ MySQL: Create a new user to create DB
 
 ## REST API using PHP
 Head to:<br>
-[MyAPi](http://webapp.physics/rest-api/index.php/datos/list?limit=10)
+
+[Limit output](http://webapp.physics/rest-api/index.php/datos/list?limit=10)
 
 It should display weather data (up to 10)<br>
-However the output has some characters that cannot be JSON parsed, thus it throws the following:<br>
-SyntaxError: JSON.parse: unexpected character at line 1 column 1 of the JSON data.
+~~However the output has some characters that cannot be JSON parsed, thus it throws the following:<br>
+SyntaxError: JSON.parse: unexpected character at line 1 column 1 of the JSON data.~~
+
+The above was due to I put *var_dump* somewhere in the code by removing it, JSON file is just fine.
+
+[Sort by date](http://webapp.physics/rest-api/index.php/datos/thisDate=2022-08-29)
+
+The above api has a bug, it does not return the requested date, instead returns data for already setup date(inside code).
+
+
+Regardless, I also made a simple page <rest-api/get_data.php> to actually display requested data and ease on the display.
 
 ## PHP help
 Found on stuckUnderFlow (by Mayur Shah):<br>

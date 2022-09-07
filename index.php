@@ -84,7 +84,7 @@ echo "<p> Your Query was ...<br><code>".$query."</code></p>";
 <?php
 echo "<h1>".date("l, F d")."</h1>";
 if ($result = mysqli_query($conn,$query)){
-  if($result->num_rows < 0){
+  if($result->num_rows < 1){
     /* This if doesnt work, must find a way to return sth when no rows are returned */
     echo "<h1> Database is not updated. Contact Admin.</h1>";
   }

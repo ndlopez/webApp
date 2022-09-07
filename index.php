@@ -86,7 +86,7 @@ echo "<h1>".date("l, F d")."</h1>";
 if ($result = mysqli_query($conn,$query)){
   if($result->num_rows < 1){
     /* This if doesnt work, must find a way to return sth when no rows are returned */
-    echo "<h1> Database is not updated. Contact Admin.</h1>";
+    echo "<h2> Database is not updated. <br>Please, contact Admin.</h2>";
   }
 	foreach ($result as $row){
 		/*echo "<h3><br>".date("l F d ").$row['hour'].":".date("i")."</h3>";*/

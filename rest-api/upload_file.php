@@ -28,4 +28,16 @@ if ($uploadOk == 0) {
     echo "Sorry, there was an error uploading your file.";
   }
 }
+
+if (file_exists($target_file)){
+  $fname = "uploads/tenki_hour.csv";
+  $myfile = fopen($fname, "r") or die("Unable to open file!");
+  // Output one line until end-of-file
+  while(!feof($myfile)) {
+    echo fgets($myfile) . "<br>";
+  }
+  fclose($myfile);
+}else{
+  echo "Cannot read uploaded file.";
+}
 ?>

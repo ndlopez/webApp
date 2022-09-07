@@ -3,7 +3,7 @@
 $DB_HOST = "webapp.physics";
 $DB_NAME = "tenki";
 $DB_USER = "root";
-$DB_PASS = "gWloF1Uk";
+$DB_PASS = "";
 
 try {
     $conn = new PDO("mysql:host=$DB_HOST;port=3306;dbname=$DB_NAME",$DB_USER,$DB_PASS);

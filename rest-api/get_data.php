@@ -20,6 +20,8 @@ ini_set('display_errors',1);
                 <option>Month</option>
                 <option value="07">July</option>
                 <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10" disabled>October</option>
             </select>
             <!--label>Day:</label-->
             <select name="tag" id="tag">

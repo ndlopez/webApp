@@ -35,6 +35,7 @@ if (file_exists($target_file)){
   // Output one line until end-of-file
   /*while(!feof($myfile)) {
     $oneLine = str_getcsv(fgets($myfile),",");
+    string splitted by char not string nor @ "," delim
     foreach ($oneLine as $dat){
       echo $dat[0].", ".$dat[1];
     }
@@ -44,9 +45,14 @@ if (file_exists($target_file)){
     $dat[] = $row;
   }
   fclose($myfile);
+
+  $auxVar="";
   foreach($dat as $col){
-    if($col[0] != "date"){
-      for ($idx=0; $idx <9 ; $idx++) { 
+    if($col[0] !== "date"){
+      for ($idx=0; $idx <9 ; $idx++) {
+        if($col[$idx] == "---"){
+          $col[$idx] = "-1";
+        } 
         echo $col[$idx].",";
       }
       echo "<br/>";

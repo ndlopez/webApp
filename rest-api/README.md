@@ -33,7 +33,10 @@ Although GET is possible, the follow is needed:<br>
 ---
 
 ## PHP help
-Found on stuckUnderFlow (by Mayur Shah):<br>
+1. To upload files make sure the following is set to *On*,<br>
+	$ cat /etc/php/7.4/cli/php.ini | grep "file_uploads"
+
+2. Found on stuckUnderFlow (by Mayur Shah):<br>
 PHP usually works by executing any bits of code and printing all output directly to the browser. If you say "echo 'Some text here.';", that string will get sent the browser and is emptied from memory.<br>
 What output buffering does is say "Print all output to a buffer. Hold onto it. Don't send ANYTHING to the browser until I tell you to."<br>
 So what this does is it buffers all your pages' HTML into the buffer, then at the very end, after the tag, it uses ob_get_contents() to get the contents of the buffer (which is usually all your page's HTML source code which would have been sent the browser already) and puts that into a string.<br>

@@ -47,7 +47,7 @@ $myMsg = "Good Morning";
 
   <nav>
      <ul>
-        <li><a target="blank" href="/phpmyadmin">My PHP Admin</a></li>
+        <li><a target="blank" href="/rest-api/updata.html">Data Admin</a></li>
         <li><a href="/rest-api/get_data.php">Rest-Api</a></li>
         <li><a target="blank" href="https://github.com/ndlopez/webApp">
           WebMaster</a></li>

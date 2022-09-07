@@ -44,7 +44,15 @@ if (file_exists($target_file)){
     $dat[] = $row;
   }
   fclose($myfile);
-  var_dump($dat);
+  foreach($dat as $col){
+    if($col[0] != "date"){
+      for ($idx=0; $idx <9 ; $idx++) { 
+        echo $col[$idx].",";
+      }
+      echo "<br/>";
+    }
+  }
+  //var_dump($dat);
 }else{
   echo "Cannot read uploaded file.";
 }

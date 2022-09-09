@@ -6,8 +6,6 @@
 
 # Output is displayed using <show_tenki.sh> script
 #  
-# !A copy is saved on Dropbox/Programming/scripts/
-# and https://github.com/ndlopez/weather_app/tree/main/workers
 
 # Bash Help: $ seq 1 24 -> prints 1 2 3 4...24
 # backslash \n
@@ -68,12 +66,13 @@ fi
 
 #echo "今日 ${monty}月${day}日(${week[4]}), Now "`date +"%H:%M"`
 #get current weather conditions every hour
-oneDay=`seq 24`
+oneDay=`seq 23`
 datum="2022-"$monty"-"$day
 #datum="2021-03-10"
 heute=$(echo "-- "`for num in $oneDay;do echo $datum;done`)
 
 tomoro=$((`date +%s` + 86400))
+oneDay=`seq 24`
 day=`date -d @$tomoro +%d`
 datum="2022-"$monty"-"$day
 #datum="2022-03-11"

@@ -52,7 +52,7 @@ if (file_exists($target_file)){
       for ($idx=0; $idx <9 ; $idx++) {
         if($col[$idx] == "---"){
           $col[$idx] = "-1";
-        } 
+        }
         echo $col[$idx].",";
       }
       echo "<br/>";

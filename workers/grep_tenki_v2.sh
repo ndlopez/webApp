@@ -76,7 +76,7 @@ oneDay=`seq 24`
 day=`date -d @$tomoro +%d`
 datum="2022-"$monty"-"$day
 #datum="2022-03-11"
-morgen=$(echo " -- "`for num in $oneDay;do echo $datum;done`)
+morgen=$(echo " $datum -- "`for num in $oneDay;do echo $datum;done`)
 heure=$(echo "--";seq -w 23;echo "0 --";seq -w 1 24)
 
 weather=$(grep -m50 -w "weather" ${tenki_file} | cut -f6 -d'"')

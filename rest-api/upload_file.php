@@ -51,7 +51,7 @@ if (file_exists($target_file)){
     if($col[0] !== "date"){
       for ($idx=0; $idx <9 ; $idx++) {
         if($col[$idx] == "---"){
-          $col[$idx] = "-1";
+          $col[$idx] = "0";
         }
         echo $col[$idx].",";
       }

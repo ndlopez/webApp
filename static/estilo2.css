@@ -1,6 +1,8 @@
 *{box-sizing:border-box;}
-body{font-family:Tahoma,Geneva, sans-serif;
-background-color:#bed2e0;}
+body{    
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color:#bed2e0;
+}
 .menu{
     float:left;
     width:20%;

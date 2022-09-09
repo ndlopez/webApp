@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Update DB</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="estilo.css">
+    </head>
+    <body>
+
 <?php
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -70,3 +80,5 @@ if (file_exists($target_file)){
   echo "Cannot read uploaded file.";
 }
 ?>
+</body>
+</html>

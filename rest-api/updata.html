@@ -3,20 +3,31 @@
     <head>
         <title>Update DB</title>
         <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="estilo.css">
     </head>
     <body>
-        <div>
-            <h2>Update DB</h2>
+        <h2>WebApp.Physics</h2>
+        <main>
+            <h2>Sign in</h2><p>Enter your account details</p>
             <form action="upload_file.php" method="post" enctype="multipart/form-data">
-              <label for="fname">Password</label>
-              <input type="password" id="mypass" name="mypass" placeholder="Your DB pass...">
-          
-              <label for="lname">Select File to Upload</label><br/><br/>
-              <input type="file" name="fileToUpload" id="fileToUpload"><br/>
-          
-              <input type="submit" value="Upload File" name="submit">
+                <label for="fname">User Id</label>
+                <input type="text" id="my_id" name="my_id" placeholder="Username...">
+
+                <label for="fname">Password</label>
+                <input type="password" id="mypass" name="mypass" placeholder="Your DB pass...">
+            
+                <label for="lname">Select File to Upload</label><br/><br/>
+                <input type="file" name="fileToUpload" id="fileToUpload"><br/><br/>
+            
+                <input type="submit" value="Upload File" name="submit">
             </form>
+        </main>
+        <hr/>
+        <div>
+            <p>Hello from
+                <a target="blank" href="https://www.openstreetmap.org/search?query=35.17271%2C136.89547#map=18/35.17271/136.89547">
+                  N35 10'53" E136 54'23"</a></p>
         </div>
     </body>
 </html>

@@ -14,6 +14,8 @@ $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $dbTable = "weather_data";
 $csvFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+echo "<h2>Welcome: " . $_POST["my_id"]."</h2>"; 
 //var_dump($csvFileType);
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
@@ -57,24 +59,41 @@ if (file_exists($target_file)){
   }
   fclose($myfile);
 
-  $upQuery="INSERT INTO " . $dbTable . " VALUES(";
+  require_once "inc/config.php";
+
+  $dbHandle = mysqli_connect(DB_HOST,DB_USER,$_POST["my_pass"],DB_NAME);
+  if(mysqli_connect_errno()){
+    die("Couldnt connect to DB".mysqli_connect_error());
+  }
+  $auxQuery = "";
+  $auxStr = "";
+  $upQuery = "INSERT INTO " . $dbTable . " VALUES(";
+  //$upRes = mysqli_query($dbHandle,$upQuery)
   foreach($dat as $col){
+    echo $col;
     if($col[0] !== "date"){
       echo $upQuery;
+      //$auxQuery = $upQuery;
       for ($idx=0; $idx <9 ; $idx++) {
         if($col[$idx] == "---"){
           $col[$idx] = "0";
         }
         
         if($idx==8){
+          $auxStr = $col[$idx];
           echo $col[$idx];
         }else{
+          $auxStr = $col[$idx] . ",";
           echo $col[$idx].",";
         }
+        
       }
       echo ")<br/>";
+      $auxQuery = $upQuery . "";
+      //mysqli_query($dbHandle,$upQuery);
     }
   }
+  mysqli_close($dbHandle);
   //var_dump($dat);
 }else{
   echo "Cannot read uploaded file.";

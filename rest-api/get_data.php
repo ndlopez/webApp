@@ -7,15 +7,20 @@ ini_set('display_errors',1);
 <title>webApp: query DB</title>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="../static/estilo.css">
+<link rel="stylesheet" type="text/css" href="estilo.css">
 </head>
 <body>
-    <div class="clearfix">
-    <h2>Search for data into DB</h2>
-    <p>Enter date</p>
+    <h2>WebApp.Physics</h2>
+    <main>
+        <h2>Search for data into DB</h2>
         <form method="post">
-            <div>
-            <label>Year: 2022 </label>
+            <label for="fname">User Id</label>
+            <input type="text" id="my_id" name="my_id" placeholder="Username...">
+
+            <label for="fname">Password</label>
+            <input type="password" id="my_pass" name="my_pass" placeholder="Your DB pass...">
+
+            <label>Please select date:<br/><br/>Year:  2022</label>
             <select name="monty" id="monty">
                 <option>Month</option>
                 <option value="07">July</option>
@@ -35,13 +40,11 @@ ini_set('display_errors',1);
                     echo "<option value='".$strIdx."'>".$idx."</option>";
                 }
                 ?>
-            </select></div>
+            </select>
             <!--input type="text" name="myDate" min="07-29" max="08-31" required-->
-            <div>
-                <input type="submit" value="SUBMIT" name="Submit1">
-            </div>
-        </form>
-    </div>
+            <input type="submit" value="SUBMIT" name="Submit1">
+        </form>        
+    </main>
     <div class="clearfix">
     
 <?php
@@ -51,7 +54,7 @@ require_once "inc/config.php";
 if(isset($_POST['Submit1']))
 {
 //connection to the mysql database,
-$dbhandle = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+$dbhandle = mysqli_connect(DB_HOST, DB_USER, $_POST["my_pass"], DB_NAME);
 
 if($dbhandle === false){
     die("Error: Could not connect to DB".$dbhandle->connect_error);
@@ -115,6 +118,7 @@ mysqli_close($dbhandle);
 }
 
 ?>
+</div>
 <h4>Go back <a href="http://webapp.physics">Home</a></h4>
 </body>
 

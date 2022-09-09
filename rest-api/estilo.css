@@ -2,7 +2,7 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #bed2e0;
 }
-input[type=password], input[type=text] {
+input[type=password], input[type=text],select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -30,6 +30,11 @@ main {
     border-radius: 10px;
     background-color: #f2f2f2;
     padding: 20px;
+}
+.clearfix::after{
+    content:"";
+    clear:both;
+    display:table;
 }
 @media only screen and (max-width:600px){
     main{

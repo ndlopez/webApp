@@ -3,3 +3,4 @@ data/*
 # is not needed on repo
 libs/*
 
+rest-api/uploads/*

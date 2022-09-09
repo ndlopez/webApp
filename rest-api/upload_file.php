@@ -2,6 +2,7 @@
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
+$dbTable = "weather_data";
 $csvFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 //var_dump($csvFileType);
 // Check if image file is a actual image or fake image
@@ -46,16 +47,22 @@ if (file_exists($target_file)){
   }
   fclose($myfile);
 
-  $auxVar="";
+  $upQuery="INSERT INTO " . $dbTable . " VALUES(";
   foreach($dat as $col){
     if($col[0] !== "date"){
+      echo $upQuery;
       for ($idx=0; $idx <9 ; $idx++) {
         if($col[$idx] == "---"){
           $col[$idx] = "0";
         }
-        echo $col[$idx].",";
+        
+        if($idx==8){
+          echo $col[$idx];
+        }else{
+          echo $col[$idx].",";
+        }
       }
-      echo "<br/>";
+      echo ")<br/>";
     }
   }
   //var_dump($dat);

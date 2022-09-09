@@ -22,7 +22,7 @@ if(isset($_POST["submit"])) {
   $check = filesize($_FILES["fileToUpload"]["tmp_name"]);
   //var_dump($check);
   if($check !== false) {
-    echo "File is CSV text - " . $check["mime"] . ".";
+    echo "File is CSV text - " . $check["mime"] . ".<br/>";
     $uploadOk = 1;
   } else {
     echo "File is not CSV.";
@@ -36,7 +36,7 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 } else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.<br/>";
+    echo "File ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.<br/>";
   } else {
     echo "Sorry, there was an error uploading your file.<br/>";
   }
@@ -70,27 +70,32 @@ if (file_exists($target_file)){
   $upQuery = "INSERT INTO " . $dbTable . " VALUES(";
   //$upRes = mysqli_query($dbHandle,$upQuery)
   foreach($dat as $col){
-    echo $col;
     if($col[0] !== "date"){
-      echo $upQuery;
-      //$auxQuery = $upQuery;
+      //echo $upQuery;
+      $auxQuery = $upQuery;
       for ($idx=0; $idx <9 ; $idx++) {
         if($col[$idx] == "---"){
           $col[$idx] = "0";
         }
         
-        if($idx==8){
-          $auxStr = $col[$idx];
-          echo $col[$idx];
+        if($idx == 8){
+          //windDir
+          $auxStr = "'".$col[$idx]."'";
+          //echo $col[$idx];
+        }elseif($idx == 0 || $idx == 2){
+          $auxStr = "'".$col[$idx]."',";
         }else{
           $auxStr = $col[$idx] . ",";
-          echo $col[$idx].",";
+          //echo $col[$idx].",";
         }
-        
+        $auxQuery.= $auxStr;
       }
-      echo ")<br/>";
-      $auxQuery = $upQuery . "";
-      //mysqli_query($dbHandle,$upQuery);
+      //echo ")<br/>";
+      $auxQuery.= ")";
+      echo "<p>".$auxQuery."  ";
+      $returnVal = mysqli_query($dbHandle,$auxQuery);
+      if(!$returnVal){die(" couldnt upload db".mysqli_error($dbHandle));}
+      else{echo "done</p>";}
     }
   }
   mysqli_close($dbHandle);

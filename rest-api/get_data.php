@@ -118,7 +118,7 @@ mysqli_close($dbhandle);
 }
 
 ?>
-</div>
+
 <h4>Go back <a href="http://webapp.physics">Home</a></h4>
 </body>
 

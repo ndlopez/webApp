@@ -10,7 +10,9 @@ ini_set('display_errors',1);
 <link rel="stylesheet" type="text/css" href="estilo.css">
 </head>
 <body>
-    <h2>WebApp.Physics</h2>
+    <h2>WebApp.Physics
+    <img src="../svg/MostlySunnyDay.svg"/>
+    </h2>
     <main>
         <h2>Search for data into DB</h2>
         <form method="post">
@@ -42,7 +44,7 @@ ini_set('display_errors',1);
                 ?>
             </select>
             <!--input type="text" name="myDate" min="07-29" max="08-31" required-->
-            <input type="submit" value="SUBMIT" name="Submit1">
+            <input type="submit" value="Submit" name="Submit1">
         </form>        
     </main>
     <div class="clearfix">
@@ -80,8 +82,9 @@ echo "<h3>Weather report for ".$humanDate."</h3>";
 echo "<h4>Get these data in <a href='/rest-api/index.php/datos/list?thisDate=".$buildDate."'>JSON format </a></h4>";
 ?>
 </div>
+<br>
 <div class="clearfix" style="padding:0px;">
-<table>
+<table id="myday">
     <tr>
         <th>時刻</th><th>天気</th>
         <th>気温<br>&#8451;</th>
@@ -118,8 +121,9 @@ mysqli_close($dbhandle);
 }
 
 ?>
-
+<div class="clearfix">
 <h4>Go back <a href="http://webapp.physics">Home</a></h4>
+</div>
 </body>
 
 </form>

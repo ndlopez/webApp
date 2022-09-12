@@ -14,8 +14,8 @@ input[type=password], input[type=text],select {
   
 input[type=submit] {
     width: 100%;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #2e4054;
+    color: #bed2e0;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -30,12 +30,25 @@ main {
     border-radius: 10px;
     background-color: #f2f2f2;
     padding: 20px;
+    margin-bottom: 20px;
 }
 .clearfix{
     padding:0 18px;
     display:block;
     background-color:#e5e5e5;
     overflow:hidden;
+    border-radius: 10px;
+}
+#myday{
+    border-collapse:collapse;
+    width:100%;
+}
+#myday td,#myday th{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:center;
+    background-color:#bed2e0;
+    color:#2e4054;
 }
 @media only screen and (max-width:600px){
     main{

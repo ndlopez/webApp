@@ -1,4 +1,5 @@
 #ignore the following
+*.pem
 data/*
 # is not needed on repo
 libs/*

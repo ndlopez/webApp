@@ -81,7 +81,7 @@ echo "<h4>Get these data in <a href='/rest-api/index.php/datos/list?thisDate=".$
 ?>
 </div>
 <div class="clearfix" style="padding:0px;">
-<table id="myday">
+<table>
     <tr>
         <th>時刻</th><th>天気</th>
         <th>気温<br>&#8451;</th>

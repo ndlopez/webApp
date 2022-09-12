@@ -31,10 +31,11 @@ main {
     background-color: #f2f2f2;
     padding: 20px;
 }
-.clearfix::after{
-    content:"";
-    clear:both;
-    display:table;
+.clearfix{
+    padding:0 18px;
+    display:block;
+    background-color:#e5e5e5;
+    overflow:hidden;
 }
 @media only screen and (max-width:600px){
     main{

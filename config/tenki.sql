@@ -37,3 +37,5 @@ ALTER TABLE tenki ADD COLUMN date DATE FIRST;
 #delete rows from table
 DELETE FROM tenki WHERE date = "2022-03-05";
 
+#show data between dates
+SELECT * FROM tenki WHERE date BETWEEN '2022-08-05' AND '2022-08-09';

@@ -21,6 +21,8 @@ Weather data scraped from [tenki.jp](www.tenki.jp) because of HTML format. Other
     check if running with: sudo service mariadb status
 3. sudo apt-get install php7.4 libapache2-mod-php7.4 php7.4-mysql php7.4-curl php7.4-json php7.4-gd php-memcached php7.4-intl php7.4-mbstring php7.4-xml php7.4-zip
 4. sudo mysql_secure_installation
+5. sudo apt install -y phpmyadmin
+	Respond to login  questions and if successful head to: http://webapp.physics/phpmyadmin
 
 ### WSL special commands
 Usually on Linux systems, the following works:

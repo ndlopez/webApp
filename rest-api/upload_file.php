@@ -22,7 +22,7 @@ if(isset($_POST["submit"])) {
   $check = filesize($_FILES["fileToUpload"]["tmp_name"]);
   //var_dump($check);
   if($check !== false) {
-    echo "File is CSV text - " . $check["mime"] . ".<br/>";
+    // echo "File is CSV text.<br/>";
     $uploadOk = 1;
   } else {
     echo "File is not CSV.";
@@ -38,7 +38,7 @@ if ($uploadOk == 0) {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     echo "File ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.<br/>";
   } else {
-    echo "Sorry, there was an error uploading your file.<br/>";
+    echo "Sorry, there was an error while uploading your file.<br/>";
   }
 }
 $dat = [];
@@ -70,7 +70,7 @@ if (file_exists($target_file)){
   $upQuery = "INSERT INTO " . $dbTable . " VALUES(";
   //$upRes = mysqli_query($dbHandle,$upQuery)
   foreach($dat as $col){
-    if($col[0] !== "date"){
+    if($col[0] !== "date" || $col[0] !== ""){
       //echo $upQuery;
       $auxQuery = $upQuery;
       for ($idx=0; $idx <9 ; $idx++) {

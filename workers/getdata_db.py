@@ -6,14 +6,16 @@ __email__="github.com/ndlopez/weather_app/"
 
 import mysql.connector
 
-HOSTNAME=input("Input hostname: ")
-DB_PASS=input("Input DB password: ")
+HOSTNAME = "webapp.physics" # input("Input hostname: ")
+DB_PASS = input("Input DB password: ")
+DB_NAME = "tenki"
 
 db_con = mysql.connector.connect(host=HOSTNAME,user="root",
-    password=DB_PASS,database="weather")
+    password=DB_PASS,database=DB_NAME)
 
+DB_TABLE = "weather_data"
 cursorObj = db_con.cursor()
-query = "SELECT * FROM tenki"
+query = "SELECT * FROM " + DB_TABLE + " WHERE date BETWEEN '2022-08-01' AND '2022-08-31'"
 cursorObj.execute(query)
 
 result= cursorObj.fetchall()
@@ -45,15 +47,12 @@ hour=[]
 temp=[]
 
 def get_date():
-    
-
     for item in result:
         #aux = str(item) + "\n" # (...)
         if not item[0] == "None":
             datum.append(item[0])
             hour.append(item[1])
             temp.append(item[2])
-
     
     jdx=0
     for idx in range(len(datum)-1):
@@ -69,6 +68,6 @@ def get_date():
 #close DB
 db_con.close()
 
-colors.append(colors[len(colors)-1])
+# colors.append(colors[len(colors)-1])
 print("Done")
-print(datum,hour,temp)
+# print(datum,hour,temp)

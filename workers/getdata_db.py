@@ -15,7 +15,7 @@ db_con = mysql.connector.connect(host=HOSTNAME,user="root",
 
 DB_TABLE = "weather_data"
 cursorObj = db_con.cursor()
-query = "SELECT * FROM " + DB_TABLE + " WHERE date BETWEEN '2022-08-01' AND '2022-08-31'"
+query = "SELECT * FROM " + DB_TABLE + " WHERE date BETWEEN '2022-08-01' AND '2022-08-06'"
 cursorObj.execute(query)
 
 result= cursorObj.fetchall()
@@ -23,7 +23,7 @@ result= cursorObj.fetchall()
 datum=[]
 
 for item in result:
-    print(item[0])
+    print(item)
 
 def read_data():
     with open("../data/weather_030508.csv","w") as data_file:

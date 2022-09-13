@@ -11,6 +11,11 @@ if((isset($uri[3]) && $uri[3] != 'datos') || !isset($uri[4])){
     exit();
 }
 
+if((isset($uri[3]) && $uri[3] != 'limit') || !isset($uri[4])){
+    header("HTTP/1.1 404 not found :(");
+    exit();
+}
+
 require PROJECT_ROOT_PATH . "/control/dataControl.php";
 
 $objFeedController =  new DataController();

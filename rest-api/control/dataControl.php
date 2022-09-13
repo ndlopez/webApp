@@ -9,19 +9,22 @@ class DataController extends BaseController{
         if(strtoupper($requestMethod) == 'GET'){
             try{
                 $dataModel = new DataModel();
-                //$intLimit = 10;
-                $myDate = '2022-08-29';
-                /*if(isset($arrQueryStringParams['limit']) && $arrQueryStringParams['limit']){
+                $intLimit = 10;
+                if(isset($arrQueryStringParams['limit']) && $arrQueryStringParams['limit']){
                     $intLimit = $arrQueryStringParams['limit'];
-                }*/
+                }
+
+                $myDate = '2022-08-29';
                 if(isset($arrQueryStringParams['thisDate']) && $arrQueryStringParams['thisDate']){
                     $myDate = $arrQueryStringParams['thisDate'];    
                 }else{
                     var_dump("Couldnt get input date: ".$myDate);
                 }
-                //$arrData = $dataModel->getData($intLimit);
+
+                $arrData = $dataModel->getData($intLimit);
+                $responseData = json_encode($arrData);
+                
                 $dateData = $dataModel->get_by_date($myDate);
-                //$responseData = json_encode($arrData);
                 $responseData = json_encode($dateData);
 
             }catch(Error $e){

@@ -13,7 +13,8 @@ class DataController extends BaseController{
                 if(isset($arrQueryStringParams['limit']) && $arrQueryStringParams['limit']){
                     $intLimit = $arrQueryStringParams['limit'];
                 }
-
+                
+                $myDataModel = new DataModel();
                 $myDate = '2022-08-29';
                 if(isset($arrQueryStringParams['thisDate']) && $arrQueryStringParams['thisDate']){
                     $myDate = $arrQueryStringParams['thisDate'];    
@@ -24,7 +25,7 @@ class DataController extends BaseController{
                 $arrData = $dataModel->getData($intLimit);
                 $responseData = json_encode($arrData);
                 
-                $dateData = $dataModel->get_by_date($myDate);
+                $dateData = $myDataModel->get_by_date($myDate);
                 $responseData = json_encode($dateData);
 
             }catch(Error $e){

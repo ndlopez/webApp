@@ -13,7 +13,7 @@ The above was due to I put *var_dump* somewhere in the code by removing it, JSON
 
 ## Endpoint: thisDate=str(YYYY-MM-DD)
 
-[Sort by date](http://webapp.physics/rest-api/index.php/datos/thisDate=2022-08-29)
+[Sort by date](http://webapp.physics/rest-api/index.php/datos/list?thisDate=2022-08-29)
 
 ~~The above api has a bug, it does not return the requested date, instead returns data for already setup date(inside code).~~
 

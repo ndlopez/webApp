@@ -11,12 +11,11 @@ if ($_SERVER['https'] != "on"){
 ob_start();
 ?>
 <!DOCTYPE html>
-<!--Build a nav bar menu https://w3codepen.com/html-css-sticky-navbar-menu/-->
 <html lang="en">
 <head>
 <title><!--TITLE--></title>
 <meta charset="utf-8"/>
-<!--meta http-equiv="refresh" content="3600"-->
+<meta http-equiv="refresh" content="3600">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="favicon.ico">
 <link rel="stylesheet" type="text/css" href="static/estilo.css">
@@ -48,7 +47,7 @@ $myMsg = "Good Morning";
   <nav>
      <ul>
         <li><a target="blank" href="/rest-api/updata.html">Data Admin</a></li>
-        <li><a href="/rest-api/get_data.php">Rest-Api</a></li>
+        <li><a href="/rest-api/get_data.php">Query DB</a></li>
         <li><a target="blank" href="https://github.com/ndlopez/webApp">
           WebMaster</a></li>
         <li><a href="https://ndlopez.github.io/jumble_game">Play Jumble</a></li>

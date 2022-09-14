@@ -14,6 +14,9 @@ class DataController extends BaseController{
                     $intLimit = $arrQueryStringParams['limit'];
                 }
                 
+                $arrData = $dataModel->getData($intLimit);
+                $outputData = json_encode($arrData);
+
                 $myDataModel = new DataModel();
                 $myDate = '2022-08-29';
                 if(isset($arrQueryStringParams['thisDate']) && $arrQueryStringParams['thisDate']){
@@ -21,10 +24,7 @@ class DataController extends BaseController{
                 }/*else{
                     var_dump("Couldnt get input date: ".$myDate);
                 }*/
-
-                $arrData = $dataModel->getData($intLimit);
-                $responseData = json_encode($arrData);
-                
+               
                 $dateData = $myDataModel->get_by_date($myDate);
                 $responseData = json_encode($dateData);
 
@@ -40,6 +40,7 @@ class DataController extends BaseController{
         //send output
         if(!$strErrorDesc){
             $this->sendOutput($responseData,array('Content-Type: application/json','HTTP/1.1 200 OK'));
+            $this->sendOutput($outputData,array('Content-Type: application/json','HTTP/1.1 200 OK'));
         }else{
             $this->sendOutput(json_encode(array('error'=>$strErrorDesc)),
             array('Content-Type: application/json',$strErrorHeader));

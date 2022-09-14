@@ -70,7 +70,7 @@ if (file_exists($target_file)){
   $upQuery = "INSERT INTO " . $dbTable . " VALUES(";
   //$upRes = mysqli_query($dbHandle,$upQuery)
   foreach($dat as $col){
-    if($col[0] !== "date" || $col[0] !== ""){
+    if($col[0] !== "date"){
       //echo $upQuery;
       $auxQuery = $upQuery;
       for ($idx=0; $idx <9 ; $idx++) {

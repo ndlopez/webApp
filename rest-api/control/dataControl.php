@@ -19,7 +19,7 @@ class DataController extends BaseController{
                 $arrData = $dataModel->getData($intLimit);
                 $outputData = json_encode($arrData);
 
-                $myDataModel = new DataModel();
+                //$myDataModel = new DataModel();
                 $myDate = '2022-08-29';
                 if(isset($arrQueryStringParams['thisDate']) && $arrQueryStringParams['thisDate']){
                     $myDate = $arrQueryStringParams['thisDate'];    
@@ -27,7 +27,7 @@ class DataController extends BaseController{
                     var_dump("Couldnt get input date: ".$myDate);
                 }*/
                
-                $dateData = $myDataModel->get_by_date($myDate);
+                $dateData = $dataModel->get_by_date($myDate);
                 $responseData = json_encode($dateData);
 
             }catch(Error $e){

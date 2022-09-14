@@ -5,6 +5,7 @@ class DataController extends BaseController{
         $strErrorDesc = '';
         $requestMethod = $_SERVER['REQUEST_METHOD'];
         $arrQueryStringParams = $this->getQueryStringParams();
+        $useThis = TRUE;
 
         if(strtoupper($requestMethod) == 'GET'){
             try{
@@ -12,6 +13,7 @@ class DataController extends BaseController{
                 $intLimit = 10;
                 if(isset($arrQueryStringParams['limit']) && $arrQueryStringParams['limit']){
                     $intLimit = $arrQueryStringParams['limit'];
+                    $useThis = FALSE;
                 }
                 
                 $arrData = $dataModel->getData($intLimit);
@@ -39,8 +41,11 @@ class DataController extends BaseController{
 
         //send output
         if(!$strErrorDesc){
-            $this->sendOutput($responseData,array('Content-Type: application/json','HTTP/1.1 200 OK'));
-            $this->sendOutput($outputData,array('Content-Type: application/json','HTTP/1.1 200 OK'));
+            if($useThis){
+                $this->sendOutput($responseData,array('Content-Type: application/json','HTTP/1.1 200 OK'));
+            }else{
+                $this->sendOutput($outputData,array('Content-Type: application/json','HTTP/1.1 200 OK'));
+            }
         }else{
             $this->sendOutput(json_encode(array('error'=>$strErrorDesc)),
             array('Content-Type: application/json',$strErrorHeader));

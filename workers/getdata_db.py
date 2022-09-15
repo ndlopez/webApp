@@ -15,7 +15,7 @@ db_con = mysql.connector.connect(host=HOSTNAME,user="root",
 
 DB_TABLE = "weather_data"
 cursorObj = db_con.cursor()
-query = "SELECT * FROM " + DB_TABLE + " WHERE date BETWEEN '2022-08-01' AND '2022-08-06'"
+query = "SELECT * FROM " + DB_TABLE + " WHERE date BETWEEN '2022-08-09' AND '2022-08-12'"
 cursorObj.execute(query)
 
 result= cursorObj.fetchall()

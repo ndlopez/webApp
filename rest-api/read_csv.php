@@ -9,10 +9,12 @@
     <body>
 
 <?php
+date_default_timezone_set("Asia/Tokyo");
+$heute = date("md");
 $dbTable = "weather_data";
 $data_dir = "../data/";
-$data_file = "tenki_hour_0915.csv";
-echo $data_dir.$data_file;
+$data_file = "tenki_hour_" . $heute . ".csv";
+printf("Reading: ".$data_dir.$data_file);
 $auxQuery = "";
 $auxStr = "";
 $upQuery = "INSERT INTO " . $dbTable . " VALUES(";

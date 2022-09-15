@@ -9,18 +9,19 @@
     <body>
 
 <?php
+
+/* Upload a file to server */
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
-$dbTable = "weather_data";
 $csvFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
+$dbTable = "weather_data";
+
 echo "<h2>Welcome: " . $_POST["my_id"]."</h2>"; 
-//var_dump($csvFileType);
-// Check if image file is a actual image or fake image
+// Check if file is a actual image or fake image
 if(isset($_POST["submit"])) {
   $check = filesize($_FILES["fileToUpload"]["tmp_name"]);
-  //var_dump($check);
   if($check !== false) {
     // echo "File is CSV text.<br/>";
     $uploadOk = 1;
@@ -46,14 +47,6 @@ if (file_exists($target_file)){
   //$fname = "uploads/tenki_hour.csv";
   $myfile = fopen($target_file, "r") or die("Unable to open file!");
   // Output one line until end-of-file
-  /*while(!feof($myfile)) {
-    $oneLine = str_getcsv(fgets($myfile),",");
-    string splitted by char not string nor @ "," delim
-    foreach ($oneLine as $dat){
-      echo $dat[0].", ".$dat[1];
-    }
-    echo "<br>";
-  }*/
   while (($row = fgetcsv($myfile)) !== false) {
     $dat[] = $row;
   }
@@ -62,9 +55,11 @@ if (file_exists($target_file)){
   require_once "inc/config.php";
 
   $dbHandle = mysqli_connect(DB_HOST,DB_USER,$_POST["my_pass"],DB_NAME);
+
   if(mysqli_connect_errno()){
     die("Couldnt connect to DB".mysqli_connect_error());
   }
+
   $auxQuery = "";
   $auxStr = "";
   $upQuery = "INSERT INTO " . $dbTable . " VALUES(";

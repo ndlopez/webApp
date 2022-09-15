@@ -21,7 +21,10 @@ input[type=submit] {
     border: none;
     border-radius: 4px;
 }
-
+.col{
+    float: left;
+    width: 50%;
+}
 main {
     position: relative;
     top:40%;

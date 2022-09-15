@@ -12,7 +12,8 @@
         </h2>
         <main>
             <h2>Welcome</h2><p>Enter your account details</p>
-            <form action="upload_file.php" method="post" enctype="multipart/form-data">
+            <form action="read_csv.php" method="post" enctype="multipart/form-data">
+                <!-- Previously: upload_file.php -->
                 <label for="fname">User Id</label>
                 <input type="text" id="my_id" name="my_id" placeholder="Username...">
 
@@ -20,16 +21,21 @@
                 <input type="password" id="my_pass" name="my_pass" placeholder="Your DB pass...">
             
                 <label for="lname">Select File to Upload</label><br/><br/>
-                <input type="file" name="fileToUpload" id="fileToUpload"><br/><br/>
+                <!--input type="file" name="fileToUpload" id="fileToUpload"><br/><br/-->
             
                 <input type="submit" value="Upload File" name="submit">
             </form>
         </main>
         <hr/>
-        <div>
+        <footer>
+            <div class="clearfix">
+                <h2 class="col">Go back <a href="http://webapp.physics/">Home</a></h2>
+                <h2 class="col"><a href="/rest-api/get_data.php">Get Data from DB</a></h2>
+            </div>
+            
             <p>Hello from
                 <a target="blank" href="https://www.openstreetmap.org/search?query=35.17271%2C136.89547#map=18/35.17271/136.89547">
                   N35 10'53" E136 54'23"</a></p>
-        </div>
+        </footer>
     </body>
 </html>

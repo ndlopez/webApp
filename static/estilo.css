@@ -4,6 +4,10 @@ body{
   background-color:#bed2e0;
   margin: 0px;
 }
+a{
+  text-decoration: none;
+  color:#2e4054;
+}
 .menu{
     float:left;
     width:20%;

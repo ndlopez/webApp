@@ -12,8 +12,9 @@
         </h2>
         <main>
             <h2>Welcome</h2><p>Enter your account details</p>
-            <form action="read_csv.php" method="post" enctype="multipart/form-data">
-                <!-- Previously: upload_file.php -->
+            <!--form action="upload_file.php" method="post" enctype="multipart/form-data"-->
+            <form action="read_csv.php" method="post">
+                
                 <label for="fname">User Id</label>
                 <input type="text" id="my_id" name="my_id" placeholder="Username...">
 
@@ -21,7 +22,7 @@
                 <input type="password" id="my_pass" name="my_pass" placeholder="Your DB pass...">
             
                 <label for="lname">Select File to Upload</label><br/><br/>
-                <!--input type="file" name="fileToUpload" id="fileToUpload"><br/><br/-->
+                <input type="file" name="fileToUpload" id="fileToUpload"><br/><br/>
             
                 <input type="submit" value="Update DB" name="submit">
             </form>

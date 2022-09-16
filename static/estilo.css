@@ -14,7 +14,7 @@ a{
     text-align:center;
 }
 .menuitem{
-    background-color:#e5e5e5;
+    background-color:#cc274c;
     padding:8px;
     margin-top:7px;
 }
@@ -108,7 +108,11 @@ ul{
   overflow:hidden;/*border:1px solid #e7e7e7;*/
   background-color:#2e405480;/*#f3f3f3;*/
 }
-li{float:left;width:25%;}
+li{
+  float:left;
+  width:25%;
+  color:#2e4054;
+}
 li a, .dropbtn{
   display:block;/*inline-block*/
   color:#bed2e0;/*#665;*/

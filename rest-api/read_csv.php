@@ -11,9 +11,9 @@
 <?php
 
 date_default_timezone_set("Asia/Tokyo");
-$heute = date("md");
+$heute = date("m");
 $data_dir = "../data/";
-$data_file = "tenki_hour_" . $heute . ".csv";
+$data_file = "tenki_hour_" . $heute . "17.csv";
 
 echo "<h3> Welcome: ".$_POST["my_id"]."</h3";
 echo "<p>Reading: ".$data_dir.$data_file."</p>";
@@ -72,12 +72,12 @@ fclose($fileHandle);
 mysqli_close($dbHandle);
 
 // Redirect to home
-echo "<h2>Redirecting to home</h2>";
-sleep(15);
-ob_start();
-header('Location: //webapp.physics');
-ob_end_flush();
-exit();
+echo "<h2>Redirecting to <a href='http://webapp.physics'>home</a></h2>";
+// sleep(15);
+// ob_start();
+// header('Location: //webapp.physics');
+// ob_end_flush();
+//exit();
 
 // printf($existQry);
 ?>

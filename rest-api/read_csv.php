@@ -11,9 +11,9 @@
 <?php
 
 date_default_timezone_set("Asia/Tokyo");
-$heute = date("m");
+$heute = date("md");
 $data_dir = "../data/";
-$data_file = "tenki_hour_" . $heute . "17.csv";
+$data_file = "tenki_hour_" . $heute . ".csv";
 
 echo "<h3> Welcome: ".$_POST["my_id"]."</h3";
 echo "<p>Reading: ".$data_dir.$data_file."</p>";

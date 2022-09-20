@@ -96,7 +96,7 @@ if ($result = mysqli_query($conn,$query)){
 	foreach ($result as $row){
 		//var_dump($row);
 		echo "<h4>Rain ".$row['mmRain']."mm Chance ".$row['rainProb']."% <br>Humidity ".$row['humid'] ."%<br>";
-		echo "Wind ".$row['wind']."[m/s]".$row['windDir']."</h4>";
+		echo "Wind ".$row['wind']."m/s ".$row['windDir']."</h4>";
 	}
 }
 else{

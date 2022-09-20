@@ -1,5 +1,5 @@
-/*Weather bars plot
-Pulling data from <ndlopez>'s Github*/
+/*Weather bars plot*/
+
 var timeNow = new Date();
 let currHour = timeNow.getHours();
 
@@ -14,7 +14,6 @@ var svg2=d3.select("#weather_bar")
 .append("g")
 .attr("transform",`translate(${margin.left},${margin.top})`);
 
-//https://raw.githubusercontent.com/ndlopez/weather_app/main/data/
 d3.json("data/all_weather.json",function(data){
   var xScale=d3.scaleBand().range([0,w])
   .domain(data.map(function(d){
@@ -32,7 +31,8 @@ d3.json("data/all_weather.json",function(data){
 
   /*thisColor=[];
   myColor=["#98A2A9","#CC274C"];*/
-  var yScale=d3.scaleLinear().domain([20,35]).range([h,0]);
+  var yScale=d3.scaleLinear()
+  .domain([d3.min(data,(d)=>{return d.temp;})-1,d3.max(data,(d)=>{return d.temp;})+2]).range([h,0]);
   svg2.append("g").call(d3.axisLeft(yScale));
   svg2.selectAll("bar")
   .data(data).enter()

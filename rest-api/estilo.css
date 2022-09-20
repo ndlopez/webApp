@@ -15,7 +15,7 @@ input[type=password], input[type=text],select {
     border-radius: 4px;
     box-sizing: border-box;
 }
-  
+ 
 input[type=submit] {
     width: 100%;
     background-color: #2e4054;
@@ -29,7 +29,9 @@ input[type=submit] {
     float: left;
     width: 50%;
     text-align: center;
+    padding-right: 10px;
 }
+
 main {
     position: relative;
     top:40%;

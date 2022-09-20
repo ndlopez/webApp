@@ -11,14 +11,19 @@
 <?php
 
 date_default_timezone_set("Asia/Tokyo");
-$heute = date("md");
+if($_POST["monty"] == "Month" || $_POST["Day"]){
+    echo "<p>Please select month and day</p>";
+    exit;
+}
+$heute = $_POST["monty"].$_POST["tag"]; // date("md");
 $data_dir = "../data/";
 $data_file = "tenki_hour_" . $heute . ".csv";
 
-echo "<h3> Welcome: ".$_POST["my_id"]."</h3";
+echo "<h3> Welcome: ".$_POST["my_id"]."</h3>";
 echo "<p>Reading: ".$data_dir.$data_file."</p>";
 
 // and verify data is not yet present on DB
+
 $heute = date ("Y-m-d");
 $dbTable = "weather_data";
 $existQry = "SELECT date FROM $dbTable WHERE EXISTS 

@@ -21,9 +21,18 @@
                 <label for="fname">Password</label>
                 <input type="password" id="my_pass" name="my_pass" placeholder="Your DB pass...">
             
-                <label for="lname">Select File to Upload</label><br/><br/>
+                <label for="lname">Select date</label><br/><br/>
                 <!--input type="file" name="fileToUpload" id="fileToUpload"><br/><br/-->
-            
+                <div class="clearfix">
+                    <select name="monty" id="monty" class="col">
+                        <option>Month</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
+                        <option value="10" disabled>October</option>
+                    </select>
+                    <select name="tag" class="col" id="tag"></select>
+                </div>
                 <input type="submit" value="Update DB" name="submit">
             </form>
         </main>
@@ -38,5 +47,6 @@
                 <a target="blank" href="https://www.openstreetmap.org/search?query=35.17271%2C136.89547#map=18/35.17271/136.89547">
                   N35 10'53" E136 54'23"</a></p>
         </footer>
+        <script src="../static/fill_date.js"></script>
     </body>
 </html>

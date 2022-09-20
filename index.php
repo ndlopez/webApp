@@ -93,11 +93,15 @@ if ($result = mysqli_query($conn,$query)){
 		echo "<h1>".$pageTitle."</h1>";
 	}
 	//echo "<p>Rain chance [%]</th><th>Humidity</th><th>Wind [m/s]";
+  echo "<div class='row' style='padding:0px;'>";
 	foreach ($result as $row){
-		//var_dump($row);
-		echo "<h4>Rain ".$row['mmRain']."mm Chance ".$row['rainProb']."% <br>Humidity ".$row['humid'] ."%<br>";
-		echo "Wind ".$row['wind']."m/s ".$row['windDir']."</h4>";
+    echo "<div class='col3'>";
+		echo "<h4>RAIN</h4><p>".$row['mmRain']."mm</p><p>".$row['rainProb']."%</p></div>".
+    "<div class='col3'><h4>HUMIDITY</h4><p>"
+    .$row['humid']."%</p></div><div class='col3'><h4>";
+		echo "WIND</h4><p>".$row['wind']."m/s</p><p>".$row['windDir']."</p></div>";
 	}
+  echo "</div>";
 }
 else{
   http_response_code(404);

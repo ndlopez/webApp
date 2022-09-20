@@ -35,7 +35,7 @@ d3.json("data/all_weather.json",function(data){
   const tMax = d3.max(data,(d)=>{return d.temp;});
   //console.log(parseInt(tMax) +4,tMin-2);
   var yScale=d3.scaleLinear()
-  .domain([tMin,parseInt(tMax)+2]).range([h,0]);
+  .domain([tMin-1,parseInt(tMax)+1]).range([h,0]);
   svg2.append("g").call(d3.axisLeft(yScale));
   svg2.selectAll("bar")
   .data(data).enter()

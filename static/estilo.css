@@ -63,7 +63,19 @@ h1{color:#2e4054;}
 .row:after{
     content:"";
     display:table;
-    clear:both;padding:0px;
+    clear:both;
+    padding:0px;
+}
+.col3{
+  float:left;
+  width: 33%;
+  text-align: center;
+  border:0px;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  background-color: #cc274c;
+  color:#bed2e0;
 }
 label{display: inline-block;}
 
@@ -220,4 +232,8 @@ button{/*background-color:white;#4caf50;*/
     #currtime{font-size: large;}
     li{width:100%;}
     .dropdown-content{width:50%;}
+    .col3{
+      height: 110px;
+      width: 110px;
+    }
 }

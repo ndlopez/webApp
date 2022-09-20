@@ -3,7 +3,7 @@
 var timeNow = new Date();
 let currHour = timeNow.getHours();
 
-var margin ={top:10,right:30,bottom:90,left:40},
+var margin ={top:40,right:20,bottom:50,left:40},
 w = 400 - margin.left - margin.right,
 h = 400 - margin.top - margin.bottom;
 
@@ -31,8 +31,11 @@ d3.json("data/all_weather.json",function(data){
 
   /*thisColor=[];
   myColor=["#98A2A9","#CC274C"];*/
+  const tMin = d3.min(data,(d)=>{return d.temp;});
+  const tMax = d3.max(data,(d)=>{return d.temp;});
+  //console.log(parseInt(tMax) +4,tMin-2);
   var yScale=d3.scaleLinear()
-  .domain([d3.min(data,(d)=>{return d.temp;})-1,d3.max(data,(d)=>{return d.temp;})+2]).range([h,0]);
+  .domain([tMin,parseInt(tMax)+2]).range([h,0]);
   svg2.append("g").call(d3.axisLeft(yScale));
   svg2.selectAll("bar")
   .data(data).enter()
@@ -52,6 +55,13 @@ d3.json("data/all_weather.json",function(data){
   .attr("height",function(d){return h-yScale(d.temp);})
   /*.attr("class",function(d){return d.class;})*/
   .delay(function(d,i){return(i*100)})
+
+  svg2.append("g")
+    .attr("class","tempAxis")
+    .append("text")
+    .text("\u2103")
+    .attr("x",-24)
+    .attr("y",-6); //@bottom yMax +15 //top -10
 });
 
 /*console.log(thisColor);

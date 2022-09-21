@@ -23,7 +23,8 @@ ini_set('display_errors',1);
             <input type="password" id="my_pass" name="my_pass" placeholder="Your DB pass...">
 
             <label>Please select date:<br/><br/>Year:  2022</label>
-            <select name="monty" id="monty">
+            <div class="clearfix">
+            <select name="monty" id="monty" class="col">
                 <option>Month</option>
                 <option value="07">July</option>
                 <option value="08">August</option>
@@ -31,7 +32,7 @@ ini_set('display_errors',1);
                 <option value="10" disabled>October</option>
             </select>
             <!--label>Day:</label-->
-            <select name="tag" id="tag">
+            <select name="tag" id="tag" class="col">
                 <option>Day</option>
                 <?php
                 for ($idx=1; $idx <= 31; $idx++) {
@@ -42,7 +43,7 @@ ini_set('display_errors',1);
                     echo "<option value='".$strIdx."'>".$idx."</option>";
                 }
                 ?>
-            </select>
+            </select></div>
             <!--input type="text" name="myDate" min="07-29" max="08-31" required-->
             <input type="submit" value="Submit" name="Submit1">
         </form>        

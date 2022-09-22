@@ -38,6 +38,7 @@ Using [XAMPP](https://www.apachefriends.org/) and setting a remote server...
 MySQL: Create a new user to create DB
 
 ---
-Environment: Panasonic Let'sNote/Linux Fedora 34<br>
-Languages: PHP, Python, JavaScript, Ruby, and Shell<br>
-Editors: VIM and Emacs
+## Running Environment
+* Environment: Dell Vostro 13"/WSL Debian 11<br>
+* Languages: PHP, JavaScript, and Shell<br>
+* Editors: VSCodium

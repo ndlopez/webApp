@@ -31,28 +31,21 @@ $heure = date("H");
 $myMsg = "Good Morning";
 ?>  
   <header class="sticky row">
-    <div class="half"><p>
-      <?php
-      if ($heure > 12){
-        $myMsg="Good Afternoon";
-      }
-      echo $myMsg;
-      ?></p>
-    </div>
     <div class="counter"><h2 id="currtime"></h2></div>
-  </header>
-
-  <div class="header"><h1>WebApp.Physics</h1><h3>a web application to fetch weather data from tenki.jp</h3></div>
-
-  <nav>
-     <ul>
+    <div class="half">
+      <ul>
         <li><a href="/rest-api/updata.html">Data Admin</a></li>
         <li><a target="blank" href="https://github.com/ndlopez/webApp">
           WebMaster</a></li>
         <li><a target="blank" href="https://ndlopez.github.io/jumble_game">Play Jumble</a></li>
         <li><a target="blank" href="https://ndlopez.github.io/pages/about.html">About</a></li>
-     </ul>
-  </nav>
+      </ul>
+    </div>  
+  </header>
+
+  <div class="header"><h1>WebApp.Physics</h1><h3>a web application to fetch weather data from tenki.jp</h3></div>
+
+  <nav></nav>
 
 <div class="clearfix">
 <?php
@@ -66,7 +59,10 @@ if(mysqli_connect_errno()){
   die("Could not connect: ". mysqli_connect_error());
 }
 else{
-  echo "<p>Connection to Database... OK</p>";
+  if ($heure > 12){
+    $myMsg="Good Afternoon";
+  }
+  echo "<p>".$myMsg.", connection to Database... OK</p>";
 }
 
 //$query = "DELETE FROM tenki WHERE date IS NULL;";

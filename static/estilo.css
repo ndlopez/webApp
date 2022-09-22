@@ -23,7 +23,7 @@ a{
     padding:20px;
     text-align:center;
 }
-h1{color:#2e4054;}
+h1,h2,h3{color:#2e4054;}
 .sticky{
   display: block;
   width: auto;
@@ -66,16 +66,31 @@ h1{color:#2e4054;}
     clear:both;
     padding:0px;
 }
+.current .row{border-radius: 10px;}
+.current{
+  background-color: #2e4054;
+  border-radius: 10px;
+}
+.current h1, .current h2, .current p{
+  color: #bed2e0;
+}
+.xtra{
+  background-color: #bed2e0;
+  border-radius: 10px;
+}
+.xtra h4, .xtra p{
+  color: #2e4054;
+}
 .col3{
   float:left;
-  width: 33%;
+  width: 30%;
   text-align: center;
   border:0px;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  background-color: #2e4054;
-  color:#bed2e0;
+  /*border-radius: 50%;
+  width: 140px;
+  height: 140px;*/
+  padding: 0px;
+  margin: 3px;
 }
 label{display: inline-block;}
 
@@ -165,8 +180,11 @@ li.dropdown{display:inline-block;}
   background-color:#bed2e0;
   color:#2e4054;
 }
-/*#myday tr:nth-child(even){background-color:#f2f2f2;}
-#myday tr:hover{background-color:#ddd;}*/
+#myday tr:nth-child(even){background-color:#cc274c;}
+#weather_bar{
+  text-align: center;
+}
+
 /*table cols title
 #myday th{
     padding-top:12px;
@@ -235,5 +253,6 @@ button{/*background-color:white;#4caf50;*/
     .col3{
       height: 110px;
       width: 110px;
+      margin: 1px;
     }
 }

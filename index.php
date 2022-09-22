@@ -73,27 +73,48 @@ else{
 $query = "SELECT * FROM $dbTable WHERE date = '" . $heute . "' AND hour = " . $heure .";";
 //mysqli_select_db($conn,'weather');
 
-echo "<p> Your Query was ...<br><code>".$query."</code></p>";
+// echo "<p> Your Query was ...<br><code>".$query."</code></p>";
 ?>
 </div>
 <div class="row" style="padding:0px;">
-<div class="column">
+<div class="column current">
 <!--div class="container">
 <div class="bottom-left"-->
 <?php
-echo "<h1>".date("l, F d")."</h1>";
+$nowTenki="";
 if ($result = mysqli_query($conn,$query)){
   if($result->num_rows < 1){
     /* This if doesnt work, must find a way to return sth when no rows are returned */
     echo "<h2> Database is not updated. <br>Please, contact Admin.</h2>";
   }
 	foreach ($result as $row){
-		/*echo "<h3><br>".date("l F d ").$row['hour'].":".date("i")."</h3>";*/
-    $pageTitle="Now ".trim($row['weather'],'"')." ".$row['temp']."&#8451;";
-		echo "<h1>".$pageTitle."</h1>";
+    $nowTenki = trim($row['weather'],'"');
+    $weatherIcon = "";
+    $weatherLbl = "Sunny";
+    switch($nowTenki){
+      case "曇り":
+        $weatherIcon = "CloudyV3.svg";
+        $weatherLbl = "Cloudy";
+        break;
+      case "弱雨":
+        $weatherIcon = "LightRainV3.svg";
+        $weatherLbl = "Light Rain";
+        break;
+      case "小雨":
+        $weatherIcon = "ModerateRainV2.svg";
+        $weatherLbl = "Moderate Rain";
+        break;
+      default:
+        $weatherIcon = "MostlySunnyDay.svg";
+    }
+    /*echo "<h3><br>".date("l F d ").$row['hour'].":".date("i")."</h3>";*/
+    $pageTitle = $nowTenki." ".$row['temp']."&#8451;";
+
+    echo "<div class='row'><div class='column'><h2>Nagoya, JP<br/>".$weatherLbl.
+    "</h2><h1>".$pageTitle."</h1></div>";
+    echo "<div class='column'><img src='svg/".$weatherIcon."' width='120'></></div></div>";
 	}
-	//echo "<p>Rain chance [%]</th><th>Humidity</th><th>Wind [m/s]";
-  echo "<div class='row' style='padding:0px;'>";
+  echo "<div class='row xtra' style='padding:0px;'>";
 	foreach ($result as $row){
     echo "<div class='col3'>";
 		echo "<h4>RAIN</h4><p>".$row['mmRain']."mm</p><p>".$row['rainProb']."%</p></div>".
@@ -102,11 +123,13 @@ if ($result = mysqli_query($conn,$query)){
 		echo "WIND</h4><p>".$row['wind']."m/s</p><p>".$row['windDir']."</p></div>";
 	}
   echo "</div>";
+  echo "<p class='img2'>".date("l, F d")." ".date("H:i")."</p>";
 }
 else{
   http_response_code(404);
 	echo "<p>Something went wrong :( <br> Contact admin@webapp.physics </p>";
 }
+
 ?>
 <!--/div--><!-- bottom-left class: Text above img -->
 <!--/div--><!-- container class-->
@@ -219,7 +242,7 @@ mysqli_close($conn);
   <a target="blank" href="https://www.openstreetmap.org/search?query=35.17271%2C136.89547#map=18/35.17271/136.89547">
     N35 10'53" E136 54'23"</a></p>
 </div></div>
-<p style="text-align:center;"><span class="copy-left">&copy;</span><span> Copyleft 2022-08-31</span></p>
+<p style="text-align:center;"><span class="copy-left">&copy;</span><span> Copyleft <?php echo date("Y-m-d");?></span></p>
 </footer>
 </html>
 <?php

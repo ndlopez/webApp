@@ -11,30 +11,58 @@
             <img src="../svg/MostlySunnyDay.svg"/>
         </h2>
         <main>
-            <h2>Welcome</h2><p>Enter your account details</p>
-            <!--form action="upload_file.php" method="post" enctype="multipart/form-data"-->
-            <form action="read_csv.php" method="post">
-                
-                <label for="fname">User Id</label>
-                <input type="text" id="my_id" name="my_id" placeholder="Username...">
+            <div class="tab">
+                <button class="tabLink" onclick="openForm(event,'query')">Search</button>
+                <button class="tabLink" onclick="openForm(event,'upload')">Upload</button>
+            </div>
 
-                <label for="fname">Password</label>
-                <input type="password" id="my_pass" name="my_pass" placeholder="Your DB pass...">
-            
-                <label for="lname">Select date</label><br/><br/>
-                <!--input type="file" name="fileToUpload" id="fileToUpload"><br/><br/-->
-                <div class="clearfix">
-                    <select name="monty" id="monty" class="col">
-                        <option>Month</option>
-                        <option value="07">July</option>
-                        <option value="08">August</option>
-                        <option value="09">September</option>
-                        <option value="10" disabled>October</option>
-                    </select>
-                    <select name="tag" class="col" id="tag"></select>
-                </div>
-                <input type="submit" value="Update DB" name="submit">
-            </form>
+            <div id="query" class="tabContent">
+                <h2>Search for data into Weather DB</h2>
+                <form action="get_data.php" method="post">
+                    <label for="fname">User Id</label>
+                    <input type="text" id="my_id" name="my_id" placeholder="Username...">
+
+                    <label for="fname">Password</label>
+                    <input type="password" id="my_pass" name="my_pass" placeholder="Your DB pass...">
+                
+                    <label for="lname">Select date</label><br/><br/>
+                    <div class="clearfix">
+                        <select name="monty" id="monty" class="col">
+                            <option>Month</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10" disabled>October</option>
+                        </select>
+                        <select name="tag" class="col" id="tag"></select>
+                    </div>
+                    <input type="submit" value="Update DB" name="submit">
+                </form>
+            </div>
+            <div id="upload" class="tabContent">
+                <h2>Welcome</h2><p>Enter your account details</p>
+                <form action="read_csv.php" method="post">
+                    <label for="fname">User Id</label>
+                    <input type="text" id="my_id" name="my_id" placeholder="Username...">
+
+                    <label for="fname">Password</label>
+                    <input type="password" id="my_pass" name="my_pass" placeholder="Your DB pass...">
+                
+                    <label for="lname">Select date</label><br/><br/>
+                    <!--input type="file" name="fileToUpload" id="fileToUpload"><br/><br/-->
+                    <div class="clearfix">
+                        <select name="monty" id="monty" class="col">
+                            <option>Month</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10" disabled>October</option>
+                        </select>
+                        <select name="tag" class="col" id="tag"></select>
+                    </div>
+                    <input type="submit" value="Update DB" name="submit">
+                </form>
+            </div>
         </main>
 
         <footer>

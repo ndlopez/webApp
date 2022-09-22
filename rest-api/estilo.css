@@ -6,6 +6,28 @@ a{
     text-decoration: none;
     color:#2e4054;
 }
+.tab{
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #bed2e0;
+}
+.tab button{
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+.tab button.active{
+    background-color: aqua;
+}
+.tabContent{
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
 input[type=password], input[type=text],select {
     width: 100%;
     padding: 12px 20px;

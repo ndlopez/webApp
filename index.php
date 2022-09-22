@@ -131,7 +131,7 @@ if ($result = mysqli_query($conn,$query)){
 	}
   echo "</div>";
   echo "<div class='row'><p class='column'>".$tempMaxMin."</p>";
-  echo "<p class='column'>".date("l, F d")." ".date("H:i")."</p></div>";
+  echo "<p class='column' style='text-align:right;'>".date("l, F d")." ".date("H:i")."</p></div>";
 }
 else{
   http_response_code(404);
@@ -149,8 +149,8 @@ else{
 </div-->
 <div id="weather_bar" class="column"></div>
 </div><!--Today weather report row-->
-
-<button class="accordion" style="background-color:#2e4054;color:#bed2e0;">Later today</button>
+<!--style="background-color:#2e4054;color:#bed2e0;"-->
+<button class="accordion">LATER TODAY</button>
 <div class="panel" style="padding:0px;">
 <table id="myday">
   <tr>
@@ -250,7 +250,8 @@ mysqli_close($conn);
   <a target="blank" href="https://www.openstreetmap.org/search?query=35.17271%2C136.89547#map=18/35.17271/136.89547">
     N35 10'53" E136 54'23"</a></p>
 </div></div>
-<p style="text-align:center;"><span class="copy-left">&copy;</span><span> copyleft ndzerglink <?php echo date("Y-m-d");?></span></p>
+<p style="text-align:center;"><span class="copy-left">&copy;</span><span> copyleft ndzerglink 2022-09-22</span></p>
+<!--?php echo date("Y-m-d");?-->
 </footer>
 </html>
 <?php

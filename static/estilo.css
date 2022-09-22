@@ -1,12 +1,13 @@
 *{box-sizing:border-box;}
 body{
   font-family:Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
-  background-color:#bed2e0;
+  background-color:#2e4054;
   margin: 0px;
+  color: #bed2e0;
 }
 a{
   text-decoration: none;
-  color:#2e4054;
+  color:#cc274c;
 }
 .menu{
     float:left;
@@ -31,7 +32,7 @@ h1,h3{color:#2e4054;}
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  background-color: #2e4054;
+  background-color: #cc274c;
 }
 .half{
   color: #bed2e0;
@@ -60,6 +61,7 @@ h1,h3{color:#2e4054;}
     padding:10px;
     border:0px;
 }
+
 .row:after{
     content:"";
     display:table;
@@ -68,8 +70,9 @@ h1,h3{color:#2e4054;}
 }
 .current .row{border-radius: 10px;}
 .current{
-  background-color: #2e4054;
-  border-radius: 10px;
+  /*background-color: #2e4054;
+  border-radius: 10px;*/
+  border: 0px;
 }
 .current h1, .current h2, .current p{
   color: #bed2e0;
@@ -127,6 +130,7 @@ div{
   clear:both;
   display:table;
 }
+.clearfix{border: 0px;}
 .img2{float:right;}
 /*menu dropdown*/
 ul{
@@ -146,21 +150,21 @@ li a, .dropbtn{
   text-align:center;
   padding:14px 16px;
   text-decoration:none;
+  border-radius: 5px;
+  border: 1px dashed #cc274c;
 }
-li a:hover, .dropdown:hover .dropbtn{background-color:#2e4054;}
+/*li a:hover, .dropdown:hover .dropbtn{background-color:#2e4054;}*/
 li.dropdown{display:inline-block;}
 .dropdown-content{
   display:none;
   padding:0px;
   position:absolute;
-  background-color:#4caf50;
   min-width:120px;
   width:25%;
   box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index:1;
 }
 .dropdown-content a{
-  color:black;
   padding:12px 16px;
   text-decoration:none;
   display:block;
@@ -194,10 +198,9 @@ svg line, svg path {stroke:#bed2e0;}
     background-color:#4caf50;
     color:white;
 }*/
-#pidd:hover{background-color:white;letter-spacing:3px;}
+
 .accordion{
   background-color:#bed2e0;
-  color:#444;
   cursor:pointer;
   padding:18px;
   width:100%;
@@ -206,12 +209,16 @@ svg line, svg path {stroke:#bed2e0;}
   font-size:18px;
   transition:0.4s;
 }
-.active, .accordion:hover{background-color:#cc274c;}
+.active /*, .accordion:hover*/{background-color:#cc274c;}
 .accordion:after{
-  content:'\02795';background-color: #bed2e0;
+  content: '\02C5';/*'\02795'*/background-color: #bed2e0;
   font-size:15px;float:right;margin-left:5px;
 }
-.active:after{content:"\02796";background-color: #bed2e0;}
+.active:after{
+  content: '\005E';/*"\02796";*/
+  background-color: #cc274c;
+  color:#bed2e0;
+}
 .panel{
   padding:0 18px;
   display:none;
@@ -230,6 +237,7 @@ button{/*background-color:white;#4caf50;*/
   transform:scaleX(-1);
   filter:FlipH;-ms-filter:"FlipH";
 }
+footer .row{border: 0px;}
 /*Didnt work for D3JS and PHP
 .bar-old{fill:#98A2A9;}
 .bar-new{fill:#cc274c;}*/

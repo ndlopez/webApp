@@ -71,8 +71,8 @@ else{
 
 //$query = "DELETE FROM tenki WHERE date IS NULL;";
 $query = "SELECT * FROM $dbTable WHERE date = '" . $heute . "' AND hour = " . $heure .";";
-//mysqli_select_db($conn,'weather');
 
+$getMaxMin = "SELECT MAX(temp),MIN(temp) from $dbTable WHERE date='".$heute."';";
 // echo "<p> Your Query was ...<br><code>".$query."</code></p>";
 ?>
 </div>
@@ -81,6 +81,13 @@ $query = "SELECT * FROM $dbTable WHERE date = '" . $heute . "' AND hour = " . $h
 <!--div class="container">
 <div class="bottom-left"-->
 <?php
+$tempMaxMin = ""; 
+if($result = mysqli_query($conn,$getMaxMin)){
+  foreach($result as $dat){
+    //var_dump($dat);
+    $tempMaxMin = $dat['MAX(temp)']."&#8451; | ".$dat['MIN(temp)']."&#8451;";
+  }
+}
 $nowTenki="";
 if ($result = mysqli_query($conn,$query)){
   if($result->num_rows < 1){
@@ -110,10 +117,11 @@ if ($result = mysqli_query($conn,$query)){
     /*echo "<h3><br>".date("l F d ").$row['hour'].":".date("i")."</h3>";*/
     $pageTitle = $nowTenki." ".$row['temp']."&#8451;";
 
-    echo "<div class='row'><div class='column'><h2>Nagoya, JP<br/>".$weatherLbl.
-    "</h2><h1>".$pageTitle."</h1></div>";
+    echo "<div class='row'><div class='column'><h2>Nagoya, JP</h2><p>".$weatherLbl.
+    "</p><h1>".$pageTitle."</h1></div>";
     echo "<div class='column'><img src='svg/".$weatherIcon."' width='120'></></div></div>";
 	}
+  echo "<p>".$tempMaxMin."</p>";
   echo "<div class='row xtra' style='padding:0px;'>";
 	foreach ($result as $row){
     echo "<div class='col3'>";
@@ -242,7 +250,7 @@ mysqli_close($conn);
   <a target="blank" href="https://www.openstreetmap.org/search?query=35.17271%2C136.89547#map=18/35.17271/136.89547">
     N35 10'53" E136 54'23"</a></p>
 </div></div>
-<p style="text-align:center;"><span class="copy-left">&copy;</span><span> Copyleft <?php echo date("Y-m-d");?></span></p>
+<p style="text-align:center;"><span class="copy-left">&copy;</span><span> copyleft ndzerglink <?php echo date("Y-m-d");?></span></p>
 </footer>
 </html>
 <?php

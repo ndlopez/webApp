@@ -7,11 +7,11 @@ ini_set('display_errors',1);
 <title>webApp: query DB</title>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="estilo.css">
+<link rel="stylesheet" type="text/css" href="../../static/stylez.css">
 </head>
 <body>
     <h2>WebApp.Physics
-    <img src="../svg/MostlySunnyDay.svg"/>
+    <img src="../../svg/MostlySunnyDay.svg"/>
     </h2>
     <!--main>
         <form method="post">
@@ -35,7 +35,7 @@ ini_set('display_errors',1);
     
 <?php
 
-require_once "inc/config.php";
+require_once "../inc/config.php";
 
 if(isset($_POST['Submit1']))
 {

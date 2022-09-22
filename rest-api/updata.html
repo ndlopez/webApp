@@ -4,7 +4,7 @@
         <title>Update DB</title>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="estilo.css">
+        <link rel="stylesheet" type="text/css" href="../static/stylez.css">
     </head>
     <body>
         <h2>WebApp.Physics
@@ -18,7 +18,7 @@
 
             <div id="query" class="tabContent">
                 <h2>Search for data into Weather DB</h2><p>Enter your account details</p>
-                <form action="get_data.php" method="post">
+                <form action="control/get_data.php" method="post">
                     <label for="fname">User Id</label>
                     <input type="text" id="my_id" name="my_id" placeholder="Username...">
 
@@ -41,7 +41,7 @@
             </div>
             <div id="upload" class="tabContent">
                 <h2>Update Weather DB</h2><p>Enter your account details</p>
-                <form action="read_csv.php" method="post">
+                <form action="control/read_csv.php" method="post">
                     <label for="fname">User Id</label>
                     <input type="text" id="my_id" name="my_id" placeholder="Username...">
 

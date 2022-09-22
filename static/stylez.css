@@ -8,9 +8,8 @@ a{
 }
 .tab{
     overflow: hidden;
-    border: 1px solid #cc274c;
+    /*border: 1px solid #cc274c;*/
     background-color: #cc274c;
-    color: #bed2e0;
 }
 .tab button{
     background-color: inherit;
@@ -20,6 +19,7 @@ a{
     outline: none;
     padding: 14px 16px;
     transition: 0.3s;
+    color: #bed2e0;
 }
 .tab button.active{
     background-color: #2e4054;

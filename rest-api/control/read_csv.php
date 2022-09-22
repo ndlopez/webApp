@@ -4,7 +4,7 @@
         <title>WebApp.Physics: Update DB </title>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="estilo.css">
+        <link rel="stylesheet" type="text/css" href="../../static/stylez.css">
     </head>
     <body>
         <h2>Updating DB</h2>
@@ -16,13 +16,11 @@ if($_POST["monty"] == "Month" || $_POST["Day"]){
     exit;
 }
 $heute = $_POST["monty"].$_POST["tag"]; // date("md");
-$data_dir = "../data/";
+$data_dir = "../../data/";
 $data_file = "tenki_hour_" . $heute . ".csv";
 
 echo "<h3> Welcome: ".$_POST["my_id"]."</h3>";
 echo "<p>Reading: ".$data_dir.$data_file."</p>";
-
-// and verify data is not yet present on DB
 
 $heute = date ("Y-m-d");
 $dbTable = "weather_data";
@@ -34,7 +32,7 @@ $auxStr = "";
 $upQuery = "INSERT INTO " . $dbTable . " VALUES(";
 
 if(file_exists($data_dir.$data_file)){
-    require_once "inc/config.php";
+    require_once "../inc/config.php";
     $dbHandle = mysqli_connect(DB_HOST,DB_USER,$_POST["my_pass"],DB_NAME);
     if(mysqli_connect_errno()){
         die("Couldnt connect to DB,".mysqli_connect_error());

@@ -4,14 +4,14 @@
         <title>Update DB</title>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="estilo.css">
+        <link rel="stylesheet" type="text/css" href="../../static/stylez.css">
     </head>
     <body>
 
 <?php
 
 /* Upload a file to server */
-$target_dir = "uploads/";
+$target_dir = "../uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $csvFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -52,7 +52,7 @@ if (file_exists($target_file)){
   }
   fclose($myfile);
 
-  require_once "inc/config.php";
+  require_once "../inc/config.php";
 
   $dbHandle = mysqli_connect(DB_HOST,DB_USER,$_POST["my_pass"],DB_NAME);
 

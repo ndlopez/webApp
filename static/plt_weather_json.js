@@ -21,16 +21,13 @@ d3.json("data/all_weather.json",function(data){
     return d.hour;}))
   .padding(0.2);
 
-  //console.log(d.hour);
   svg2.append("g")
   .attr("transform","translate(0,"+h+")")
   .call(d3.axisBottom(xScale))
   .selectAll("text")
-  .attr("transform","translate(-10,0)rotate(-45)")
+  .attr("transform","translate(5,0)rotate(0)")
   .style("text-anchor","end");
 
-  /*thisColor=[];
-  myColor=["#98A2A9","#CC274C"];*/
   const tMin = d3.min(data,(d)=>{return d.temp;});
   const tMax = d3.max(data,(d)=>{return d.temp;});
   //console.log(parseInt(tMax) +4,tMin-2);
@@ -45,6 +42,7 @@ d3.json("data/all_weather.json",function(data){
     return xScale(d.hour);})
   .attr("width",xScale.bandwidth())
   .attr("fill",function(d){return d.color;})
+  .attr("rx",4)
   .attr("height",function(d){return h-yScale(0);})
   .attr("y",function(d){return yScale(0);})
 
@@ -57,11 +55,10 @@ d3.json("data/all_weather.json",function(data){
   .delay(function(d,i){return(i*100)})
 
   svg2.append("g")
-    .attr("class","tempAxis")
     .append("text")
     .text("\u2103")
     .attr("x",-24)
-    .attr("y",-6); //@bottom yMax +15 //top -10
+    .attr("y",-10); //@bottom yMax +15 //top -10
 });
 
 /*console.log(thisColor);

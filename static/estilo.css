@@ -184,7 +184,8 @@ li.dropdown{display:inline-block;}
 #weather_bar{
   text-align: center;
 }
-
+svg text{fill:#bed2e0;}
+svg line, svg path {stroke:#bed2e0;}
 /*table cols title
 #myday th{
     padding-top:12px;

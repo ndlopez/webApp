@@ -39,3 +39,8 @@ DELETE FROM tenki WHERE date = "2022-03-05";
 
 #show data between dates
 SELECT * FROM tenki WHERE date BETWEEN '2022-08-05' AND '2022-08-09';
+
+#get max from an INT row
+select max(temp) from weather_data where date='2022-09-21';
+
+select min(temp) from weather_data where date='2022-09-21';

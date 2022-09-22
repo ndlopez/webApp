@@ -76,8 +76,8 @@ $query = "SELECT * FROM $dbTable WHERE date = '" . $heute . "' AND hour = " . $h
 // echo "<p> Your Query was ...<br><code>".$query."</code></p>";
 ?>
 </div>
-<div class="row" style="padding:0px;">
-<div class="column current">
+<div class="row current" style="padding:0px;">
+<div class="column">
 <!--div class="container">
 <div class="bottom-left"-->
 <?php
@@ -192,13 +192,13 @@ if($res = mysqli_query($conn,$newQuery)){
   foreach ($res as $dat){
     //trim($dat);Does not trim anything
     if ($dat['hour'] == $heure - 1){
-      $myColor = "#cc274c";
+      $myColor = "#bed2e0";
     }
     elseif ($dat['hour'] < $heure -1 ) {
-      $myColor = "#98A2A9";
+      $myColor = "#cc274c40";
     }
     else{
-      $myColor = "#2e4054";
+      $myColor = "#bed2e030";
     }
     /*if ($dat['hour'] < $heure) {
       $classy="bar-old";

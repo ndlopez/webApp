@@ -24,7 +24,7 @@ li a, .dropbtn{
     display:block;/*inline-block*/
     color:#bed2e0;/*#665;*/
     text-align:center;
-    padding:14px 16px;
+    padding: 8px 10px;
     text-decoration:none;
     border-radius: 5px;
 }

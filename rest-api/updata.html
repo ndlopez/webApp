@@ -7,9 +7,22 @@
         <link rel="stylesheet" type="text/css" href="../static/stylez.css">
     </head>
     <body>
-        <h2>WebApp.Physics
-            <img src="../svg/MostlySunnyDay.svg"/>
-        </h2>
+        <header class="clearfix" id="myHeader">
+            <div class="col">
+                <h2><a href="http://webapp.physics">WebApp.Physics</a> 
+                <img src="../svg/MostlySunnyDay.svg"/></h2>
+            </div>
+            <div class="col">
+              <ul>
+                <li><a href="/rest-api/index.php/datos?limit=10">Get Data</a></li>
+                <li><a target="blank" href="https://github.com/ndlopez">
+                  WebMaster</a></li>
+                <li><a target="blank" href="https://ndlopez.github.io/jumble_game">Play Jumble</a></li>
+                <li><a target="blank" href="https://ndlopez.github.io/pages/about.html">About</a></li>
+              </ul>
+            </div>
+        </header>
+        <p></p>
         <main>
             <div class="tab">
                 <button class="tabLink" onclick="openForm(event,'query','tag01')" id="thisOpen">Search</button>
@@ -65,13 +78,8 @@
             </div>
         </main>
 
-        <footer>
-            <div class="clearfix">
-                <h2 class="col"><a href="http://webapp.physics/">Go back Home</a></h2>
-                <h2 class="col"><a href="https://github.com/ndlopez">Contact WebMaster</a></h2>
-            </div>
-            
-            <p>Hello from
+        <footer>            
+            <p>&nbsp;Hello from
                 <a target="blank" href="https://www.openstreetmap.org/search?query=35.17271%2C136.89547#map=18/35.17271/136.89547">
                   N35 10'53" E136 54'23"</a></p>
         </footer>

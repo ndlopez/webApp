@@ -46,11 +46,11 @@ $myMsg = "Good Morning";
 
   <nav>
      <ul>
-        <li><a target="blank" href="/rest-api/updata.html">Data Admin</a></li>
-        <li><a href="/rest-api/get_data.php">Query DB</a></li>
+        <li><a href="/rest-api/updata.html">Data Admin</a></li>
         <li><a target="blank" href="https://github.com/ndlopez/webApp">
           WebMaster</a></li>
-        <li><a href="https://ndlopez.github.io/jumble_game">Play Jumble</a></li>
+        <li><a target="blank" href="https://ndlopez.github.io/jumble_game">Play Jumble</a></li>
+        <li><a target="blank" href="https://ndlopez.github.io/pages/about.html">About</a></li>
      </ul>
   </nav>
 

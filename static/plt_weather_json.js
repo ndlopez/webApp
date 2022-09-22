@@ -5,7 +5,7 @@ let currHour = timeNow.getHours();
 
 var margin ={top:40,right:20,bottom:50,left:40},
 w = 500 - margin.left - margin.right,
-h = 400 - margin.top - margin.bottom;
+h = 500 - margin.top - margin.bottom;
 
 var svg2=d3.select("#weather_bar")
 .append("svg")

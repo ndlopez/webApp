@@ -23,7 +23,7 @@ a{
     padding:20px;
     text-align:center;
 }
-h1,h2,h3{color:#2e4054;}
+h1,h3{color:#2e4054;}
 .sticky{
   display: block;
   width: auto;

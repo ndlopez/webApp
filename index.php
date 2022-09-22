@@ -42,7 +42,7 @@ $myMsg = "Good Morning";
     <div class="counter"><h2 id="currtime"></h2></div>
   </header>
 
-  <div class="header"><h2>Today's weather</h2><h3>Nagoyashi, Naka-ku</h3></div>
+  <div class="header"><h1>WebApp.Physics</h1><h3>a web application to fetch weather data from tenki.jp</h3></div>
 
   <nav>
      <ul>
@@ -85,7 +85,7 @@ $tempMaxMin = "";
 if($result = mysqli_query($conn,$getMaxMin)){
   foreach($result as $dat){
     //var_dump($dat);
-    $tempMaxMin = $dat['MAX(temp)']."&#8451; | ".$dat['MIN(temp)']."&#8451;";
+    $tempMaxMin = "Max ".$dat['MAX(temp)']."&#8451; | Min ".$dat['MIN(temp)']."&#8451;";
   }
 }
 $nowTenki="";
@@ -121,7 +121,6 @@ if ($result = mysqli_query($conn,$query)){
     "</p><h1>".$pageTitle."</h1></div>";
     echo "<div class='column'><img src='svg/".$weatherIcon."' width='120'></></div></div>";
 	}
-  echo "<p>".$tempMaxMin."</p>";
   echo "<div class='row xtra' style='padding:0px;'>";
 	foreach ($result as $row){
     echo "<div class='col3'>";
@@ -131,7 +130,8 @@ if ($result = mysqli_query($conn,$query)){
 		echo "WIND</h4><p>".$row['wind']."m/s</p><p>".$row['windDir']."</p></div>";
 	}
   echo "</div>";
-  echo "<p class='img2'>".date("l, F d")." ".date("H:i")."</p>";
+  echo "<div class='row'><p class='column'>".$tempMaxMin."</p>";
+  echo "<p class='column'>".date("l, F d")." ".date("H:i")."</p></div>";
 }
 else{
   http_response_code(404);

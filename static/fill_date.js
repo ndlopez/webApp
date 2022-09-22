@@ -1,19 +1,25 @@
-const selDiv = document.getElementById("tag");
-const optElm = document.createElement("option");
-optElm.innerText = "Day";
-selDiv.appendChild(optElm);
-for(let idx=1; idx<=31;idx++){
-    var strIdx = idx;
-    var el = document.createElement("option");
-    if(idx < 10){
-        strIdx = "0"+idx;
+
+function buildOpt(thisId){
+    const selDiv = document.getElementById(thisId);
+    const optElm = document.createElement("option");
+    optElm.innerText = "Day";
+    selDiv.appendChild(optElm);
+    for(let idx=1; idx<=31;idx++){
+        var strIdx = idx;
+        var el = document.createElement("option");
+        if(idx < 10){
+            strIdx = "0"+idx;
+        }
+        el.setAttribute("value",strIdx);
+        el.innerText = strIdx;
+        selDiv.appendChild(el);
     }
-    el.setAttribute("value",strIdx);
-    el.innerText = strIdx;
-    selDiv.appendChild(el);
+    return selDiv;
 }
 
-function openForm(ev, thisForm){
+
+function openForm(ev, thisForm, thisTag){
+    buildOpt(thisTag);
     var idx,tabcontent,tablink;
     tabcontent = document.getElementsByClassName("tabContent");
     for (idx=0; idx <tabcontent.length; idx++){
@@ -29,4 +35,4 @@ function openForm(ev, thisForm){
 
 }
 
-document.getElementById("default").click();
+document.getElementById("thisOpen").click();

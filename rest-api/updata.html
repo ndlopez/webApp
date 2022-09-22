@@ -12,8 +12,8 @@
         </h2>
         <main>
             <div class="tab">
-                <button class="tabLink" onclick="openForm(event,'query')" id="default">Search</button>
-                <button class="tabLink" onclick="openForm(event,'upload')">Upload</button>
+                <button class="tabLink" onclick="openForm(event,'query','tag01')" id="thisOpen">Search</button>
+                <button class="tabLink" onclick="openForm(event,'upload','tag02')">Upload</button>
             </div>
 
             <div id="query" class="tabContent">
@@ -34,7 +34,7 @@
                             <option value="09">September</option>
                             <option value="10" disabled>October</option>
                         </select>
-                        <select name="tag" class="col" id="tag"></select>
+                        <select name="tag" class="col" id="tag01"></select>
                     </div>
                     <input type="submit" value="SUBMIT" name="submit">
                 </form>
@@ -58,7 +58,7 @@
                             <option value="09">September</option>
                             <option value="10" disabled>October</option>
                         </select>
-                        <select name="tag" class="col" id="tag"></select>
+                        <select name="tag" class="col" id="tag02"></select>
                     </div>
                     <input type="submit" value="UPDATE" name="submit">
                 </form>

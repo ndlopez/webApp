@@ -84,11 +84,16 @@ main {
     color:#2e4054;
 }
 @media only screen and (max-width:600px){
+    body{
+        margin: 0px;
+    }
+    body h2{text-align: center;}
     main{
-        width:auto;
+        width:100%;
         top:25%;
         left:0%;
-        border:0px;
-        padding: 10px;
+        padding: 0px;
+        margin: 0px;
     }
+    .col{width: 100%;}
 }

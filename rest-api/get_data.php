@@ -13,41 +13,24 @@ ini_set('display_errors',1);
     <h2>WebApp.Physics
     <img src="../svg/MostlySunnyDay.svg"/>
     </h2>
-    <main>
-        <h2>Search for data into DB</h2>
+    <!--main>
         <form method="post">
-            <label for="fname">User Id</label>
-            <input type="text" id="my_id" name="my_id" placeholder="Username...">
-
-            <label for="fname">Password</label>
-            <input type="password" id="my_pass" name="my_pass" placeholder="Your DB pass...">
-
             <label>Please select date:<br/><br/>Year:  2022</label>
             <div class="clearfix">
-            <select name="monty" id="monty" class="col">
-                <option>Month</option>
-                <option value="07">July</option>
-                <option value="08">August</option>
-                <option value="09">September</option>
-                <option value="10" disabled>October</option>
-            </select>
-            <!--label>Day:</label-->
             <select name="tag" id="tag" class="col">
                 <option>Day</option>
                 <?php
-                for ($idx=1; $idx <= 31; $idx++) {
+                /*for ($idx=1; $idx <= 31; $idx++) {
                     $strIdx = $idx;
                     if ($idx < 10){
                         $strIdx = "0".$idx;
                     }
                     echo "<option value='".$strIdx."'>".$idx."</option>";
-                }
+                }*/
                 ?>
             </select></div>
-            <!--input type="text" name="myDate" min="07-29" max="08-31" required-->
-            <input type="submit" value="Submit" name="Submit1">
-        </form>        
-    </main>
+        </form>
+    </main-->
     <div class="clearfix">
     
 <?php

@@ -1,6 +1,7 @@
 # REST API using PHP
 
-Head to:<br>
+Built two endPoints:
+
 ## Endpoint: limit=int(number)
 
 [Limit output](http://webapp.physics/rest-api/index.php/datos/list?limit=10)
@@ -9,7 +10,7 @@ It should display weather data (up to 10)<br>
 ~~However the output has some characters that cannot be JSON parsed, thus it throws the following:<br>
 SyntaxError: JSON.parse: unexpected character at line 1 column 1 of the JSON data.~~
 
-The above was due to I put *var_dump* somewhere in the code by removing it, JSON file is just fine.
+The above was due to a *var_dump* I put somewhere in the code, by removing it, JSON file displays just fine.
 
 ## Endpoint: thisDate=str(YYYY-MM-DD)
 
@@ -19,16 +20,16 @@ The above was due to I put *var_dump* somewhere in the code by removing it, JSON
 
 ## Access Page
 
-I also made a [simple page](http://webapp.physics/rest-api/get_data.php) to actually display requested data and ease on the display.
+I made a [simple page](http://webapp.physics/rest-api/updata.html) to actually request data and update DB by reading a CSV file.
 
-<img src="../static/rest-api_prev.png" alt="Rest-Api on mobile" height="600">
+<img src="../static/access_to_api.png" alt="Rest-Api on mobile" height="600">
 
 ## Needed features
 
-Although GET is possible, the follow is needed:<br>
-1. POST: Update DB by uploading CSV file
+Although *POST* is possible, the follow are needed:<br>
+1. ~~Update DB by uploading CSV file~~ done
 2. DELETE: Remove records from DB
-3. Obviusly a *login page* is needed to perform the above.
+3. ~~Obviusly a *login page* is needed to perform the above.~~ done
 
 ---
 

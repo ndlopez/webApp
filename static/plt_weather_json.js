@@ -26,6 +26,7 @@ d3.json("data/all_weather.json",function(data){
   .call(d3.axisBottom(xScale))
   .selectAll("text")
   .attr("transform","translate(5,0)rotate(0)")
+  .attr("font-size","12")
   .style("text-anchor","end");
 
   const tMin = d3.min(data,(d)=>{return d.temp;});
@@ -33,7 +34,7 @@ d3.json("data/all_weather.json",function(data){
   //console.log(parseInt(tMax) +4,tMin-2);
   var yScale=d3.scaleLinear()
   .domain([tMin-1,parseInt(tMax)+1]).range([h,0]);
-  svg2.append("g").call(d3.axisLeft(yScale));
+  svg2.append("g").call(d3.axisLeft(yScale)).attr("font-size","12");
   svg2.selectAll("bar")
   .data(data).enter()
   .append("rect")

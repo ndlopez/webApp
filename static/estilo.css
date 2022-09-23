@@ -190,6 +190,7 @@ li.dropdown{display:inline-block;}
 }
 svg text{fill:#bed2e0;}
 svg line, svg path {stroke:#bed2e0;}
+svg g{font-size: "12";}
 /*table cols title
 #myday th{
     padding-top:12px;

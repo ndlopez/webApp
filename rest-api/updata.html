@@ -14,7 +14,7 @@
             </div>
             <div class="col">
               <ul>
-                <li><a href="/rest-api/index.php/datos?limit=10">Get Data</a></li>
+                <li><a href="/rest-api/index.php/datos/list?limit=10">Sample Data</a></li>
                 <li><a target="blank" href="https://github.com/ndlopez">
                   WebMaster</a></li>
                 <li><a target="blank" href="https://ndlopez.github.io/jumble_game">Play Jumble</a></li>
@@ -26,7 +26,7 @@
         <main>
             <div class="tab">
                 <button class="tabLink" onclick="openForm(event,'query','tag01')" id="thisOpen">Search</button>
-                <button class="tabLink" onclick="openForm(event,'upload','tag02')">Upload</button>
+                <button class="tabLink" onclick="openForm(event,'upload','tag02')">Update</button>
             </div>
 
             <div id="query" class="tabContent">
@@ -61,7 +61,8 @@
                     <label for="fname">Password</label>
                     <input type="password" id="my_pass" name="my_pass" placeholder="Your DB pass...">
                 
-                    <label for="lname">Select date</label><br/><br/>
+                    <div class="clearfix"><label class="col" for="lname">Select date: </label>
+                    <button class="col" onclick="getDate()" id="today">Today</button></div>
                     <!--input type="file" name="fileToUpload" id="fileToUpload"><br/><br/-->
                     <div class="clearfix">
                         <select name="monty" id="monty" class="col">

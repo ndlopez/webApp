@@ -1,3 +1,11 @@
+function getDate(){
+    const heute = new Date();
+    const monty = heute.getMonth() + 1;
+    const tag = heute.getDay();
+    var myOpt = document.getElementById("monty");
+    console.log(monty+tag);
+    //return monty+tag;
+}
 
 function buildOpt(thisId){
     const selDiv = document.getElementById(thisId);
@@ -16,7 +24,6 @@ function buildOpt(thisId){
     }
     return selDiv;
 }
-
 
 function openForm(ev, thisForm, thisTag){
     buildOpt(thisTag);

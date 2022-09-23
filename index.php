@@ -108,9 +108,13 @@ if ($result = mysqli_query($conn,$query)){
         $weatherLbl = "Moderate Rain";
         break;
       case "雨":
-      case "強雨":
-        $weatherIcon = "https://raw.githubusercontent.com/ndlopez/ndlopez.github.io/main/assets/rainy.svg";
+        $weatherIcon = "rainy.svg";
         $weatherLbl = "Heavy Rain";
+        break;
+      case "強雨":
+        $weatherIcon = "rainy.svg";
+        $weatherLbl = "Heavy Rain";
+        break;
       default:
         $weatherIcon = "MostlySunnyDay.svg";
     }

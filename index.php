@@ -152,7 +152,8 @@ else{
   <tr>
     <th>時刻</th><th>天気</th>
     <th>気温<br>&#8451;</th>
-    <th>降水量<br>%</th>
+    <th>降水量<br>mm</th>
+    <th>降水率<br>%</th>
     <th>湿度<br>%</th>
     <th>風速<br>m/s</th>
     <th>風向</th>
@@ -171,7 +172,7 @@ if ($result = mysqli_query($conn,$query2)){
 	foreach ($result as $row){
 		//var_dump($row);
 		echo "<tr><td>".$row['hour'].":00</td><td>".$row['weather']."</td><td>".$row['temp']."</td>";
-		echo "<td>".$row['rainProb']."</td><td>".$row['humid'] ."</td>";
+		echo "<td>".$row['mmRain']."</td><td>".$row['rainProb']."</td><td>".$row['humid'] ."</td>";
 		echo "<td>".$row['wind']."</td><td>".$row['windDir']."</td></tr>";
 	}
 	echo "</table></div>";

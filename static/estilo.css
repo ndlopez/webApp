@@ -245,22 +245,25 @@ footer .row{border: 0px;}
 @media only screen and (max-width:620px){
 */
 @media (max-width:800px){
-    .menu, .column{
-      width:100%;
-      text-align: justify;
-    }
-    svg{
-      width: 100%;
-      padding: 0px;
-    }
-    svg.g.rect{
-      width:50%;
-    }
-    #currtime{font-size: large;}
-    li{width:100%;}
-    .dropdown-content{width:50%;}
-    .col3{
-      width: 110px;
-      margin: 1px;
-    }
+  .sticky{
+    position:static;
+  }
+  .menu, .column{
+    width:100%;
+    text-align: justify;
+  }
+  svg{
+    width: 100%;
+    padding: 0px;
+  }
+  svg.g.rect{
+    width:50%;
+  }
+  #currtime{font-size: large;}
+  li{width:100%;}
+  .dropdown-content{width:50%;}
+  .col3{
+    width: 110px;
+    margin: 1px;
+  }
 }

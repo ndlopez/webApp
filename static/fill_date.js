@@ -2,7 +2,7 @@ function getDate(){
     const heute = new Date();
     const monty = heute.getMonth() + 1;
     const tag = heute.getDay();
-    var myOpt = document.getElementById("monty");
+    //var myOpt = document.getElementById("monty");
     console.log(monty+tag);
     //return monty+tag;
 }

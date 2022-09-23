@@ -7,7 +7,6 @@
         <link rel="stylesheet" type="text/css" href="../../static/stylez.css">
     </head>
     <body>
-        <h2>Updating DB</h2>
 <?php
 
 date_default_timezone_set("Asia/Tokyo");
@@ -19,7 +18,8 @@ $heute = $_POST["monty"].$_POST["tag"]; // date("md");
 $data_dir = "../../data/";
 $data_file = "tenki_hour_" . $heute . ".csv";
 
-echo "<h3> Welcome: ".$_POST["my_id"]."</h3>";
+echo "<h2> Welcome: ".$_POST["my_id"]."</h2>";
+echo "<h2>Updating DB...</h2>";
 echo "<p>Reading: ".$data_dir.$data_file."</p>";
 
 $heute = date ("Y-m-d");

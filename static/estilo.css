@@ -240,7 +240,7 @@ button{/*background-color:white;#4caf50;*/
   -o-transform:scaleX(-1);
   -webkit-transform:scaleX(-1);
   transform:scaleX(-1);
-  filter:FlipH;-ms-filter:"FlipH";
+  filter:FlipH;
 }
 footer .row{border: 0px;}
 /*Didnt work for D3JS and PHP

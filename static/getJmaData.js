@@ -3,6 +3,8 @@ const jma_url = "https://www.jma.go.jp/bosai/forecast/data/forecast/230000.json"
 
 const ico_url = "https://www.jma.go.jp/bosai/forecast/img/";
 
+const hh = [5,11,17,23];
+
 disp_info();
 
 function getDateHour(inStr){
@@ -34,8 +36,8 @@ async function disp_info(){
     var textW = "<p>降水確率[%]</p><div class='row'>";
     for(let idx = jdx-3;idx < jdx+1;idx++){
         const get_date = getDateHour(gotData.rain[0][idx]);
-        texty += "<p class='col4'>"+get_date.heure+":00<br/>"+gotData.rain[1][idx]+"%</p>";
-        console.log(gotData.rain[0].length,texty);
+        texty += "<p class='col4'>"+get_date.heure+" - "+hh[idx-2]+"<br/>"+gotData.rain[1][idx]+"%</p>";
+        //console.log(gotData.rain[0].length,texty);
     }
     texty += "</div>";
     tempElm.innerHTML = textW + texty;

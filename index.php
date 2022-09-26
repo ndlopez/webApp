@@ -188,7 +188,7 @@ else{
 }
 //forecast Div
 echo "<h2>&emsp;Tomorrow's Weather</h2>";
-echo "<div class='row' id='foreDiv'><div class='col3'><br/><h3>".date("l, F d",strtotime('+1 day'))."</h3></div></div>";
+echo "<div class='row' id='foreDiv'><div class='col3'><br/><h2>".date("l, F d",strtotime('+1 day'))."</h2></div></div>";
 
 /*Creating a JSON file and saving to static folder
 If run by using <include> the whole page crashes
@@ -257,7 +257,7 @@ mysqli_close($conn);
   <a target="blank" href="https://www.openstreetmap.org/search?query=35.17271%2C136.89547#map=18/35.17271/136.89547">
     N35 10'53" E136 54'23"</a></p>
 </div></div>
-<p style="text-align:center;"><span class="copy-left">&copy;</span><span> copyleft ndzerglink 2022-09-22</span></p>
+<p style="text-align:center;"><span class="copy-left">&copy;</span><span> copyleft ndzerglink 2022-09-26</span></p>
 <!--?php echo date("Y-m-d");?-->
 </footer>
 </html>

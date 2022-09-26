@@ -86,7 +86,7 @@ h1,h3{color:#2e4054;}
 }
 .col3{
   float:left;
-  width: 30%;
+  width: 33.33%;
   text-align: center;
   border:0px;
   /*border-radius: 50%;
@@ -121,7 +121,7 @@ panel2,.flip{
 #panel2{display:none;}
 div{
   /*opacity:0.8;filter:alpha(opacity=10);*/
-  border:1px solid #bed2e0;
+  border:1px dashed #bed2e0;
   padding:15px;
   text-align:left;/*justify;*/
 }

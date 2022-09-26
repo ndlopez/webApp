@@ -13,23 +13,29 @@ function getDateHour(inStr){
 
 async function disp_info(){
     const gotData = await get_data();
-    const myDiv = document.getElementById("maxmin");
-    const tempElm = document.createElement("p");//tomorrow temp
-    tempElm.setAttribute("class","column");
-    tempElm.style.textAlign = "right";
+    const myDiv = document.getElementById("foreDiv");
+    const iconElm = document.createElement("p");
+    iconElm.setAttribute("class","col3");
+    //var currWeather = gotData.weather[1].split("　");
     /*for(let idx=0;idx<gotData.weather.length;idx++){
         var currWeather = gotData.weather[idx].split("　");
         texty += "<h2>"+gotData.time[idx].slice(0,10)+" "+currWeather[0]+"<img src='"+ico_url+gotData.icon[idx]+".svg'/></h2>";
-    }
-    
-    for(let idx=0;idx<gotData.rain[0].length;idx++){
-        const get_date = getDateHour(gotData.rain[0][idx]);
-        texty += "<p>RainProb:"+get_date.monty+"-"+get_date.tag+" "+
-        get_date.heure+":00 "+gotData.rain[1][idx]+"%</p>";
     }*/
+    var texty = "<br/><span>Min "+ gotData.temp[1][2]+"&#8451; | Max "+ gotData.temp[1][3]+"&#8451;</span>";
 
-    var texty = "Max "+ gotData.temp[1][2]+"&#8451; | Min "+ gotData.temp[1][3]+"&#8451;";
-    tempElm.innerHTML = texty;
+    iconElm.innerHTML = "<img src='"+ico_url+gotData.icon[1]+".svg'/>"+texty;
+    const tempElm = document.createElement("p");//tomorrow temp
+    tempElm.setAttribute("class","col3");
+    tempElm.style.textAlign = "right";
+    
+    texty = "";
+    var textW = "<br/>" + gotData.weather[1] + "<div class='row'>";
+    for(let idx = gotData.rain[0].length-1;idx > 4;idx--){
+        const get_date = getDateHour(gotData.rain[0][idx-4]);
+        texty += "<p class='col4'>"+get_date.heure+":00 "+gotData.rain[1][idx-4]+"%</p>";
+    }
+    tempElm.innerHTML = textW + texty;
+    myDiv.appendChild(iconElm);
     myDiv.appendChild(tempElm);
 }
 async function get_data(){

@@ -74,14 +74,13 @@ $getMaxMin = "SELECT MAX(temp),MIN(temp) from $dbTable WHERE date='".$heute."';"
 </div>
 <div class="row current" style="padding:0px;">
 <div class="column">
-<!--div class="container">
-<div class="bottom-left"-->
+
 <?php
 $tempMaxMin = ""; 
 if($result = mysqli_query($conn,$getMaxMin)){
   foreach($result as $dat){
     //var_dump($dat);
-    $tempMaxMin = "Max ".$dat['MAX(temp)']."&#8451; | Min ".$dat['MIN(temp)']."&#8451;";
+    $tempMaxMin = "Min ".$dat['MIN(temp)']."&#8451; | Max ".$dat['MAX(temp)']."&#8451;";
   }
 }
 $nowTenki="";
@@ -136,17 +135,13 @@ if ($result = mysqli_query($conn,$query)){
   echo "</div>";
 
   echo "<div id='maxmin' class='row'><p class='column'>".date("l, F d")." ".date("H:i")."</p>";
-  echo "<p class='column' style='text-align:right;'>".$tempMaxMin."</p>";
-  echo "<p class='column'>".date("l, F d",strtotime('+1 day'))."</p></div>";
+  echo "<p class='column' style='text-align:right;'>".$tempMaxMin."</p></div>";
 }
 else{
   http_response_code(404);
 	echo "<p>Something went wrong :( <br> Contact admin@webapp.physics </p>";
 }
-
 ?>
-<!--/div--><!-- bottom-left class: Text above img -->
-<!--/div--><!-- container class-->
 </div><!-- Column container -->
 <!--div class="column" style="text-align:center;">
   <a href="https://tenki.jp/forecast/5/26/5110/23106/1hour.html">
@@ -154,7 +149,8 @@ else{
   </a>
 </div-->
 <div id="weather_bar" class="column"></div>
-</div><!--Today weather report row-->
+</div>
+<!--Today weather report row-->
 <!--style="background-color:#2e4054;color:#bed2e0;"-->
 <button class="accordion">LATER TODAY</button>
 <div class="panel" style="padding:0px;">
@@ -185,11 +181,14 @@ if ($result = mysqli_query($conn,$query2)){
 		echo "<td>".$row['mmRain']."</td><td>".$row['rainProb']."</td><td>".$row['humid'] ."</td>";
 		echo "<td>".$row['wind']."</td><td>".$row['windDir']."</td></tr>";
 	}
-	echo "</table></div>";
+	echo "</table></div>";//div panel close
 }
 else{
 	echo "<p>Something went wrong</p>";
 }
+//forecast Div
+echo "<h2>&emsp;Tomorrow's Weather</h2>";
+echo "<div class='row' id='foreDiv'><p class='col3'><br/>".date("l, F d",strtotime('+1 day'))."</p></div>";
 
 /*Creating a JSON file and saving to static folder
 If run by using <include> the whole page crashes
@@ -250,7 +249,7 @@ mysqli_close($conn);
 <footer>
 <div class="row" style="padding:0px;">
 <div class="column">
-<p>Data from <em>tenki.jp</em> scraped using <i>Shell, curl and SED</i>.</p>
+<p>Data from <em>tenki.jp</em> scraped using <i>Shell, curl and SED</i> and <em>JMA.gov.jp</em></p>
 </div>
 <!--div class="column">empty div</div-->
 <div class="column" style="text-align:right;">

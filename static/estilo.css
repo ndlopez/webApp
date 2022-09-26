@@ -95,6 +95,11 @@ h1,h3{color:#2e4054;}
   padding: 0px;
   margin: 3px;
 }
+.col4{
+  float: left;
+  width: 25%;
+  text-align: center;
+}
 label{display: inline-block;}
 
 div table{padding: 0px;}

@@ -188,7 +188,7 @@ else{
 }
 //forecast Div
 echo "<h2>&emsp;Tomorrow's Weather</h2>";
-echo "<div class='row' id='foreDiv'><p class='col3'><br/>".date("l, F d",strtotime('+1 day'))."</p></div>";
+echo "<div class='row' id='foreDiv'><div class='col3'><br/><h3>".date("l, F d",strtotime('+1 day'))."</h3></div></div>";
 
 /*Creating a JSON file and saving to static folder
 If run by using <include> the whole page crashes

@@ -88,7 +88,7 @@ $nowTenki="";
 if ($result = mysqli_query($conn,$query)){
   if($result->num_rows < 1){
     /* This if doesnt work, must find a way to return sth when no rows are returned */
-    echo "<h2> Database is not updated. <br>Please, contact Admin.</h2>";
+    echo "<h2> Database is not updated. <br>Please, contact Webmaster.</h2>";
   }
 	foreach ($result as $row){
     $nowTenki = trim($row['weather'],'"');
@@ -134,8 +134,10 @@ if ($result = mysqli_query($conn,$query)){
 		echo "WIND</h4><p>".$row['wind']."m/s</p><p>".$row['windDir']."</p></div>";
 	}
   echo "</div>";
-  echo "<div class='row'><p class='column'>".$tempMaxMin."</p>";
-  echo "<p class='column' style='text-align:right;'>".date("l, F d")." ".date("H:i")."</p></div>";
+
+  echo "<div id='maxmin' class='row'><p class='column'>".date("l, F d")." ".date("H:i")."</p>";
+  echo "<p class='column' style='text-align:right;'>".$tempMaxMin."</p>";
+  echo "<p class='column'>".date("l, F d",strtotime('+1 day'))."</p></div>";
 }
 else{
   http_response_code(404);
@@ -242,6 +244,7 @@ mysqli_close($conn);
 <!--?php include 'static/get_json_db.php'?-->
 <script src = "static/accordion_table.js"></script>
 <script src="static/plt_weather_json.js"></script>
+<script src="static/getJmaData.js"></script>
 <!--script src="static/get_json.js"></script-->
 </body>
 <footer>

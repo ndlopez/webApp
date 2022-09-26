@@ -32,7 +32,8 @@ li.dropdown{display:inline-block;}
 .tab{
     overflow: hidden;
     /*border: 1px solid #cc274c;*/
-    background-color: #cc274c;
+    background-color: #cc274c40;
+    color:#2e4054;
 }
 .tab button{
     background-color: inherit;
@@ -82,7 +83,7 @@ input[type=submit] {
 main {
     position: relative;
     /*top:45%;*/
-    left:35%;
+    left:30%;
     width: 40%;
     border-radius: 10px;
     background-color: #f2f2f2;
@@ -92,7 +93,7 @@ main {
 .clearfix{
     padding:0 18px;
     display:block;
-    background-color:#e5e5e5;
+    background-color:#bed2e0;
     overflow:hidden;
 }
 #myday{

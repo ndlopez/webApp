@@ -18,10 +18,11 @@ $heute = $_POST["monty"].$_POST["tag"]; // date("md");
 $data_dir = "../../data/";
 $data_file = "tenki_hour_" . $heute . ".csv";
 
-echo "<h2> Welcome: ".$_POST["my_id"]."</h2>";
-echo "<h2>Updating DB...</h2>";
-echo "<p>Reading: ".$data_dir.$data_file."</p>";
+echo "<div class='clearfix'><h2> Welcome: ".$_POST["my_id"]."</h2>";
+echo "<h2>Updating DB</h2>";
+echo "<p>Reading : ".$data_dir.$data_file."</p></div>";
 
+echo "<div class='clearfix'>";
 $heute = date ("Y-m-d");
 $dbTable = "weather_data";
 $existQry = "SELECT date FROM $dbTable WHERE EXISTS 
@@ -71,11 +72,15 @@ if(file_exists($data_dir.$data_file)){
     echo "<p>Couldnt find such file :(</p>";
 }
 
+echo "</div>"
 fclose($fileHandle);
 mysqli_close($dbHandle);
 
+echo "<div class='clearfix'>";
+echo "<h2 class='col'>Go back <a href='http://webapp.physics'>home</a></h2>";
+echo "<h2 class='col'>Update <a href='http://webapp.physics/rest-api/updata.html'>more</a> data?</h2>";
+echo "</div>"
 // Redirect to home
-echo "<h2>Redirecting to <a href='http://webapp.physics'>home</a></h2>";
 // sleep(15);
 // ob_start();
 // header('Location: //webapp.physics');

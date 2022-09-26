@@ -10,7 +10,7 @@ ini_set('display_errors',1);
 <link rel="stylesheet" type="text/css" href="../../static/stylez.css">
 </head>
 <body>
-    <h2>WebApp.Physics
+    <h2>&emsp;WebApp.Physics
     <img src="../../svg/MostlySunnyDay.svg"/>
     </h2>
     <!--main>
@@ -106,7 +106,8 @@ mysqli_close($dbhandle);
 
 ?>
 <div class="clearfix">
-<h4>Go back <a href="http://webapp.physics">Home</a></h4>
+    <h4 class="col"><a href="http://webapp.physics/rest-api/updata.html">Search again?</a></h4>
+    <h4 class="col">Go back <a href="http://webapp.physics">Home</a></h4>
 </div>
 </body>
 

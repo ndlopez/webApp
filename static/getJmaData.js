@@ -15,19 +15,26 @@ function getDateHour(inStr){
 
 async function disp_info(){
     const gotData = await get_data();
-    const myDiv = document.getElementById("foreDiv");
-    const iconElm = document.createElement("div");
-    iconElm.setAttribute("class","col3");
+
+    const currDiv = document.getElementById("thisWeather");
+    const currElm = document.createElement("p");
+    currElm.setAttribute("class","column");
+    currElm.innerHTML = gotData.weather[0];
+    currDiv.appendChild(currElm);
     //var currWeather = gotData.weather[1].split("　");
     /*for(let idx=0;idx<gotData.weather.length;idx++){
         var currWeather = gotData.weather[idx].split("　");
         texty += "<h2>"+gotData.time[idx].slice(0,10)+" "+currWeather[0]+"<img src='"+ico_url+gotData.icon[idx]+".svg'/></h2>";
     }*/
+
+
+    const myDiv = document.getElementById("foreDiv");
+    const iconElm = document.createElement("div");
+    iconElm.setAttribute("class","col3");
+
     var texty = "<br/><p>"+gotData.weather[1] +"</p>";
     texty += "<span>Min "+ gotData.temp[1][2]+"&#8451; | Max "+ gotData.temp[1][3]+"&#8451;</span>";
-
     iconElm.innerHTML = "<img src='"+ico_url+gotData.icon[1]+".svg'/>"+texty;
-    
     const tempElm = document.createElement("div");//tomorrow temp
     tempElm.setAttribute("class","col3");
     

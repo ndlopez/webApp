@@ -7,7 +7,7 @@ body{
 }
 a{
   text-decoration: none;
-  color:#cc274c;
+  color:#2e4054;
 }
 .menu{
     float:left;
@@ -241,6 +241,10 @@ button{/*background-color:white;#4caf50;*/
   -webkit-transform:scaleX(-1);
   transform:scaleX(-1);
   filter:FlipH;
+}
+footer{
+  background-color: #bed2e040;
+  padding-bottom: 10px;
 }
 footer .row{border: 0px;}
 /*Didnt work for D3JS and PHP

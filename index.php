@@ -63,6 +63,7 @@ else{
     $myMsg="Good Afternoon";
   }
   echo "<p>".$myMsg.", connection to Database... OK</p>";
+  echo "<div id='thisWeather' class='row'><p class='column'>".date("l, F d")."</p></div>";
 }
 
 //$query = "DELETE FROM tenki WHERE date IS NULL;";
@@ -86,7 +87,7 @@ if($result = mysqli_query($conn,$getMaxMin)){
 $nowTenki="";
 if ($result = mysqli_query($conn,$query)){
   if($result->num_rows < 1){
-    /* This if doesnt work, must find a way to return sth when no rows are returned */
+    /* if this doesnt work, must find a way to return sth when no rows are returned */
     echo "<h2> Database is not updated. <br>Please, contact Webmaster.</h2>";
   }
 	foreach ($result as $row){
@@ -96,31 +97,35 @@ if ($result = mysqli_query($conn,$query)){
     switch($nowTenki){
       case "曇り":
         $weatherIcon = "CloudyV3.svg";
-        $weatherLbl = "Cloudy";
+        $weatherLbl = " Cloudy";
         break;
       case "弱雨":
         $weatherIcon = "LightRainV3.svg";
-        $weatherLbl = "Light Rain";
+        $weatherLbl = " Light Rain";
         break;
       case "小雨":
         $weatherIcon = "ModerateRainV2.svg";
-        $weatherLbl = "Moderate Rain";
+        $weatherLbl = " Moderate Rain";
         break;
       case "雨":
         $weatherIcon = "rainy.svg";
-        $weatherLbl = "Heavy Rain";
+        $weatherLbl = " Heavy Rain";
         break;
       case "強雨":
         $weatherIcon = "rainy.svg";
-        $weatherLbl = "Heavy Rain";
+        $weatherLbl = " Heavy Rain";
+        break;
+      case "晴れ":
+        $weatherIcon = "SunnyDayV3.svg";
+        $weatherLbl = " Clear and Sunny";
         break;
       default:
-        $weatherIcon = "MostlySunnyDay.svg";
+        $weatherIcon = "MostlySunnyDay.svg";//
     }
     /*echo "<h3><br>".date("l F d ").$row['hour'].":".date("i")."</h3>";*/
     $pageTitle = $nowTenki." ".$row['temp']."&#8451;";
 
-    echo "<div class='row'><div class='column'><h2>Nagoya, JP</h2><p>".$weatherLbl.
+    echo "<div class='row'><div class='column'><h2>Nagoya, JP</h2><p>".date("H:i").$weatherLbl.
     "</p><h1>".$pageTitle."</h1></div>";
     echo "<div class='column'><img src='svg/".$weatherIcon."' width='120'></></div></div>";
 	}
@@ -134,7 +139,7 @@ if ($result = mysqli_query($conn,$query)){
 	}
   echo "</div>";
 
-  echo "<div id='maxmin' class='row'><p class='column'>".date("l, F d")." ".date("H:i")."</p>";
+  echo "<div id='maxmin' class='row'><p class='column'></p>";
   echo "<p class='column' style='text-align:right;'>".$tempMaxMin."</p></div>";
 }
 else{
@@ -188,7 +193,7 @@ else{
 }
 //forecast Div
 echo "<h2>&emsp;Tomorrow's Weather</h2>";
-echo "<div class='row' id='foreDiv'><div class='col3'><br/><h2>".date("l, F d",strtotime('+1 day'))."</h2></div></div>";
+echo "<div class='clearfix' id='foreDiv'><div class='col3'><br/><h2>".date("l, F d",strtotime('+1 day'))."</h2></div></div>";
 
 /*Creating a JSON file and saving to static folder
 If run by using <include> the whole page crashes
@@ -249,7 +254,7 @@ mysqli_close($conn);
 <footer>
 <div class="row" style="padding:0px;">
 <div class="column">
-<p>Data from <em>tenki.jp</em> scraped using <i>Shell, curl and SED</i> and <em>JMA.gov.jp</em></p>
+<p>Data from <em>tenki.jp</em> scraped using <i>Shell, curl and SED</i> and <em>JMA.go.jp</em></p>
 </div>
 <!--div class="column">empty div</div-->
 <div class="column" style="text-align:right;">

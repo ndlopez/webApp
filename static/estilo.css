@@ -7,7 +7,7 @@ body{
 }
 a{
   text-decoration: none;
-  color:#2e4054;
+  color:#cc274c;
 }
 .menu{
     float:left;
@@ -216,11 +216,11 @@ svg line, svg path {stroke:#bed2e0;}
 }
 .active /*, .accordion:hover*/{background-color:#cc274c;}
 .accordion:after{
-  content: '\02C5';/*'\02795'*/background-color: #bed2e0;
+  content: '\02193';/*'\02795'*/background-color: #bed2e0;
   font-size:15px;float:right;margin-left:5px;
 }
 .active:after{
-  content: '\005E';/*"\02796";*/
+  content: '\02191';/*"\02796";*/
   background-color: #cc274c;
   color:#bed2e0;
 }

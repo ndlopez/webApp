@@ -13,11 +13,13 @@ ini_set('display_errors',1);
 <?php
 
 date_default_timezone_set("Asia/Tokyo");
-if($_POST["monty"] == "Month" || $_POST["Day"] == "Day"){
+/*if($_POST["monty"] == "Month" || $_POST["Day"] == "Day"){
     echo "<p>Please select month and day</p>";
     exit;
-}
-$heute = $_POST["monty"].$_POST["tag"]; // date("md");
+}*/
+$heute =  $_POST["setDate"];// $_POST["monty"].$_POST["tag"]; // date("md");
+var_dump($heute);
+
 $data_dir = "../../data/";
 $data_file = "tenki_hour_" . $heute . ".csv";
 
@@ -71,13 +73,13 @@ if(file_exists($data_dir.$data_file)){
             else{echo "done</p>";}
         }
     }
+    fclose($fileHandle);
+    mysqli_close($dbHandle);
 }else{
     echo "<p>Couldnt find such file :(</p>";
 }
 
 echo "</div>";
-fclose($fileHandle);
-mysqli_close($dbHandle);
 
 echo "<div class='clearfix'>";
 echo "<h2 class='col'>Go back <a href='http://webapp.physics'>home</a></h2>";

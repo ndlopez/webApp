@@ -25,8 +25,8 @@
         <p></p>
         <main>
             <div class="tab">
-                <button class="tabLink" onclick="openForm(event,'query','tag01')" id="thisOpen">Search</button>
-                <button class="tabLink" onclick="openForm(event,'upload','tag02')">Update</button>
+                <button class="tabLink" onclick="openForm(event,'query')" id="thisOpen">Search</button>
+                <button class="tabLink" onclick="openForm(event,'upload')">Update</button>
             </div>
 
             <div id="query" class="tabContent">
@@ -38,17 +38,9 @@
                     <label for="fname">Password</label>
                     <input type="password" id="my_pass" name="my_pass" placeholder="Your DB pass...">
                 
-                    <label for="lname">Select date:<br><br>Year: 2022</label><br/><br/>
-                    <div class="clearfix">
-                        <select name="monty" id="monty" class="col">
-                            <option>Month</option>
-                            <option value="07">July</option>
-                            <option value="08">August</option>
-                            <option value="09">September</option>
-                            <option value="10" disabled>October</option>
-                        </select>
-                        <select name="tag" class="col" id="tag01"></select>
-                    </div>
+                    <br/><!--label for="lname">Select date:<br><br>Year: 2022</label><br/><br/-->
+                    <label for="setDate">Select date:&emsp;</label>
+                    <input type="date" id="setDate" name="setDate"><br/>
                     <input type="submit" value="SUBMIT" name="Submit1">
                 </form>
             </div>
@@ -60,13 +52,9 @@
 
                     <label for="fname">Password</label>
                     <input type="password" id="my_pass" name="my_pass" placeholder="Your DB pass...">
-                
-                    <div class="clearfix"><label class="col" for="lname">Select date: </label>
-                    <div class="col"><input type="checkbox" id="today" value="Today">
-                        <label for="today">Today</label> </div>
-                    </div>
+
                     <!--input type="file" name="fileToUpload" id="fileToUpload"><br/><br/-->
-                    <div class="clearfix">
+                    <!--div class="clearfix">
                         <select name="monty" id="monty" class="col">
                             <option>Month</option>
                             <option value="07">July</option>
@@ -75,7 +63,9 @@
                             <option value="10" disabled>October</option>
                         </select>
                         <select name="tag" class="col" id="tag02"></select>
-                    </div>
+                    </div-->
+                    <label for="setDate">Select date:&emsp;</label>
+                    <input type="date" id="setDate" name="setDate"><br/>
                     <input type="submit" value="UPDATE" name="submit">
                 </form>
             </div>

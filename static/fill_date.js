@@ -7,7 +7,7 @@ function getDate(){
     //return monty+tag;
 }
 
-function buildOpt(thisId){
+/*function buildOpt(thisId){
     const selDiv = document.getElementById(thisId);
     const optElm = document.createElement("option");
     optElm.innerText = "Day";
@@ -23,10 +23,10 @@ function buildOpt(thisId){
         selDiv.appendChild(el);
     }
     return selDiv;
-}
+}*/
 
-function openForm(ev, thisForm, thisTag){
-    buildOpt(thisTag);
+function openForm(ev, thisForm){//, thisTag
+    //buildOpt(thisTag);
     var idx,tabcontent,tablink;
     tabcontent = document.getElementsByClassName("tabContent");
     for (idx=0; idx <tabcontent.length; idx++){

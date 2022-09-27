@@ -54,9 +54,11 @@ $dbTable = "weather_data";
     echo "<p>Please select a month and a day.</p>";
     exit;
 }*/
-$gotDate = $_POST["setDate"];
-$buildDate = "2022-".$_POST["monty"]."-".$_POST["tag"];
-//previously an input text: $query = "SELECT * FROM weather_data WHERE date='".$_POST["myDate"] ."';";
+//$gotDate = str_getcsv($_POST["setDate"],"-");
+
+$buildDate = $_POST["setDate"];// "2022-".$_POST["monty"]."-".$_POST["tag"];
+// previously an input text: 
+// $query = "SELECT * FROM weather_data WHERE date='".$_POST["myDate"] ."';";
 
 $query = "SELECT * FROM weather_data WHERE date='". $buildDate ."';";
 

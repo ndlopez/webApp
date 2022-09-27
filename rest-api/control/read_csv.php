@@ -1,3 +1,6 @@
+<?php
+ini_set('display_errors',1);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,7 +13,7 @@
 <?php
 
 date_default_timezone_set("Asia/Tokyo");
-if($_POST["monty"] == "Month" || $_POST["Day"]){
+if($_POST["monty"] == "Month" || $_POST["Day"] == "Day"){
     echo "<p>Please select month and day</p>";
     exit;
 }
@@ -72,7 +75,7 @@ if(file_exists($data_dir.$data_file)){
     echo "<p>Couldnt find such file :(</p>";
 }
 
-echo "</div>"
+echo "</div>";
 fclose($fileHandle);
 mysqli_close($dbHandle);
 

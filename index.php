@@ -47,7 +47,7 @@ $myMsg = "Good Morning";
 
   <nav></nav>
 
-<div class="clearfix">
+<!--div class="clearfix"-->
 <?php
 $dbTable = "weather_data";
 /*$dbhost = "127.0.0.1:3306";
@@ -62,8 +62,9 @@ else{
   if ($heure > 12){
     $myMsg="Good Afternoon";
   }
-  echo "<p>".$myMsg.", connection to Database... OK</p>";
-  echo "<div id='thisWeather' class='row'><p class='column'>".date("l, F d")."</p></div>";
+
+  echo "<div id='thisWeather' class='row'><p class='col3' style='text-align:left;'>".date("l, F d")."</p>";
+  echo "<p class='col3'>".$myMsg.",<br/> connection to Database... OK</p></div>";
 }
 
 //$query = "DELETE FROM tenki WHERE date IS NULL;";
@@ -72,7 +73,7 @@ $query = "SELECT * FROM $dbTable WHERE date = '" . $heute . "' AND hour = " . $h
 $getMaxMin = "SELECT MAX(temp),MIN(temp) from $dbTable WHERE date='".$heute."';";
 // echo "<p> Your Query was ...<br><code>".$query."</code></p>";
 ?>
-</div>
+<!--/div clearfix-->
 <div class="row current" style="padding:0px;">
 <div class="column">
 

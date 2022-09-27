@@ -13,15 +13,16 @@ ini_set('display_errors',1);
 <?php
 
 date_default_timezone_set("Asia/Tokyo");
-/*if($_POST["monty"] == "Month" || $_POST["Day"] == "Day"){
+if($_POST["setDate"] == "yyyy-mm-dd"){
     echo "<p>Please select month and day</p>";
     exit;
-}*/
-$heute =  $_POST["setDate"];// $_POST["monty"].$_POST["tag"]; // date("md");
-var_dump($heute);
-
+}
+//$heute =  $_POST["setDate"];// $_POST["monty"].$_POST["tag"]; // date("md");
+//var_dump($heute); returns: 2022-09-01, string(10)
+$gotDate = str_getcsv($_POST["setDate"],"-");
+//var_dump($gotDate[0],$gotDate[1],$gotDate[2]);
 $data_dir = "../../data/";
-$data_file = "tenki_hour_" . $heute . ".csv";
+$data_file = "tenki_hour_" . $gotDate[1].$gotDate[2]. ".csv";
 
 echo "<div class='clearfix'><h2> Welcome: ".$_POST["my_id"]."</h2>";
 echo "<h2>Updating DB</h2>";

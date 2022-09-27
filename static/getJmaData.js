@@ -18,8 +18,9 @@ async function disp_info(){
 
     const currDiv = document.getElementById("thisWeather");
     const currElm = document.createElement("p");
-    currElm.setAttribute("class","column");
-    currElm.innerHTML = gotData.weather[0];
+    currElm.setAttribute("class","col3");
+    currElm.style.textAlign = "right";
+    currElm.innerHTML = "今日の天気: " + gotData.weather[0];
     currDiv.appendChild(currElm);
     //var currWeather = gotData.weather[1].split("　");
     /*for(let idx=0;idx<gotData.weather.length;idx++){

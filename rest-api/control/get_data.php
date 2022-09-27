@@ -50,10 +50,11 @@ if($dbhandle === false){
 
 $dbTable = "weather_data";
 
-if($_POST["monty"] == "Month" || $_POST["tag"] == "Day"){
+/*if($_POST["monty"] == "Month" || $_POST["tag"] == "Day"){
     echo "<p>Please select a month and a day.</p>";
     exit;
-}
+}*/
+$gotDate = $_POST["setDate"];
 $buildDate = "2022-".$_POST["monty"]."-".$_POST["tag"];
 //previously an input text: $query = "SELECT * FROM weather_data WHERE date='".$_POST["myDate"] ."';";
 

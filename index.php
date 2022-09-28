@@ -193,8 +193,10 @@ else{
 	echo "<p>Something went wrong</p>";
 }
 //forecast Div
-echo "<h2>&emsp;Tomorrow's Weather</h2>";
-echo "<div class='clearfix' id='foreDiv'><div class='col3'><br/><h2>".date("l, F d",strtotime('+1 day'))."</h2></div></div>";
+//echo "";
+echo "<div class='clearfix' id='foreDiv'><h2>Tomorrow's Weather</h2>";
+echo "<div class='col3'><br/><h2 style='text-align:left;'>".
+date("l, F d",strtotime('+1 day'))."</h2></div></div>";
 
 /*Creating a JSON file and saving to static folder
 If run by using <include> the whole page crashes

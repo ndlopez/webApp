@@ -242,8 +242,8 @@ button{/*background-color:white;#4caf50;*/
   transform:scaleX(-1);
   filter:FlipH;
 }
+#foreDiv{background-color: #bed2e040;}
 footer{
-  background-color: #bed2e040;
   padding-bottom: 10px;
 }
 footer .row{border: 0px;}

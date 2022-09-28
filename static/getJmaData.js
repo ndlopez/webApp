@@ -3,6 +3,9 @@ const jma_url = "https://www.jma.go.jp/bosai/forecast/data/forecast/230000.json"
 
 const ico_url = "https://www.jma.go.jp/bosai/forecast/img/";
 
+const sun_time = ["https://dayspedia.com/api/widget/city/11369/?lang=en",
+"https://dayspedia.com/api/widget/city/4311/?lang=en"];
+
 const hh = [5,11,17,23];
 
 disp_info();
@@ -15,12 +18,14 @@ function getDateHour(inStr){
 
 async function disp_info(){
     const gotData = await get_data();
-
+    const gotTime = await getTimes();
     const currDiv = document.getElementById("thisWeather");
     const currElm = document.createElement("p");
     currElm.setAttribute("class","col3");
     currElm.style.textAlign = "right";
-    currElm.innerHTML = "天気 : " + gotData.weather[0];
+    var texty = "天気 : " + gotData.weather[0] + "<br/>sunrise " + 
+    gotTime.sunrise[0] + ":" + gotTime.sunrise[1] + "&emsp;&emsp;sunset "+gotTime.sunset[0]+":"+gotTime.sunset[1];
+    currElm.innerHTML = texty;
     currDiv.appendChild(currElm);
     //var currWeather = gotData.weather[1].split("　");
     /*for(let idx=0;idx<gotData.weather.length;idx++){
@@ -28,12 +33,11 @@ async function disp_info(){
         texty += "<h2>"+gotData.time[idx].slice(0,10)+" "+currWeather[0]+"<img src='"+ico_url+gotData.icon[idx]+".svg'/></h2>";
     }*/
 
-
     const myDiv = document.getElementById("foreDiv");
     const iconElm = document.createElement("div");
     iconElm.setAttribute("class","col3");
 
-    var texty = "<br/><p>"+gotData.weather[1] +"</p>";
+    texty = "<br/><p>"+gotData.weather[1] +"</p>";
     var myMin = gotData.temp[1][2];
     var myMax = gotData.temp[1][3];
     if(myMax === undefined){
@@ -81,4 +85,22 @@ async function getIconCodes(){
     const resp = await fetch("../data/w_codes.json");
     const data = await resp.json();
     return data;
+}
+
+function convTime(unixT){
+    const myTime = new Date(unixT *1000);
+    var minut = myTime.getMinutes();
+    if(minut < 10){
+        minut = "0" + minut;
+    }
+    return [myTime.getHours(), minut];
+}
+
+async function getTimes(){
+    const response = await fetch(sun_time[1]);
+    const data = await response.json();
+    let sunRise = data["sunrise"];
+    let sunSet = data["sunset"];
+    
+    return {"sunrise":convTime(sunRise),"sunset":convTime(sunSet)}; 
 }

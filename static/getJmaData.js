@@ -23,8 +23,8 @@ async function disp_info(){
     const currElm = document.createElement("p");
     currElm.setAttribute("class","col3");
     currElm.style.textAlign = "right";
-    var texty = "天気 : " + gotData.weather[0] + "<br/>sunrise " + 
-    gotTime.sunrise[0] + ":" + gotTime.sunrise[1] + "&emsp;&emsp;sunset "+gotTime.sunset[0]+":"+gotTime.sunset[1];
+    var texty = "天気 : " + gotData.weather[0] + "<br/><img src='../svg/sunrise.svg' width=32/>" + 
+    gotTime.sunrise[0] + ":" + gotTime.sunrise[1] + "&emsp;&emsp;<img src='../svg/sunset.svg' width=32/>"+gotTime.sunset[0]+":"+gotTime.sunset[1];
     currElm.innerHTML = texty;
     currDiv.appendChild(currElm);
     //var currWeather = gotData.weather[1].split("　");

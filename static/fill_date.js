@@ -1,3 +1,5 @@
+document.body.appendChild(addFormModal());
+
 function getDate(){
     const heute = new Date();
     const monty = heute.getMonth() + 1;
@@ -25,6 +27,27 @@ function getDate(){
     return selDiv;
 }*/
 
+function openNav(){
+    document.getElementById("formNav").style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+function closeNav(myForm){
+    document.getElementById(myForm).style.display = "none";
+    document.body.style.overflow = "auto";
+}
+function addFormModal(){
+    const fDiv = document.createElement("div");
+    fDiv.id = "formNav";
+    //fDiv.style.display = "none";
+    fDiv.innerHTML ="<div class='cleafix'><p>My modal</p></div>";
+    window.onclick = function(ev){
+        if (ev.target == fDiv){
+            fDiv.style.display = "none";
+        }
+    }
+    return fDiv;
+}
+
 function openForm(ev, thisForm){//, thisTag
     //buildOpt(thisTag);
     var idx,tabcontent,tablink;
@@ -42,4 +65,4 @@ function openForm(ev, thisForm){//, thisTag
 
 }
 
-document.getElementById("thisOpen").click();
+//document.getElementById("thisOpen").click();

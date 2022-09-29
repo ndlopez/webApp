@@ -34,7 +34,8 @@ $myMsg = "Good Morning";
     <div class="counter"><h2 id="currtime"></h2></div>
     <div class="half">
       <ul>
-        <li><a href="/rest-api/updata.html">Data Admin</a></li>
+        <!--href="/rest-api/updata.html"-->
+        <li><a onclick="openNav()">Data Admin</a></li>
         <li><a target="blank" href="https://github.com/ndlopez/webApp">
           WebMaster</a></li>
         <li><a target="blank" href="https://ndlopez.github.io/jumble_game">Play Jumble</a></li>
@@ -252,6 +253,7 @@ mysqli_close($conn);
 <script src = "static/accordion_table.js"></script>
 <script src="static/plt_weather_json.js"></script>
 <script src="static/getJmaData.js"></script>
+<script src="static/fill_date.js"></script>
 <!--script src="static/get_json.js"></script-->
 </body>
 <footer>

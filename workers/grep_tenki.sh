@@ -131,5 +131,7 @@ sed -i 's/ /,/g' ${temp_file}
 #else
 #    gzip ${tenki_file}
 #fi
+echo "Changing to data dir"
+cd ../data/
 echo "Done. Have a nice day :)"
 #{ tail -$offset ${hour_file};echo "Updated on "`date` } > ${temp_file}

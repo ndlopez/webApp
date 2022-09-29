@@ -8,6 +8,7 @@ body{
 a{
   text-decoration: none;
   font-weight: bold;
+  color: #bed2e0;
 }
 #formNav{
   display: none;

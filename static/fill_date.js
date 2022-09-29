@@ -65,4 +65,4 @@ function openForm(ev, thisForm){//, thisTag
 
 }
 
-//document.getElementById("thisOpen").click();
+document.getElementById("thisOpen").click();

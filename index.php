@@ -35,11 +35,12 @@ $myMsg = "Good Morning";
     <div class="half">
       <ul>
         <!--href="/rest-api/updata.html"-->
-        <li><a onclick="openNav()">Data Admin</a></li>
-        <li><a target="blank" href="https://github.com/ndlopez/webApp">
+        <li><a href="#" onclick="openNav()">Data Admin</a></li>
+        <li><!--a target="_blank" href="https://github.com/ndlopez/webApp"-->
+        <a href="/rest-api/updata.html">
           WebMaster</a></li>
-        <li><a target="blank" href="https://ndlopez.github.io/jumble_game">Play Jumble</a></li>
-        <li><a target="blank" href="https://ndlopez.github.io/pages/about.html">About</a></li>
+        <li><a target="_blank" href="https://ndlopez.github.io/jumble_game">Play Jumble</a></li>
+        <li><a target="_blank" href="https://ndlopez.github.io/pages/about.html">About</a></li>
       </ul>
     </div>  
   </header>

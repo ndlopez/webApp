@@ -10,16 +10,7 @@ a{
   font-weight: bold;
   color: #bed2e0;
 }
-#formNav{
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left:0;
-  top: 30%;
-  width: 100%;
-  height: 100%;
-  background-color: #bed2e040;
-}
+
 .menu{
     float:left;
     width:20%;

@@ -36,16 +36,36 @@ function closeNav(myForm){
     document.body.style.overflow = "auto";
 }
 function addFormModal(){
-    const fDiv = document.createElement("div");
-    fDiv.id = "formNav";
+    const modDiv = document.createElement("div");
+    modDiv.id = "formNav";
+    const fDiv = document.createElement("main");
+    const headDiv = document.createElement("div");
+    headDiv.innerHTML = "<span class='closeBtn' onclick=\"closeNav('formNav')\">&times;</span>";
+    const tabDiv = document.createElement("div");
+    tabDiv.setAttribute("class","tab");
+    var texty = "<button class='tabLink' onclick=\"openForm(event,'query')\" id='thisOpen'>Search</button>";
+    texty += "<button class='tabLink' onclick=\"openForm(event,'upload')\">Update</button>";
     //fDiv.style.display = "none";
-    fDiv.innerHTML ="<div class='cleafix'><p>My modal</p></div>";
+    tabDiv.innerHTML = texty;
+    const qryDiv = document.createElement("div");
+    qryDiv.setAttribute("class","tabContent");
+    qryDiv.innerHTML = "<h2>Search for data into weather DB</h2><p>Enter your account details</p>";
+
+    const uploadDiv = document.createElement("div");
+    uploadDiv.setAttribute("class","tabContent");
+    uploadDiv.innerHTML = "<h2>Update weather DB</h2><p>Enter your account details</p>";
     window.onclick = function(ev){
         if (ev.target == fDiv){
             fDiv.style.display = "none";
         }
     }
-    return fDiv;
+    fDiv.appendChild(headDiv);
+    fDiv.appendChild(tabDiv);
+    fDiv.appendChild(qryDiv);
+    fDiv.appendChild(uploadDiv);
+    modDiv.appendChild(fDiv);
+    //document.getElementById("thisOpen").click();
+    return modDiv;
 }
 
 function openForm(ev, thisForm){//, thisTag
@@ -65,4 +85,4 @@ function openForm(ev, thisForm){//, thisTag
 
 }
 
-document.getElementById("thisOpen").click();
+//document.getElementById("thisOpen").click();

@@ -128,8 +128,8 @@ panel2,.flip{
 #panel2{display:none;}
 div{
   border:1px dashed #bed2e0;
-  padding:15px;
-  text-align:left;/*justify;*/
+  /*padding:15px;
+  text-align:left;justify;*/
 }
 .clearfix::after{
   content:"";
@@ -219,10 +219,13 @@ svg line, svg path {stroke:#bed2e0;}
 }
 .accordion:active /*, .accordion:hover*/{background-color:#cc274c;}
 .accordion:after{
-  content: '\02193';/*'\02795'*/background-color: #bed2e0;
-  font-size:15px;float:right;margin-left:5px;
+  content: '\02193';/*'\02795'*/
+  background-color: #bed2e0;
+  font-size:15px;
+  float:right;
+  margin-left:5px;
 }
-.accordion:after{
+.accordion::after{
   content: '\02191';/*"\02796";*/
   background-color: #cc274c;
   color:#bed2e0;

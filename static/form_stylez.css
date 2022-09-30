@@ -19,6 +19,17 @@ main {
     padding: 0px;
     margin-bottom: 20px;
 }
+.formHead{
+    width: 100%;
+    padding: 2px 16px;
+}
+.closeBtn{
+    color: #cc274c;
+    /*float: right;*/
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: bold;
+}
 .tab{
     overflow: hidden;
     /*border: 1px solid #cc274c;*/

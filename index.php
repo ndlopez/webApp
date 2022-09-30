@@ -306,7 +306,7 @@ mysqli_close($conn);
   <a target="blank" href="https://www.openstreetmap.org/search?query=35.17271%2C136.89547#map=18/35.17271/136.89547">
     N35 10'53" E136 54'23"</a></p>
 </div></div>
-<p style="text-align:center;"><span class="copy-left">&copy;</span><span> copyleft ndzerglink 2022-09-26</span></p>
+<p style="text-align:center;"><span class="copy-left">&copy;</span><span> copyLeft ndzerglink 2022-09-30</span></p>
 <!--?php echo date("Y-m-d");?-->
 </footer>
 </html>

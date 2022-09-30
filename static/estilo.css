@@ -225,7 +225,7 @@ svg line, svg path {stroke:#bed2e0;}
   float:right;
   margin-left:5px;
 }
-.accordion::after{
+.accordion:active::after{
   content: '\02191';/*"\02796";*/
   background-color: #cc274c;
   color:#bed2e0;

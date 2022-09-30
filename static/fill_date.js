@@ -1,4 +1,4 @@
-document.body.appendChild(addFormModal());
+//document.body.appendChild(addFormModal());
 
 function getDate(){
     const heute = new Date();
@@ -28,6 +28,7 @@ function getDate(){
 }*/
 
 function openNav(){
+    document.getElementById("thisOpen").click();
     document.getElementById("formNav").style.display = "block";
     document.body.style.overflow = "hidden";
 }
@@ -35,7 +36,8 @@ function closeNav(myForm){
     document.getElementById(myForm).style.display = "none";
     document.body.style.overflow = "auto";
 }
-function addFormModal(){
+
+/*function addFormModal(){
     const modDiv = document.createElement("div");
     modDiv.id = "formNav";
     const fDiv = document.createElement("main");
@@ -64,9 +66,8 @@ function addFormModal(){
     fDiv.appendChild(qryDiv);
     fDiv.appendChild(uploadDiv);
     modDiv.appendChild(fDiv);
-    //document.getElementById("thisOpen").click();
     return modDiv;
-}
+}*/
 
 function openForm(ev, thisForm){//, thisTag
     //buildOpt(thisTag);

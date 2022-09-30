@@ -257,6 +257,43 @@ mysqli_close($conn);
 <!--script src="static/getJmaData.js"></script-->
 <script src="static/fill_date.js"></script>
 <!--script src="static/get_json.js"></script-->
+
+<div id="formNav">
+  <main>
+    <div><span class='closeBtn' onclick="closeNav('formNav')">&times;</span></div>
+    <div class="tab">
+      <button class="tabLink" onclick="openForm(event,'query')" id="thisOpen">Search</button>
+      <button class="tabLink" onclick="openForm(event,'upload')">Update</button>
+    </div>
+    <div id="query" class="tabContent">
+      <h2>Search for data into Weather DB</h2><p>Enter your account details</p>
+        <form action="control/get_data.php" method="post">
+          <label for="fname">User Id</label>
+          <input type="text" id="my_id" name="my_id" placeholder="Username...">
+
+          <label for="fname">Password</label>
+          <input type="password" id="my_pass" name="my_pass" placeholder="Your DB pass...">
+      
+          <br/><!--label for="lname">Select date:<br><br>Year: 2022</label><br/><br/-->
+          <label for="setDate">Select date:&emsp;</label>
+          <input type="date" id="setDate" name="setDate"><br/>
+          <input type="submit" value="SUBMIT" name="Submit1">
+        </form></div>
+    <div id="upload" class="tabContent">
+      <h2>Update Weather DB</h2><p>Enter your account details</p>
+      <form action="control/read_csv.php" method="post">
+        <label for="fname">User Id</label>
+        <input type="text" id="my_id" name="my_id" placeholder="Username...">
+        <label for="fname">Password</label>
+        <input type="password" id="my_pass" name="my_pass" placeholder="Your DB pass...">
+        <label for="setDate">Select date:&emsp;</label>
+        <input type="date" id="setDate" name="setDate"><br/>
+        <input type="submit" value="UPDATE" name="submit">
+      </form>
+    </div>
+  </main>
+</div>
+
 </body>
 <footer>
 <div class="row" style="padding:0px;">

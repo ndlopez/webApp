@@ -267,7 +267,7 @@ mysqli_close($conn);
     </div>
     <div id="query" class="tabContent">
       <h2>Search for data into Weather DB</h2><p>Enter your account details</p>
-        <form action="control/get_data.php" method="post">
+        <form action="rest-api/control/get_data.php" method="post">
           <label for="fname">User Id</label>
           <input type="text" id="my_id" name="my_id" placeholder="Username...">
 
@@ -281,7 +281,7 @@ mysqli_close($conn);
         </form></div>
     <div id="upload" class="tabContent">
       <h2>Update Weather DB</h2><p>Enter your account details</p>
-      <form action="control/read_csv.php" method="post">
+      <form action="rest-api/control/read_csv.php" method="post">
         <label for="fname">User Id</label>
         <input type="text" id="my_id" name="my_id" placeholder="Username...">
         <label for="fname">Password</label>

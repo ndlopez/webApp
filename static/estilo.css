@@ -126,11 +126,11 @@ panel2,.flip{
   margin:auto;
 }
 #panel2{display:none;}
-div{
+/*div{
   border:1px dashed #bed2e0;
   /*padding:15px;
-  text-align:left;justify;*/
-}
+  text-align:left;justify;}*/
+
 .clearfix::after{
   content:"";
   clear:both;

@@ -254,11 +254,11 @@ mysqli_close($conn);
 <!--?php include 'static/get_json_db.php'?-->
 <script src = "static/accordion_table.js"></script>
 <script src="static/plt_weather_json.js"></script>
-<script src="static/getJmaData.js"></script>
+<!--script src="static/getJmaData.js"></script-->
 <script src="static/fill_date.js"></script>
 <!--script src="static/get_json.js"></script-->
 
-<div id="formNav">
+<div id="formNav" class="blurred">
   <main>
     <div class="formHead"><span class='closeBtn' onclick="closeNav('formNav')">&times;</span></div>
     <div class="tab">

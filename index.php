@@ -32,7 +32,7 @@ $heure = date("H");
 $myMsg = "Good Morning";
 ?>  
   <header class="sticky row">
-    <div class="counter"><h2 id="currtime"></h2></div>
+    <div class="counter"><h3 id="this_date"><?php echo date("l, F d")?></h3><h2 id="currtime"></h2></div>
     <div class="half">
       <ul>
         <!--href="/rest-api/updata.html"-->
@@ -66,8 +66,8 @@ else{
     $myMsg="Good Afternoon";
   }
 
-  echo "<div id='thisWeather' class='row'><p class='col3' style='text-align:left;'>".date("l, F d")."</p>";
-  echo "<p class='col3'>".$myMsg.",<br/> connection to Database... OK</p></div>";
+  echo "<div id='thisWeather' class='row'>";
+  echo "<p class='col3' style='text-align:left;'>".$myMsg.",<br/> connection to Database... OK</p></div>";
 }
 
 //$query = "DELETE FROM tenki WHERE date IS NULL;";

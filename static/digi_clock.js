@@ -4,7 +4,7 @@ https://codepen.io/dudleystorey/pen/xxeEvd
 */
 //var currentTime = document.getElementById("currtime");
 var currentTime="";
-function zeropadder(n) {
+function zeropad(n) {
   return (parseInt(n,10) < 10 ? '0' : '')+n;
 }
 setInterval(function(){
@@ -14,7 +14,7 @@ setInterval(function(){
   let ss = timeNow.getSeconds();
   //formatAMPM = (hh >= 12?'PM':'AM');
   //hh = hh % 12 || 12;
-  currentTime = hh + ":" + zeropadder(mm) + ":" + zeropadder(ss);// + " " + formatAMPM;
+  currentTime = hh + ":" + zeropad(mm) + ":" + zeropad(ss);// + " " + formatAMPM;
   //console.log(currentTime)
   document.getElementById("currtime").innerHTML = currentTime;
   //setTimeout(updateTime,1000);

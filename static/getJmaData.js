@@ -21,12 +21,18 @@ async function disp_info(){
     const gotTime = await getTimes();
     const currDiv = document.getElementById("thisWeather");
     const currElm = document.createElement("p");
+    const pElem = document.createElement("p");
     currElm.setAttribute("class","col3");
-    currElm.style.textAlign = "right";
-    var texty = "天気 : " + gotData.weather[0] + "<br/><img src='../svg/sunrise.svg' width=32/>" + 
-    gotTime.sunrise[0] + ":" + gotTime.sunrise[1] + "&emsp;&emsp;<img src='../svg/sunset.svg' width=32/>"+gotTime.sunset[0]+":"+gotTime.sunset[1];
-    currElm.innerHTML = texty;
+    currElm.innerHTML = "天気 : " + gotData.weather[0];
     currDiv.appendChild(currElm);
+
+    pElem.setAttribute("class","col3");
+    pElem.style.textAlign = "right";
+    var texty = "<img src='../svg/sunrise.svg' width=32/>" + gotTime.sunrise[0] + ":" + 
+    gotTime.sunrise[1] + "&emsp;&emsp;<img src='../svg/sunset.svg' width=32/>"+
+    gotTime.sunset[0]+":"+gotTime.sunset[1];
+    pElem.innerHTML = texty;
+    currDiv.appendChild(pElem);
     //var currWeather = gotData.weather[1].split("　");
     /*for(let idx=0;idx<gotData.weather.length;idx++){
         var currWeather = gotData.weather[idx].split("　");

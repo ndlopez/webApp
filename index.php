@@ -43,7 +43,7 @@ $myMsg = "Good Morning";
         <li><a target="_blank" href="https://ndlopez.github.io/jumble_game">Play Jumble</a></li>
         <li><a target="_blank" href="https://ndlopez.github.io/pages/about.html">About</a></li>
       </ul>
-    </div>  
+    </div>
   </header>
 
   <div class="header"><h1>WebApp.Physics</h1><h3>a web application to fetch weather data from tenki.jp</h3></div>
@@ -254,7 +254,7 @@ mysqli_close($conn);
 <!--?php include 'static/get_json_db.php'?-->
 <script src = "static/accordion_table.js"></script>
 <script src="static/plt_weather_json.js"></script>
-<!--script src="static/getJmaData.js"></script-->
+<script src="static/getJmaData.js"></script>
 <script src="static/fill_date.js"></script>
 <!--script src="static/get_json.js"></script-->
 

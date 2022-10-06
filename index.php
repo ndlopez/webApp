@@ -100,7 +100,7 @@ if ($result = mysqli_query($conn,$query)){
     $weatherLbl = "Sunny";
     switch($nowTenki){
       case "曇り":
-        $weatherIcon = "CloudyV3.svg";
+        $weatherIcon = "cloudy_all.svg";
         $weatherLbl = " Cloudy";
         break;
       case "弱雨":

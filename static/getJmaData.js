@@ -52,8 +52,15 @@ async function disp_info(){
     texty = "<div class='col3'><img src='"+ico_url+ gotData.forecast[1][0]+".svg'/></div>";
     texty += "<div class='col3'><p>"+gotData.forecast[0][0]+"</p></div>";
     texty += "<div class='col3'><p>"+myMin+"/"+myMax+"</p></div>";
-    groupDiv.innerHTML = texty;//min:gotData.forecast[2][0],max:gotData.forecast[3][0]
+    groupDiv.innerHTML = texty;
     colDiv.appendChild(groupDiv);
+    const aaDiv = document.createElement("div");
+    aaDiv.setAttribute("class","row");
+    texty = "<div class='col3'><img src='"+ico_url+ gotData.forecast[1][1]+".svg'/></div>";
+    texty += "<div class='col3'><p>"+gotData.forecast[0][1]+"</p></div>";
+    texty += "<div class='col3'><p>"+gotData.forecast[2][1]+"/"+gotData.forecast[3][1]+"</p></div>";
+    aaDiv.innerHTML = texty;
+    colDiv.appendChild(aaDiv);
     /* 2moro forecast + rain Prob */
     const myDiv = document.getElementById("foreDiv");
     const iconElm = document.createElement("div");

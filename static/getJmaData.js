@@ -7,7 +7,7 @@ const sun_time = ["https://dayspedia.com/api/widget/city/11369/?lang=en",
 "https://dayspedia.com/api/widget/city/4311/?lang=en"];
 
 const hh = [5,11,17,23];
-
+const theseMonths = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 disp_info();
 
 function getDateHour(isoStr){
@@ -50,14 +50,16 @@ async function disp_info(){
     const groupDiv = document.createElement("div");
     groupDiv.setAttribute("class","row");
     texty = "<div class='col3'><img src='"+ico_url+ gotData.forecast[1][0]+".svg'/></div>";
-    texty += "<div class='col3'><p>"+gotData.forecast[0][0]+"</p></div>";
+    var aux = getDateHour(gotData.forecast[0][0]);
+    texty += "<div class='col3'><p>"+theseMonths[aux.monty-1]+" "+aux.tag+"</p></div>";
     texty += "<div class='col3'><p>"+myMin+"/"+myMax+"</p></div>";
     groupDiv.innerHTML = texty;
     colDiv.appendChild(groupDiv);
     const aaDiv = document.createElement("div");
     aaDiv.setAttribute("class","row");
     texty = "<div class='col3'><img src='"+ico_url+ gotData.forecast[1][1]+".svg'/></div>";
-    texty += "<div class='col3'><p>"+gotData.forecast[0][1]+"</p></div>";
+    aux = getDateHour(gotData.forecast[0][1]);
+    texty += "<div class='col3'><p>"+theseMonths[aux.monty-1]+" "+aux.tag+"</p></div>";
     texty += "<div class='col3'><p>"+gotData.forecast[2][1]+"/"+gotData.forecast[3][1]+"</p></div>";
     aaDiv.innerHTML = texty;
     colDiv.appendChild(aaDiv);

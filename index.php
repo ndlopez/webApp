@@ -157,9 +157,8 @@ else{
   <a href="https://tenki.jp/forecast/5/26/5110/23106/1hour.html">
     <img alt="Click  to link tenki.jp" src="https://static.tenki.jp/static-images/radar/recent/pref-26-middle.jpg"/>
   </a></div-->
-<div class="column">
+<div class="column" id="forecaster">
   <h2>Weekly Forecast</h2>
-  <div class="row" id="weather_2moro"></div>
 </div>
 </div> <!--current weather div end-->
 <div id="weather_bar" class="row"></div><!--Today weather report row-->

@@ -128,7 +128,7 @@ if ($result = mysqli_query($conn,$query)){
     }
     /*echo "<h3><br>".date("l F d ").$row['hour'].":".date("i")."</h3>";*/
     $pageTitle = $nowTenki." ".$row['temp']."&#8451;";
-
+    // <!--current weather div start-->
     echo "<div class='row'><div class='column'><h2>Nagoya, JP</h2><p>".date("H:i").$weatherLbl.
     "</p><h1>".$pageTitle."</h1></div>";
     echo "<div class='column'><img src='svg/".$weatherIcon."' width='120'></></div></div>";
@@ -155,11 +155,10 @@ else{
 <!--div class="column" style="text-align:center;">
   <a href="https://tenki.jp/forecast/5/26/5110/23106/1hour.html">
     <img alt="Click  to link tenki.jp" src="https://static.tenki.jp/static-images/radar/recent/pref-26-middle.jpg"/>
-  </a>
-</div-->
-<div id="weather_bar" class="column"></div>
-</div>
-<!--Today weather report row-->
+  </a></div-->
+<div class="column"><p>Forecast</p></div>
+</div> <!--current weather div end-->
+<div id="weather_bar" class="row"></div><!--Today weather report row-->
 <!--style="background-color:#2e4054;color:#bed2e0;"-->
 <button class="accordion">LATER TODAY</button>
 <div class="panel" style="padding:0px;">

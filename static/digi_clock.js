@@ -4,8 +4,8 @@ https://codepen.io/dudleystorey/pen/xxeEvd
 */
 //var currentTime = document.getElementById("currtime");
 var currentTime="";
-function zeropad(n) {
-  return (parseInt(n,10) < 10 ? '0' : '')+n;
+function zeropad(e) {
+  return (parseInt(e,10) < 10 ? '0' : '')+e;
 }
 setInterval(function(){
   var timeNow= new Date();

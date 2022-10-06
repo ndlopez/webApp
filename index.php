@@ -46,7 +46,8 @@ $myMsg = "Good Morning";
     </div>
   </header>
 
-  <div class="header"><h1>WebApp.Physics</h1><h3>a web application to fetch weather data from tenki.jp</h3></div>
+  <div class="header"><h1>WebApp.Physics</h1>
+  <h3>a web application to display weather fetched from tenki.jp</h3></div>
 
   <nav></nav>
 
@@ -156,7 +157,10 @@ else{
   <a href="https://tenki.jp/forecast/5/26/5110/23106/1hour.html">
     <img alt="Click  to link tenki.jp" src="https://static.tenki.jp/static-images/radar/recent/pref-26-middle.jpg"/>
   </a></div-->
-<div class="column"><p>Forecast</p></div>
+<div class="column">
+  <h2>Weekly Forecast</h2>
+  <div class="row" id="weather_2moro"></div>
+</div>
 </div> <!--current weather div end-->
 <div id="weather_bar" class="row"></div><!--Today weather report row-->
 <!--style="background-color:#2e4054;color:#bed2e0;"-->
@@ -298,6 +302,7 @@ mysqli_close($conn);
 <div class="row" style="padding:0px;">
 <div class="column">
 <p>Data from <em>tenki.jp</em> scraped using <i>Shell, curl and SED</i> and <em>JMA.go.jp</em></p>
+<p>Apache/2.4.54 (Debian) Server at <em>webapp.physics</em></p>
 </div>
 <!--div class="column">empty div</div-->
 <div class="column" style="text-align:right;">

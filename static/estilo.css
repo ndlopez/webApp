@@ -112,6 +112,7 @@ label{display: inline-block;}
   background-color: #bed2e040;
   margin-bottom: 8px;
 }
+#forecaster .row .col3 .row{margin: 0;background: none;}
 #forecaster .row p, #forecaster .row h2{margin: 0;}
 div table{padding: 0px;}
 .bottom-left{

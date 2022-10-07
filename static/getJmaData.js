@@ -58,10 +58,11 @@ async function disp_info(){
 
         var aux = getDateHour(gotData.forecast[0][idx]);
         var tempMin = gotData.forecast[2][idx], tempMax = gotData.forecast[3][idx];
-        texty = "<div class='col3' style='margin:0;border-radius:inherit;'><p>" + theseDays[aux.day] + 
-        "</p><h2>"+aux.tag+"</h2><p>"+theseMonths[aux.monty-1]+"</p></div>";
+        texty = "<div class='col3' style='margin:0;border-radius:inherit;'><div class='row'>" + 
+        "<h2 class='column'>"+ aux.tag + "</h2><div class='column' style='text-align:left;padding-left:0;'><p>"+theseDays[aux.day] + 
+        "</p><p><small>"+theseMonths[aux.monty-1]+"</small></p></div></div></div>";
 
-        texty += "<div class='col3'><img src='"+ico_url+ gotData.forecast[1][idx]+".svg'/></div>";
+        texty += "<div class='col3' style='text-align:right;'><img src='"+ico_url+ gotData.forecast[1][idx]+".svg'/></div>";
 
         if(idx==0){
             tempMin = myMin;

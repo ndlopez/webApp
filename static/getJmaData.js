@@ -1,5 +1,8 @@
 /* Fetching data from JMA.go.jp */
 const jma_data = "https://www.jma.go.jp/bosai/forecast/data/forecast/230000.json";
+// data per hour for current day here:
+// https://www.jma.go.jp/bosai/amedas/data/point/51106/20221007_09.json
+// format seems to be yyyymmdd_hh.json, hh< currHour, hh=0,3,6,9,...
 
 const ico_url = "https://www.jma.go.jp/bosai/forecast/img/";
 

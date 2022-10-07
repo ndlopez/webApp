@@ -108,7 +108,10 @@ h1,h3{color:#2e4054;}
   text-align: center;
 }
 label{display: inline-block;}
-
+#forecaster .row .col3{
+  background-color: #bed2e0;
+  color: #2e4054;
+}
 div table{padding: 0px;}
 .bottom-left{
   border:0px;

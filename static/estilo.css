@@ -110,8 +110,9 @@ h1,h3{color:#2e4054;}
 label{display: inline-block;}
 #forecaster .row{
   background-color: #bed2e040;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
+#forecaster .row p, #forecaster .row h2{margin: 0;}
 div table{padding: 0px;}
 .bottom-left{
   border:0px;

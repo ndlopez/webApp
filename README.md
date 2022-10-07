@@ -2,7 +2,9 @@
 
 This repository is mostly for learning purposes (PHP in particular).
 
-Weather data scraped from [tenki.jp](www.tenki.jp) because of HTML format. Other options are Yahoo!Tenki and WeatherNews. The first one, is not nicely formatted and difficult to scrape. Probably using its API will be better... but as I saw it, once requested it only returns the data for the current hour. The second one, is actually easy to scrape, I will probably add such script later on.
+Weather data are scraped from [tenki](www.tenki.jp) because of nicely HTML format. Other options are Yahoo!Tenki and WeatherNews. The first one, is not nicely formatted and difficult to scrape. Probably using its API will be better... but as I saw it, once requested it only returns the data for the current hour. The second one, is actually easy to scrape, ~~I will probably add such script later on~~ I actually created an xbar-plugin for MacOS.
+
+It will take some time to train past weather data and build a forecaster, in the mean time forecast data is fetched from JMA site.
 
 ## LAMP settings
 - OS: Debian 11

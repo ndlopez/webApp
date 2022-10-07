@@ -32,14 +32,17 @@ $heure = date("H");
 $myMsg = "Good Morning";
 ?>  
   <header class="sticky row">
-    <div class="counter"><h3 id="this_date"><?php echo date("l, F d")?></h3><h2 id="currtime"></h2></div>
+    <div class="counter row">
+      <div class="column">
+      <h3 id="this_date"><?php echo date("l, F d")?></h3>
+      <h2 id="currtime"></h2></div>
+      <div id="currIcon" class="column"></div>
+    </div>
     <div class="half">
       <ul>
-        <!--href="/rest-api/updata.html"-->
         <li><a href="#" onclick="openNav()">Data Admin</a></li>
-        <li><!--a target="_blank" href="https://github.com/ndlopez/webApp"-->
-        <a href="/rest-api/updata.html">
-          WebMaster</a></li>
+        <!--li><-a target="_blank" href="https://github.com/ndlopez/webApp"->
+        <a href="/rest-api/updata.html">WebMaster</a></li-->
         <li><a target="_blank" href="https://ndlopez.github.io/jumble_game">Play Jumble</a></li>
         <li><a target="_blank" href="https://ndlopez.github.io/pages/about.html">About</a></li>
       </ul>

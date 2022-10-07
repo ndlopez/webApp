@@ -9,12 +9,14 @@ const sun_time = ["https://dayspedia.com/api/widget/city/11369/?lang=en",
 const hh = [5,11,17,23];
 const theseMonths = ["January","February","March","April","May","June","July",
 "August","September","October","November","December"];
+const theseDays = ["Sun, ","Mon, ","Tue, ","Wed, ","Thu, ","Fri, ","Sat, "];
+
 disp_info();
 
 function getDateHour(isoStr){
     // inStr: ISO format
     const gotDate = new Date(isoStr);
-    return {"monty":gotDate.getMonth() + 1,"tag":gotDate.getDate(),"heure":gotDate.getHours()};
+    return {"monty":gotDate.getMonth() + 1,"tag":gotDate.getDate(),"day":gotDate.getDay(),"heure":gotDate.getHours()};
 }
 
 async function disp_info(){
@@ -26,6 +28,8 @@ async function disp_info(){
         myMax = gotData.temp[1][1];
         myMin = gotData.temp[1][0];
     }
+    const todayIcon = document.getElementById("currIcon");
+    todayIcon.innerHTML = "<img src='"+ico_url+gotData.icon[0]+".svg'/>"
     const currDiv = document.getElementById("thisWeather");
     const currElm = document.createElement("p");
     const pElem = document.createElement("p");
@@ -48,14 +52,14 @@ async function disp_info(){
     /* Weekly forecast Max/Min*/
     const colDiv = document.getElementById("forecaster");
     //create as many group div as forecast are available
-    for(let idx=1;idx<gotData.forecast[0].length;idx++){
+    for(let idx=0;idx<gotData.forecast[0].length;idx++){
         const groupDiv = document.createElement("div");
         groupDiv.setAttribute("class","row");
         texty = "<div class='col3'><img src='"+ico_url+ gotData.forecast[1][idx]+".svg'/></div>";
         var aux = getDateHour(gotData.forecast[0][idx]);
         var tempMin = gotData.forecast[2][idx], tempMax = gotData.forecast[3][idx];
-        texty += "<div class='col3' style='text-align:left;'><p>"+theseMonths[aux.monty-1]+" "+aux.tag+"</p></div>";
-        if(idx==1){
+        texty += "<div class='col3' style='text-align:left;'><p>"+theseDays[aux.day] + theseMonths[aux.monty-1]+" "+aux.tag+"</p></div>";
+        if(idx==0){
             tempMin = myMin;
             tempMax = myMax;
         }
@@ -106,7 +110,7 @@ async function get_data(){
     //weekly forecast
     var weekDates = data[1].timeSeries[0].timeDefines;// 7dates
     var weekIcons = data[1].timeSeries[0].areas[0].weatherCodes; // 7 code Icons
-    var weekTempDates = data[1].timeSeries[1].timeDefines; //7dates
+    //var weekTempDates = data[1].timeSeries[1].timeDefines; //7dates
     var weekTempMin = data[1].timeSeries[1].areas[0].tempsMin;
     var weekTempMax = data[1].timeSeries[1].areas[0].tempsMax;
     //console.log(currWeather[0],weatherIcon);

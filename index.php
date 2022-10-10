@@ -261,7 +261,6 @@ mysqli_close($conn);
 <script src="static/plt_weather_json.js"></script>
 <script src="static/getJmaData.js"></script>
 <script src="static/fill_date.js"></script>
-<!--script src="static/get_json.js"></script-->
 
 <div id="formNav" class="blurred">
   <main>

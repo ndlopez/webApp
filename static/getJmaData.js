@@ -33,7 +33,7 @@ async function disp_info(){
         myMin = gotData.temp[1][0];
     }
     const todayIcon = document.getElementById("currIcon");
-    todayIcon.innerHTML = "<img src='"+ico_url+gotData.icon[0]+".svg'/>"
+    todayIcon.innerHTML = "<img src='"+ico_url+gotData.icon[0]+".svg' width=48/>"
     const currDiv = document.getElementById("thisWeather");
     const currElm = document.createElement("p");
     const pElem = document.createElement("p");

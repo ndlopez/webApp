@@ -7,10 +7,10 @@ var currHH = myDate.getHours();
 var currMin = myDate.getMinutes();
 currHH = currMin > 21? currHH+1:currHH;
 
-var hours = [],dataHours = [],ondo=[];
+var dataHours = [],ondo=[];
 /* build array of hours: 0 ~ hh */
 for (let idx=0;idx < currHH;idx++){
-    hours.push(idx);
+    //hours.push(idx);
     if(idx % 3 == 0){
         dataHours.push(idx);
     }
@@ -28,7 +28,7 @@ function build_attrib(tit){
 }
 async function get_data(thisPath,thisHour){
     // thisHour = 0, 3, 6,..., 21
-    // var myObj = [];
+    // var myObj = []; save every 3hours
     const response = await fetch(thisPath);
     const data = await response.json();
     //aux = gotThis.Atrib.replace(myTime,zeroPad(myTime-2));
@@ -40,23 +40,27 @@ async function get_data(thisPath,thisHour){
         //newHour = newHour + idx
         var aux = build_attrib(idx);
         if (data[aux] === undefined){break;}
-        console.log("atrib",aux,idx,limit);
-        var dat = {"hour":idx,"temp":data[aux].temp[0]};
+        //console.log("atrib",aux,idx,limit);
+        var dat = {"hour":idx,"temp":data[aux].temp[0],"humid":data[aux].humidity[0],
+        "wind":data[aux].wind[0],"rain":data[aux].precipitation1h[0]};
         ondo.push(dat);
+        //myObj.push(dat);
     }
     
-    return ondo;
+    return ondo; //myObj;
 }
 async function got_data(){
+    var gotData;
     for (let idx = 0; idx < dataHours.length; idx++) {
         /*build paths */
         const path = build_path(idx);
         //let jdx = idx;
-        const gotData = await get_data(path,dataHours[idx]);
-        //ondo.push(gotData)
-        console.log(path,gotData);
+        gotData = await get_data(path,dataHours[idx]);
+        //ondo.push(gotData);
+        //console.log(path,gotData);
     }
+    return gotData;
 }
 
 got_data();
-console.log(hours,dataHours,ondo);
+console.log(dataHours,ondo);

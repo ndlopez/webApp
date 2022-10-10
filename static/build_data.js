@@ -29,30 +29,24 @@ function build_attrib(tit){
 async function get_data(thisPath,thisHour){
     // thisHour = 0, 3, 6,..., 21
     // var myObj = [];
-    // Must validate if myTime is within fetched data: if myTime > dataHours[7]
-    // var gotThis = build_path_attr(dataHours.length-1,myTime);
     const response = await fetch(thisPath);
     const data = await response.json();
-    
-    //console.log(aux,thisHour+1,data[aux].temp[0]);
     //aux = gotThis.Atrib.replace(myTime,zeroPad(myTime-2));
     //console.log(aux,myTime-2,data[aux].temp[0]);
     var newHour = parseInt(thisHour);
-    var limit = 3;
-    if(thisHour == currHH){
-        limit = 0;
-    }
+    var limit = 2; //newHour < currHH ? 2:0;
 
-    for(let idx = newHour; idx < newHour + limit;idx++){
+    for(let idx = newHour; idx <= newHour + limit;idx++){
         //newHour = newHour + idx
         var aux = build_attrib(idx);
+        if (data[aux] === undefined){break;}
+        console.log("atrib",aux,idx,limit);
         var dat = {"hour":idx,"temp":data[aux].temp[0]};
         ondo.push(dat);
     }
     
     return ondo;
 }
-//get_data();
 async function got_data(){
     for (let idx = 0; idx < dataHours.length; idx++) {
         /*build paths */

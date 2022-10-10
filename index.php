@@ -20,8 +20,8 @@ ob_start();
 <link rel="icon" href="favicon.ico">
 <link rel="stylesheet" type="text/css" href="static/estilo.css">
 <link rel="stylesheet" type="text/css" href="static/form_stylez.css">
-<script src="libs/d3.v4.js"></script>
-<script src="static/digi_clock.js"></script>
+<!--script src="libs/d3.v4.js"></script>
+<script src="static/digi_clock.js"></script-->
 </head>
 
 <body>
@@ -257,9 +257,10 @@ fclose($fpout);
 mysqli_close($conn);
 ?>
 <!--?php include 'static/get_json_db.php'?-->
-<script src = "static/accordion_table.js"></script>
+<!--script src = "static/accordion_table.js"></script>
 <script src="static/plt_weather_json.js"></script>
-<script src="static/getJmaData.js"></script>
+<script src="static/getJmaData.js"></script-->
+<script src = "static/build_data.js"></script>
 <script src="static/fill_date.js"></script>
 
 <div id="formNav" class="blurred">

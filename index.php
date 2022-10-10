@@ -20,8 +20,8 @@ ob_start();
 <link rel="icon" href="favicon.ico">
 <link rel="stylesheet" type="text/css" href="static/estilo.css">
 <link rel="stylesheet" type="text/css" href="static/form_stylez.css">
-<!--script src="libs/d3.v4.js"></script>
-<script src="static/digi_clock.js"></script-->
+<script src="libs/d3.v4.js"></script>
+<!--script src="static/digi_clock.js"></script-->
 </head>
 
 <body>
@@ -41,8 +41,7 @@ $myMsg = "Good Morning";
     <div class="half">
       <ul>
         <li><a href="#" onclick="openNav()">Data Admin</a></li>
-        <!--li><-a target="_blank" href="https://github.com/ndlopez/webApp"->
-        <a href="/rest-api/updata.html">WebMaster</a></li-->
+        <li><a target="_blank" href="/data/all_weather.json">Raw Data</a></li>
         <li><a target="_blank" href="https://ndlopez.github.io/jumble_game">Play Jumble</a></li>
         <li><a target="_blank" href="https://ndlopez.github.io/pages/about.html">About</a></li>
       </ul>

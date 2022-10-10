@@ -1,10 +1,13 @@
 const jma_url = "https://www.jma.go.jp/bosai/amedas/data/point/51106/2022";
 /*current date and time*/
 let myDate = new Date();
-var monty = myDate.getMonth() + 1;
-var tag = myDate.getDate();
+const monty = myDate.getMonth() + 1;
+const tag = myDate.getDate();
 var currHH = myDate.getHours();
-var hours = [],dataHours = [],ondo=[],myObj = [];
+var currMin = myDate.getMinutes();
+currHH = currMin > 21? currHH+1:currHH;
+
+var hours = [],dataHours = [],ondo=[];
 /* build array of hours: 0 ~ hh */
 for (let idx=0;idx < currHH;idx++){
     hours.push(idx);
@@ -25,27 +28,29 @@ function build_attrib(tit){
 }
 async function get_data(thisPath,thisHour){
     // thisHour = 0, 3, 6,..., 21
-    //var myTime = dataHours[dataHours.length-1];//currHH;// hh-1, hh-2
-    //Must validate if myTime is within fetched data: if myTime > dataHours[7]
-    //var gotThis = build_path_attr(dataHours.length-1,myTime);
+    // var myObj = [];
+    // Must validate if myTime is within fetched data: if myTime > dataHours[7]
+    // var gotThis = build_path_attr(dataHours.length-1,myTime);
     const response = await fetch(thisPath);
     const data = await response.json();
     
-
-    //console.log("jma?",thisHour,data[aux].temp[0]);// currhour
-    //aux = build_attrib(thisHour +1);
     //console.log(aux,thisHour+1,data[aux].temp[0]);
     //aux = gotThis.Atrib.replace(myTime,zeroPad(myTime-2));
     //console.log(aux,myTime-2,data[aux].temp[0]);
-    
-    for(let idx = thisHour; idx < thisHour + 3;idx++){
-        var newHour = thisHour + idx
-        var aux = build_attrib(newHour);
-        var dat = {"hour":newHour,"temp":data[aux].temp[0]};
-        myObj.push(dat);
+    var newHour = parseInt(thisHour);
+    var limit = 3;
+    if(thisHour == currHH){
+        limit = 0;
+    }
+
+    for(let idx = newHour; idx < newHour + limit;idx++){
+        //newHour = newHour + idx
+        var aux = build_attrib(idx);
+        var dat = {"hour":idx,"temp":data[aux].temp[0]};
+        ondo.push(dat);
     }
     
-    return myObj;
+    return ondo;
 }
 //get_data();
 async function got_data(){
@@ -54,9 +59,10 @@ async function got_data(){
         const path = build_path(idx);
         //let jdx = idx;
         const gotData = await get_data(path,dataHours[idx]);
+        //ondo.push(gotData)
         console.log(path,gotData);
     }
 }
 
 got_data();
-console.log(hours,dataHours);
+console.log(hours,dataHours,ondo);

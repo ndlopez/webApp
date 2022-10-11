@@ -29,7 +29,7 @@ function build_attrib(tit){
 let dat,myObj = [];
 async function get_data(thisPath,thisHour){
     // thisHour = 0, 3, 6,..., 21
-    myObj = []; //save every 3hours
+    //myObj = []; //save every 3hours
     const response = await fetch(thisPath);
     const data = await response.json();
     //aux = gotThis.Atrib.replace(myTime,zeroPad(myTime-2));
@@ -58,14 +58,17 @@ async function got_data(){
         const path = build_path(idx);
         //let jdx = idx;
         gotData = await get_data(path,dataHours[idx]);
-        ondo.push(gotData);
-        console.log(path,gotData,ondo.length);
+        //ondo.push(gotData);
+        //console.log(path,gotData,ondo.length);
     }
-    return ondo;
+    return gotData;
 }
-const data = async ()=>{await got_data();};
-console.log(dataHours,data.length);
 
+console.log(dataHours,got_data());
+
+/*d3js bar plot
+https://jsfiddle.net/matehu/w7h81xz2/38/*/
+/************ 
 var margin = {top:40,right:20,bottom:50,left:40},
 w = 500 - margin.left - margin.right,
 h = 500 - margin.top - margin.bottom;
@@ -79,7 +82,7 @@ var svg2 = d3.select("#weather_bar")
 
 var xScale=d3.scaleBand().range([0,w])
   .domain(data.map(function(d){
-    /*console.log(d.hour);*/
+    // console.log(d.hour);
     return d.hour;}))
   .padding(0.2);
 
@@ -93,4 +96,4 @@ svg2.append("g")
 
 const tMin = d3.min(data,(d)=>{return d.temp;});
 const tMax = d3.max(data,(d)=>{return d.temp;});
-console.log(tMin,tMax);
+console.log(tMin,tMax);*/

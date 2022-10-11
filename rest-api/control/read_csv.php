@@ -83,8 +83,8 @@ if(file_exists($data_dir.$data_file)){
 echo "</div>";
 
 echo "<div class='clearfix'>";
-echo "<h2 class='col'>Go back <a href='http://webapp.physics'>home</a></h2>";
-echo "<h2 class='col'>Update <a href='http://webapp.physics/rest-api/updata.html'>more</a> data?</h2>";
+echo "<h2 class='col'>Go back <a href='/'>home</a></h2>";
+echo "<h2 class='col'>Update <a href='/rest-api/updata.html'>more</a> data?</h2>";
 echo "</div>"
 // Redirect to home
 // sleep(15);

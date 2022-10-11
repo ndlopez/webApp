@@ -29,7 +29,7 @@ function build_attrib(tit){
 let dat,myObj = [];
 async function get_data(thisPath,thisHour){
     // thisHour = 0, 3, 6,..., 21
-    //myObj = []; //save every 3hours
+    myObj = []; //save every 3hours
     const response = await fetch(thisPath);
     const data = await response.json();
     //aux = gotThis.Atrib.replace(myTime,zeroPad(myTime-2));
@@ -50,21 +50,26 @@ async function get_data(thisPath,thisHour){
     
     return myObj;
 }
+var ondo=[];
 async function got_data(){
     var gotData;
-    var ondo=[];
     for (let idx = 0; idx < dataHours.length; idx++) {
         /*build paths */
         const path = build_path(idx);
         //let jdx = idx;
         gotData = await get_data(path,dataHours[idx]);
-        //ondo.push(gotData);
-        //console.log(path,gotData,ondo.length);
+        ondo.push(gotData);
+        //console.log(path,gotData,ondo.length);//returns good results
     }
-    return gotData;
+    //return gotData;
 }
+got_data();
 
-console.log(dataHours,got_data());
+/*async function wait_data(){
+    var auxx = await got_data();
+    return auxx;
+}*/
+console.log(dataHours,ondo);
 
 /*d3js bar plot
 https://jsfiddle.net/matehu/w7h81xz2/38/*/

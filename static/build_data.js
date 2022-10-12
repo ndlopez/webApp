@@ -26,20 +26,20 @@ function build_path(jdx){
 function build_attrib(tit){
     return "2022"+zeroPad(monty)+zeroPad(tag)+zeroPad(tit)+"0000";
 }
-let dat,myObj = [];
+let dat;//,myObj = [];
 const delay = (ms=1000)=>new Promise(r=>setTimeout(r,ms));
-let results = [];
+
 async function got_data(){
     // thisHour = 0, 3, 6,..., 21
      //myObj = []; //save every 3hours
-    
-    for(let jdx=0; jdx < dataHours.length;jdx++){
+    let myObj = [];
+    const promises = dataHours.map(async function(jdx){
         const path = build_path(jdx);
         //await delay();
         const response = await fetch(path);
         const data = await response.json();
         var newHour = parseInt(dataHours[jdx]);
-        console.log(jdx,newHour);
+        //console.log(jdx,newHour);
         var limit = 2; //newHour < currHH ? 2:0;
 
         for(let idx = newHour; idx <= newHour + limit;idx++){
@@ -48,13 +48,15 @@ async function got_data(){
             console.log(jdx,path,"atrib",aux,idx,limit);
             dat = {"hour":idx,"temp":data[aux].temp[0],"humid":data[aux].humidity[0],
             "wind":data[aux].wind[0],"rain":data[aux].precipitation1h[0]};
-            results.push(dat);
+            // results.push(dat);
+            myObj.push(dat);
         }
-    }
-   
+        return myObj;
+    });
+    const results = await Promise.all(promises);
     //aux = gotThis.Atrib.replace(myTime,zeroPad(myTime-2));
     //console.log(aux,myTime-2,data[aux].temp[0]);    
-    //return results;
+    return results;
 }
 
 /*async function got_data(){
@@ -68,9 +70,10 @@ async function got_data(){
     }
     //return gotData;
 }*/
+var newDat = got_data();
 
-console.log(dataHours,"gotDatA?",got_data);
-console.log("data?",results);
+console.log(dataHours);
+console.log("data?",newDat);
 
 /*d3js bar plot
 https://jsfiddle.net/matehu/w7h81xz2/38/*/

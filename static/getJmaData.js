@@ -128,11 +128,11 @@ async function get_data(){
     "forecast":[weekDates,weekIcons,weekTempMin,weekTempMax]};
 }
 
-async function getIconCodes(){
+/*async function getIconCodes(){
     const resp = await fetch("../data/w_codes.json");
     const data = await resp.json();
     return data;
-}
+}*/
 
 function convTime(unixT){
     const myTime = new Date(unixT *1000);

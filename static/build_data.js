@@ -28,38 +28,29 @@ function build_attrib(tit){
 }
 let dat;//,myObj = [];
 const delay = (ms=1000)=>new Promise(r=>setTimeout(r,ms));
-
-function got_data(){
+let myObj = [];
+const ondo = [];
+(async ()=>{
     // thisHour = 0, 3, 6,..., 21
-     //myObj = []; //save every 3hours
-    let myObj = [];
-    for(let jdx= 0; jdx< dataHours.length;jdx++){
+    for(let jdx= 0; jdx < dataHours.length; jdx++){
         const path = build_path(jdx);
-        //await delay();
-        /*const response = await fetch(path);
-        const data = await response.json();*/
-        const data = fetch(path).then((res)=>res.json());
+        const response = await fetch(path);
+        const data = await response.json();
         var newHour = parseInt(dataHours[jdx]);
-        //console.log(jdx,newHour);
-
-        var alison = build_array(newHour,data);
-        myObj.push(alison);
+        myObj.push(build_array(newHour,data));
+        //console.log(myObj);
     }
-    //const results = await Promise.all(promises);
-    //aux = gotThis.Atrib.replace(myTime,zeroPad(myTime-2));
-    //console.log(aux,myTime-2,data[aux].temp[0]);    
-    return myObj;
-}
+    console.log(myObj.length);
+})();
+
 function build_array(hour,gotData){
     const limit = 2;
     let result = [];
     for(let idx = hour; idx <= hour + limit; idx++){
         var aux = build_attrib(idx);
         if (gotData[aux] === undefined){break;}
-        //console.log(jdx,path,"atrib",aux,idx,limit);
         const dat = {"hour":idx,"temp":gotData[aux].temp[0],"humid":gotData[aux].humidity[0],
         "wind":gotData[aux].wind[0],"rain":gotData[aux].precipitation1h[0]};
-        // results.push(dat);
         result.push(dat);
     }
     return result;
@@ -75,9 +66,9 @@ function build_array(hour,gotData){
     }
     //return gotData;
 }*/
-var newDat = got_data();
+//async function really() { return await got_data();}
 
-console.log(dataHours,"data?",newDat);
+console.log(dataHours,"data?",myObj.length);
 
 /*d3js bar plot
 https://jsfiddle.net/matehu/w7h81xz2/38/*/

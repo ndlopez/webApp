@@ -29,36 +29,41 @@ function build_attrib(tit){
 let dat;//,myObj = [];
 const delay = (ms=1000)=>new Promise(r=>setTimeout(r,ms));
 
-async function got_data(){
+function got_data(){
     // thisHour = 0, 3, 6,..., 21
      //myObj = []; //save every 3hours
     let myObj = [];
-    const promises = dataHours.map(async function(jdx){
+    for(let jdx= 0; jdx< dataHours.length;jdx++){
         const path = build_path(jdx);
         //await delay();
-        const response = await fetch(path);
-        const data = await response.json();
+        /*const response = await fetch(path);
+        const data = await response.json();*/
+        const data = fetch(path).then((res)=>res.json());
         var newHour = parseInt(dataHours[jdx]);
         //console.log(jdx,newHour);
-        var limit = 2; //newHour < currHH ? 2:0;
 
-        for(let idx = newHour; idx <= newHour + limit;idx++){
-            var aux = build_attrib(idx);
-            if (data[aux] === undefined){break;}
-            console.log(jdx,path,"atrib",aux,idx,limit);
-            dat = {"hour":idx,"temp":data[aux].temp[0],"humid":data[aux].humidity[0],
-            "wind":data[aux].wind[0],"rain":data[aux].precipitation1h[0]};
-            // results.push(dat);
-            myObj.push(dat);
-        }
-        return myObj;
-    });
-    const results = await Promise.all(promises);
+        var alison = build_array(newHour,data);
+        myObj.push(alison);
+    }
+    //const results = await Promise.all(promises);
     //aux = gotThis.Atrib.replace(myTime,zeroPad(myTime-2));
     //console.log(aux,myTime-2,data[aux].temp[0]);    
-    return results;
+    return myObj;
 }
-
+function build_array(hour,gotData){
+    const limit = 2;
+    let result = [];
+    for(let idx = hour; idx <= hour + limit; idx++){
+        var aux = build_attrib(idx);
+        if (gotData[aux] === undefined){break;}
+        //console.log(jdx,path,"atrib",aux,idx,limit);
+        const dat = {"hour":idx,"temp":gotData[aux].temp[0],"humid":gotData[aux].humidity[0],
+        "wind":gotData[aux].wind[0],"rain":gotData[aux].precipitation1h[0]};
+        // results.push(dat);
+        result.push(dat);
+    }
+    return result;
+}
 /*async function got_data(){
     var gotData;
     for (let idx = 0; idx < dataHours.length; idx++) {
@@ -72,8 +77,7 @@ async function got_data(){
 }*/
 var newDat = got_data();
 
-console.log(dataHours);
-console.log("data?",newDat);
+console.log(dataHours,"data?",newDat);
 
 /*d3js bar plot
 https://jsfiddle.net/matehu/w7h81xz2/38/*/

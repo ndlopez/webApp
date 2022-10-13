@@ -1,3 +1,4 @@
+/* Fetch observation data from jma site and plot */
 const jma_url = "https://www.jma.go.jp/bosai/amedas/data/point/51106/2022";
 /*current date and time*/
 let myDate = new Date();
@@ -6,7 +7,10 @@ const tag = myDate.getDate();
 var currHH = myDate.getHours();
 var currMin = myDate.getMinutes();
 currHH = currMin > 21? currHH+1:currHH;
-
+let dat; // object to store weather data
+let result = []; //store per hour weather data
+let curr_weather = []; //store last entry of JSON weather data
+let maxmin = []; // Max/Min temp from obs data
 var dataHours = [];
 /* build array of hours: 0 ~ hh */
 for (let idx=0;idx < currHH;idx++){
@@ -31,11 +35,6 @@ function get_min_attr(tit){
 
     }
 }
-let dat;//,myObj = [];
-const delay = (ms=1000)=>new Promise(r=>setTimeout(r,ms));
-let result = [];
-let curr_weather = [];
-
 
 (async ()=>{
     // thisHour = 0, 3, 6,..., 21
@@ -50,8 +49,16 @@ let curr_weather = [];
             console.log(error);
         }
     }
-    console.log(curr_weather);
+    //console.log("curr",curr_weather.length);
     build_plot(result);
+    var img_url = "";
+    //let temp_max_min = maxmin[0];//the date: myData.curr_weather[0][0]
+    var text = "<h2 class='align-left'>Nagoya, JP</h2>";
+    text += "<div class='clearfix'><span class='large'>" + curr_weather[curr_weather.length-1].hour_min+
+    "&emsp;"+curr_weather[curr_weather.length-1].temp + "&#8451;&emsp;"+"Sunny"+"&emsp;</span>"+ img_url + 
+    "<h4>Max "+ maxmin[0] + "&#8451;&emsp;Min " + maxmin[1] +  "&#8451;</h4></div>";
+    document.getElementById("curr_weather").innerHTML = text;
+    
 })();
 
 function build_array(hour,gotData){
@@ -66,12 +73,12 @@ function build_array(hour,gotData){
     }
     //get last data of each JSON object
     var lena = Object.keys(gotData)[Object.keys(gotData).length-1];
-    console.log(hour,lena,gotData[lena].temp[0]);
+    //console.log(hour,lena,gotData[lena].temp[0]);
     /*if(currMin < 20){
         currMin = 60;currHH = currHH -1;
     }*/
     //console.log(lena.slice(-6,-4),lena.slice(-4,-2));
-    const zoey = {"hour":parseInt(lena.slice(-6,-4)),"min":parseInt(lena.slice(-4,-2)),"temp":gotData[lena].temp[0],
+    const zoey = {"hour_min":lena.slice(-6,-4)+":"+lena.slice(-4,-2),"temp":gotData[lena].temp[0],
     "humid":gotData[lena].humidity[0],"wind":gotData[lena].wind[0],"rain":gotData[lena].precipitation1h[0]};
     curr_weather.push(zoey);
     //var lena = get_min_attr(idx);
@@ -105,6 +112,8 @@ function build_plot(json_array){
     /* Y temp axis*/
     const tMin = d3.min(json_array,(d)=>{return d.temp;});
     const tMax = d3.max(json_array,(d)=>{return d.temp;});
+    maxmin.push(tMax);
+    maxmin.push(tMin);
     //console.log(tMin,tMax);
     const yScale = d3.scaleLinear()
     .domain([~~tMin-1,~~tMax+1]).range([h,0]);

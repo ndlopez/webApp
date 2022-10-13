@@ -163,7 +163,8 @@ else{
   <h2>Weekly Forecast</h2>
 </div>
 </div> <!--current weather div end-->
-<div id="weather_bar" class="row"></div><!--Today weather report row-->
+<div id="curr_weather" class="row"></div>
+<div id="weather_bar" class="row"><h2>Observation data</h2></div><!--Today weather report row-->
 <!--style="background-color:#2e4054;color:#bed2e0;"-->
 <button class="accordion">LATER TODAY</button>
 <div class="panel" style="padding:0px;">

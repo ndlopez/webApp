@@ -28,51 +28,8 @@ function build_attrib(tit){
 }
 let dat;//,myObj = [];
 const delay = (ms=1000)=>new Promise(r=>setTimeout(r,ms));
-let myObj = [];
-const ondo = [];
-(async ()=>{
-    // thisHour = 0, 3, 6,..., 21
-    for(let jdx= 0; jdx < dataHours.length; jdx++){
-        const path = build_path(jdx);
-        const response = await fetch(path);
-        const data = await response.json();
-        var newHour = parseInt(dataHours[jdx]);
-        myObj.push(build_array(newHour,data));
-        //console.log(myObj);
-    }
-    console.log(myObj.length);
-})();
+let result = [];
 
-function build_array(hour,gotData){
-    const limit = 2;
-    let result = [];
-    for(let idx = hour; idx <= hour + limit; idx++){
-        var aux = build_attrib(idx);
-        if (gotData[aux] === undefined){break;}
-        const dat = {"hour":idx,"temp":gotData[aux].temp[0],"humid":gotData[aux].humidity[0],
-        "wind":gotData[aux].wind[0],"rain":gotData[aux].precipitation1h[0]};
-        result.push(dat);
-    }
-    return result;
-}
-/*async function got_data(){
-    var gotData;
-    for (let idx = 0; idx < dataHours.length; idx++) {
-        const path = build_path(idx);
-        //let jdx = idx;
-        gotData = await get_data(path,dataHours[idx]);
-        ondo.push(gotData);
-        //console.log(path,gotData,ondo.length);//returns good results
-    }
-    //return gotData;
-}*/
-//async function really() { return await got_data();}
-
-console.log(dataHours,"data?",myObj.length);
-
-/*d3js bar plot
-https://jsfiddle.net/matehu/w7h81xz2/38/*/
-/************ 
 var margin = {top:40,right:20,bottom:50,left:40},
 w = 500 - margin.left - margin.right,
 h = 500 - margin.top - margin.bottom;
@@ -84,20 +41,65 @@ var svg2 = d3.select("#weather_bar")
 .append("g")
 .attr("transform",`translate(${margin.left},${margin.top})`);
 
-var xScale=d3.scaleBand().range([0,w])
-  .domain(data.map(function(d){
-    // console.log(d.hour);
-    return d.hour;}))
-  .padding(0.2);
+(async ()=>{
+    // thisHour = 0, 3, 6,..., 21
+    for(let jdx= 0; jdx < dataHours.length; jdx++){
+        const path = build_path(jdx);
+        try {
+            const response = await fetch(path);
+            const data = await response.json();
+            var newHour = parseInt(dataHours[jdx]);
+            build_array(newHour,data);
+        } catch (error) {
+            console.log(error);
+        }        
+        //console.log(myObj);
+    }
+    console.log("returns sth",result[0].temp);
 
-svg2.append("g")
-  .attr("transform","translate(0,"+h+")")
-  .call(d3.axisBottom(xScale))
-  .selectAll("text")
-  .attr("transform","translate(5,0)rotate(0)")
-  .attr("font-size","12")
-  .style("text-anchor","end");
+    /*d3js bar plot
+    https://jsfiddle.net/matehu/w7h81xz2/38/*/
+    var xScale=d3.scaleBand().range([0,w])
+    .domain(result.map(function(d){
+        // console.log(d.hour);
+        return d.hour;}))
+    .padding(0.2);
 
-const tMin = d3.min(data,(d)=>{return d.temp;});
-const tMax = d3.max(data,(d)=>{return d.temp;});
-console.log(tMin,tMax);*/
+    svg2.append("g")
+    .attr("transform","translate(0,"+h+")")
+    .call(d3.axisBottom(xScale))
+    .selectAll("text")
+    .attr("transform","translate(5,0)rotate(0)")
+    .attr("font-size","12")
+    .style("text-anchor","end");
+
+    const tMin = d3.min(result,(d)=>{return d.temp;});
+    const tMax = d3.max(result,(d)=>{return d.temp;});
+    console.log(tMin,tMax);
+})();
+
+function build_array(hour,gotData){
+    const limit = 2;
+    //let result = [];
+    for(let idx = hour; idx <= hour + limit; idx++){
+        var aux = build_attrib(idx);
+        if (gotData[aux] === undefined){break;}
+        const dat = {"hour":idx,"temp":gotData[aux].temp[0],"humid":gotData[aux].humidity[0],
+        "wind":gotData[aux].wind[0],"rain":gotData[aux].precipitation1h[0]};
+        result.push(dat);
+    }
+    //return result;
+}
+
+/** might be helpful*/
+async function convToUpper(data){
+    return data.toUpperCase();
+}
+async function main(){
+    const lowrCase = ["Vicky Vette","Alison Taylor","Armani Black"];
+    const upperArr = await Promise.all(await lowrCase.map(async (word)=>{
+        return await convToUpper(word)
+    }));
+    console.log(upperArr);
+}
+main();

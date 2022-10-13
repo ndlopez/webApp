@@ -91,6 +91,14 @@ h1,h3{color:#2e4054;}
 .xtra h4, .xtra p{
   color: #2e4054;
 }
+.value {
+  position: relative;
+  bottom: 150px;
+  left: 0px;
+  color: #bed2e0;
+  text-align: center;
+  border: 0px;
+}
 .col3{
   float:left;
   width: 32%;

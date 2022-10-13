@@ -55,28 +55,37 @@ var svg2 = d3.select("#weather_bar")
         }        
         //console.log(myObj);
     }
-    console.log("returns sth",result[0].temp);
+    //console.log("returns sth",result[0].temp);
 
-    /*d3js bar plot
-    https://jsfiddle.net/matehu/w7h81xz2/38/*/
+    /*d3js bar plot-> https://jsfiddle.net/matehu/w7h81xz2/38/*/
     var xScale=d3.scaleBand().range([0,w])
     .domain(result.map(function(d){return d.hour;}))
     .padding(0.2);
-
     svg2.append("g")
-    .attr("transform","translate(0,"+h+")")
-    .call(d3.axisBottom(xScale))
+    .attr("transform","translate(0,"+0+")")
+    .call(d3.axisTop(xScale))
     .selectAll("text")
-    .attr("transform","translate(5,0)rotate(0)")
+    .attr("transform","translate(5,0)")
     .attr("font-size","12")
     .style("text-anchor","end");
-
+    
+    /* Y temp axis*/
     const tMin = d3.min(result,(d)=>{return d.temp;});
     const tMax = d3.max(result,(d)=>{return d.temp;});
     //console.log(tMin,tMax);
-    var yScale=d3.scaleLinear()
-    .domain([tMin-1,parseInt(tMax)+1]).range([h,0]);
+    const yScale = d3.scaleLinear()
+    .domain([~~tMin-1,~~tMax+1]).range([h,0]);
     svg2.append("g").call(d3.axisLeft(yScale)).attr("font-size","12");
+    svg2.append("g").append("text").text("\u2103").attr("x",-24).attr("y",-10);
+    /* Y2 humid axis */
+    const humidMin = d3.min(result,(d)=>{return d.humid;});
+    const humidMax = d3.max(result,(d)=>{return d.humid;});
+    const yHumid = d3.scaleLinear()
+    .domain([humidMin-10,humidMax+5])
+    .range([h,0]);
+    svg2.append("g").call(d3.axisRight(yHumid)).attr("transform","translate("+w+",0)");
+    svg2.append("g").append("text").text("%").attr("x",w+2).attr("y",-10);
+    /* Humidity: bar plot */
     svg2.selectAll("bar")
     .data(result).enter()
     .append("rect")
@@ -84,20 +93,41 @@ var svg2 = d3.select("#weather_bar")
       return xScale(d.hour);})
     .attr("width",xScale.bandwidth())
     .attr("fill","#bed2e040")
-    .attr("rx",4)
+    .attr("rx",8)
     .attr("height",function(d){return h-yScale(0);})
     .attr("y",function(d){return yScale(0);})
     svg2.selectAll("rect")
     .transition()
     .duration(800)
-    .attr("y",function(d){return yScale(d.temp);})
-    .attr("height",function(d){return h-yScale(d.temp);})
+    .attr("y",function(d){return yHumid(d.humid);})
+    .attr("height",function(d){return h-yHumid(d.humid);})
     .delay(function(d,i){return(i*100)})
+    /* Temperature: dot plot */
     svg2.append("g")
-    .append("text")
-    .text("\u2103")
-    .attr("x",-24)
-    .attr("y",-10); 
+    .selectAll("dot")
+    .data(result).enter()
+    .append("circle")
+    .attr("cx",function(d){return xScale(d.hour)+13;})
+    .attr("cy",function(d){return yScale(d.temp);})
+    .attr("r",5)
+    .style("fill","#cc274c");
+    // add text to dots
+    const adjHeight = -11;
+    svg2.append("g").selectAll(".txtTemp").data(result).enter()
+    .append("text").attr("class","txtTemp")
+    .text((d,i)=>{if((i%2)===0){return d.temp+"\u2103";}})
+    .attr("text-anchor","middle")
+    .attr("x",(d)=>{return xScale(d.hour)+13;})
+    .attr("y",(d)=>{return yScale(d.temp)+adjHeight;})
+    .attr("font-size","11px");
+
+    /* windSpeed: text */
+    svg2.append("g").selectAll(".txtWind").data(result).enter()
+    .append("text").attr("class","txtWind").text(function(d){return d.wind+"m";})
+    .attr("text-anchor","middle")
+    .attr("x",(d)=>{return xScale(d.hour)+13;})
+    .attr("y",(d)=>{return h-5;})
+    .attr("font-size","11px");
 })();
 
 function build_array(hour,gotData){

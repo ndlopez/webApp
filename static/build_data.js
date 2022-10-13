@@ -60,9 +60,7 @@ var svg2 = d3.select("#weather_bar")
     /*d3js bar plot
     https://jsfiddle.net/matehu/w7h81xz2/38/*/
     var xScale=d3.scaleBand().range([0,w])
-    .domain(result.map(function(d){
-        // console.log(d.hour);
-        return d.hour;}))
+    .domain(result.map(function(d){return d.hour;}))
     .padding(0.2);
 
     svg2.append("g")
@@ -75,7 +73,31 @@ var svg2 = d3.select("#weather_bar")
 
     const tMin = d3.min(result,(d)=>{return d.temp;});
     const tMax = d3.max(result,(d)=>{return d.temp;});
-    console.log(tMin,tMax);
+    //console.log(tMin,tMax);
+    var yScale=d3.scaleLinear()
+    .domain([tMin-1,parseInt(tMax)+1]).range([h,0]);
+    svg2.append("g").call(d3.axisLeft(yScale)).attr("font-size","12");
+    svg2.selectAll("bar")
+    .data(result).enter()
+    .append("rect")
+    .attr("x",function(d){
+      return xScale(d.hour);})
+    .attr("width",xScale.bandwidth())
+    .attr("fill","#bed2e040")
+    .attr("rx",4)
+    .attr("height",function(d){return h-yScale(0);})
+    .attr("y",function(d){return yScale(0);})
+    svg2.selectAll("rect")
+    .transition()
+    .duration(800)
+    .attr("y",function(d){return yScale(d.temp);})
+    .attr("height",function(d){return h-yScale(d.temp);})
+    .delay(function(d,i){return(i*100)})
+    svg2.append("g")
+    .append("text")
+    .text("\u2103")
+    .attr("x",-24)
+    .attr("y",-10); 
 })();
 
 function build_array(hour,gotData){

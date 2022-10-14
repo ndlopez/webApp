@@ -1,3 +1,4 @@
+import { theseMonths } from "./build_data.js";
 /* Fetching data from JMA.go.jp */
 const jma_data = "https://www.jma.go.jp/bosai/forecast/data/forecast/230000.json";
 // data per hour for current day here:
@@ -11,8 +12,9 @@ const sun_time = ["https://dayspedia.com/api/widget/city/11369/?lang=en",
 "https://dayspedia.com/api/widget/city/4311/?lang=en"];
 
 const hh = [5,11,17,23];
-const theseMonths = ["January","February","March","April","May","June","July",
-"August","September","October","November","December"];
+
+//const theseMonths = ["January","February","March","April","May","June","July",
+//"August","September","October","November","December"];
 const theseDays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
 disp_info();

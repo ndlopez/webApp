@@ -263,8 +263,8 @@ mysqli_close($conn);
 <script src = "static/build_data.js"></script>
 <!--?php include 'static/get_json_db.php'?-->
 <!--script src = "static/accordion_table.js"></script>
-<script src="static/plt_weather_json.js"></script>
-<script src="static/getJmaData.js"></script-->
+<script src="static/plt_weather_json.js"></script-->
+<script src="static/getJmaData.js"></script>
 
 <script src="static/fill_date.js"></script>
 

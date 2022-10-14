@@ -7,7 +7,7 @@ const tag = myDate.getDate();
 var currHH = myDate.getHours();
 var currMin = myDate.getMinutes();
 currHH = currMin > 21? currHH+1:currHH;
-let dat; // object to store weather data
+
 let result = []; //store per hour weather data
 let curr_weather = []; //store last entry of JSON weather data
 let maxmin = []; // Max/Min temp from obs data
@@ -23,6 +23,18 @@ for (let idx=0;idx < currHH;idx++){
     }
 }
 function zeroPad(tit){return (tit<10)?"0"+tit:tit;}
+
+/* wind Direction -> JPchar */
+const allDirs = {1:"北北東",2:"北東",3:"東北東",4:"東",5:"東南東",6:"南東",7:"南南東",8:"南",
+9:"南南西",10:"南西",11:"西南西",12:"西",13:"西北西",14:"北西",15:"北北西",16:"北"};
+function windChar(number){    
+    for (let dat in allDirs){
+        if(dat == number){
+            return allDirs[number];
+        }
+    }
+}
+
 function build_path(jdx){
     //0 < jdx < 8:
     var path = jma_url + zeroPad(monty) + zeroPad(tag) + "_"+zeroPad(dataHours[jdx]) + ".json";
@@ -86,12 +98,12 @@ function buildProgressCircle(percent,title,texty) {
 }
 function buildGaugeMeter(value,title,htmlTxt){
     //Path - Text - Path
-    value = parseInt(value);
+    //const val = ~~value;
     const radius = 50;
     const pTitle = document.createElement("p");
     pTitle.innerText = title;
     const subDiv = document.createElement("div");
-    subDiv.setAttribute("class","column3 float-left");
+    subDiv.setAttribute("class","col3 float-left");
     subDiv.appendChild(pTitle);
     const svgGroup = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     const svgPath = document.createElementNS('http://www.w3.org/2000/svg','path');
@@ -226,8 +238,9 @@ function buildSVGtext(dx,dy,text){
     var humidDiv = buildProgressCircle(curr_weather[lastElm].humid,"HUMIDITY",text);
     detailsDiv.appendChild(humidDiv);
 
-    text = "<h4>m/s</h4><h2>"+ curr_weather[lastElm].wind + "</h2>";
-    var windDiv = buildGaugeMeter(curr_weather[lastElm].wind,"WIND",text);
+    text = "<h4>m/s</h4><h2>"+ windChar(curr_weather[lastElm].windDir) + "</h2>";
+    var kelly = ~~curr_weather[lastElm].wind;
+    var windDiv = buildGaugeMeter(kelly,"WIND",text);
     detailsDiv.appendChild(windDiv);
     
 })();
@@ -238,9 +251,9 @@ function build_array(hour,gotData){
     for(let idx = hour; idx <= hour + limit; idx++){
         var aux = build_attrib(idx);
         if (gotData[aux] === undefined){break;}
-        const dat = {"hour":idx,"temp":gotData[aux].temp[0],"humid":gotData[aux].humidity[0],
-        "wind":gotData[aux].wind[0],"rain":gotData[aux].precipitation1h[0]};
-        result.push(dat);
+        const abby = {"hour":idx,"temp":gotData[aux].temp[0],"humid":gotData[aux].humidity[0],
+        "wind":gotData[aux].wind[0],"windDir":gotData[aux].windDirection[0],"rain":gotData[aux].precipitation1h[0]};
+        result.push(abby);
     }
     //get last data of each JSON object
     var lena = Object.keys(gotData)[Object.keys(gotData).length-1];
@@ -250,7 +263,8 @@ function build_array(hour,gotData){
     }*/
     //console.log(lena.slice(-6,-4),lena.slice(-4,-2));
     const zoey = {"hour_min":lena.slice(-6,-4)+":"+lena.slice(-4,-2),"temp":gotData[lena].temp[0],
-    "humid":gotData[lena].humidity[0],"wind":gotData[lena].wind[0],"rain":gotData[lena].precipitation1h[0]};
+    "humid":gotData[lena].humidity[0],"wind":gotData[lena].wind[0],"windDir":gotData[lena].windDirection[0],
+    "rain":gotData[lena].precipitation1h[0]};
     curr_weather.push(zoey);
     //var lena = get_min_attr(idx);
     //return result;

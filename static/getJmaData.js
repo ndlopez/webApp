@@ -99,7 +99,7 @@ async function disp_info(){
     tempElm.innerHTML = textW + texty;
     myDiv.appendChild(iconElm);
     myDiv.appendChild(tempElm);
-    console.log("forecast:",gotData.forecast);
+    //console.log("forecast:",gotData.forecast);
 }
 async function get_data(){
     const response = await fetch(jma_data);

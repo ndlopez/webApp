@@ -252,7 +252,7 @@ function build_array(hour,gotData){
         var aux = build_attrib(idx);
         if (gotData[aux] === undefined){break;}
         const abby = {"hour":idx,"temp":gotData[aux].temp[0],"humid":gotData[aux].humidity[0],
-        "wind":gotData[aux].wind[0],"windDir":gotData[aux].windDirection[0],"rain":gotData[aux].precipitation1h[0]};
+        "wind":Math.round(gotData[aux].wind[0]) ,"windDir":gotData[aux].windDirection[0],"rain":gotData[aux].precipitation1h[0]};
         result.push(abby);
     }
     //get last data of each JSON object
@@ -339,7 +339,7 @@ function build_plot(json_array){
     .attr("r",5)
     .style("fill","#cc274c");
     // add text to dots
-    const adjHeight = -11;
+    let adjHeight = -11;
     svg2.append("g").selectAll(".txtTemp").data(json_array).enter()
     .append("text").attr("class","txtTemp")
     .text((d,i)=>{if((i%2)===0){return d.temp+"\u2103";}})
@@ -354,6 +354,19 @@ function build_plot(json_array){
     .attr("text-anchor","middle")
     .attr("x",(d)=>{return xScale(d.hour)+13;})
     .attr("y",(d)=>{return h-5;})
+    .attr("font-size","11px");
+
+    /* windDirection */
+    //adjHeight = 0;
+    svg2.append("g").selectAll(".txtWindDir").data(json_array).enter()
+    .append("text").attr("class","txtWindDir")
+    .text((d)=>{return windChar(d.windDir);})
+    .attr("text-anchor","middle")
+    .attr("x",(d)=>{return xScale(d.hour)+13;})
+    .attr("y",(d,i)=>{
+        adjHeight = (i%2) === 0?23:38;
+        return h + adjHeight;
+    })
     .attr("font-size","11px");
 }
 /** might be helpful

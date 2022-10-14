@@ -41,7 +41,7 @@ $myMsg = "Good Morning";
       <ul>
         <li><a href="#" onclick="openNav()">Data Admin</a></li>
         <li><a target="_blank" href="/data/all_weather.json">Raw Data</a></li>
-        <li><a target="_blank" href="https://ndlopez.github.io/jumble_game">Play Jumble</a></li>
+        <li><a target="_blank" href="/svg/jma_weather.html">Obs Data</a></li>
         <li><a target="_blank" href="https://ndlopez.github.io/pages/about.html">About</a></li>
       </ul>
     </div>
@@ -79,13 +79,6 @@ $getMaxMin = "SELECT MAX(temp),MIN(temp) from $dbTable WHERE date='".$heute."';"
 // echo "<p> Your Query was ...<br><code>".$query."</code></p>";
 ?>
 <!--/div clearfix-->
-
-<div id="weather_info">
-  <div id="curr_weather" class="row"></div>
-  <div id="weather_details" class="row"></div>
-  <div id="weather_bar" class="row"><h2>Observation data</h2></div><!--Today weather report row-->
-</div>
-
 
 <div class="row current" style="padding:0px;">
 <div class="column">
@@ -162,7 +155,9 @@ else{
 }
 ?>
 </div><!-- column container -->
-<div class="column" id="forecaster"><h2>Weekly Forecast</h2></div>
+
+<div id="weather_bar" class="column"></div><!--Today weather report row-->
+
 </div> <!--current weather div end-->
 <!--div class="column" style="text-align:center;">
   <a href="https://tenki.jp/forecast/5/26/5110/23106/1hour.html">
@@ -205,9 +200,9 @@ else{
 }
 //forecast Div
 //echo "";
-echo "<div class='clearfix' id='foreDiv'><h2>Tomorrow's Weather</h2>";
-echo "<div class='col3'><br/><h2 style='text-align:left;'>".
-date("l, F d",strtotime('+1 day'))."</h2></div></div>";
+//echo "<div class='clearfix' id='foreDiv'><h2>Tomorrow's Weather</h2>";
+//echo "<div class='col3'><br/><h2 style='text-align:left;'>".
+//date("l, F d",strtotime('+1 day'))."</h2></div></div>";
 
 /*Creating a JSON file and saving to static folder
 If run by using <include> the whole page crashes
@@ -260,10 +255,10 @@ fclose($fpout);
 mysqli_close($conn);
 ?>
 
-<script src = "static/build_data.js"></script>
+<!--script src = "static/build_data.js"></script-->
 <!--?php include 'static/get_json_db.php'?-->
-<!--script src = "static/accordion_table.js"></script>
-<script src="static/plt_weather_json.js"></script-->
+<script src = "static/accordion_table.js"></script>
+<script src="static/plt_weather_json.js"></script>
 <script src="static/getJmaData.js"></script>
 
 <script src="static/fill_date.js"></script>

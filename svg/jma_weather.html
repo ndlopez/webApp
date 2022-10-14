@@ -9,6 +9,7 @@
     <!--script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script-->
   </head>
   <body>
+    <script src="../static/build_data.js"></script>
     <nav class="top-menu">
       <div class="navlink inline-block">
         <a title="Home" href="/" class="navlink-on">home</a></div>
@@ -26,11 +27,13 @@
       <div class="row align-right" id="currDate"></div>
       <div class="row">
         <div id="weather_bar" class="column80 float-left"></div>
-        <div class="column20 align-right"><!--canvas id="myChart" width="400" height="400"></canvas--></div></div>
+        <div class="column20 align-right"></div></div>
     </div>
 
-    <script src="../static/build_data.js"></script>
-    <scrip src="../static/getJmaData.js"></scrip>
+    <div class='clearfix' id='foreDiv'><h2>Tomorrow's Weather</h2></div>
+    <div class="column" id="forecaster"><h2>Weekly Forecast</h2></div>
+    
+    <script src="../static/getJmaData.js"></script>
   </body>
   <footer>
     <div class="row"><hr>

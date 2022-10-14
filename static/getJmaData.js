@@ -33,7 +33,7 @@ async function disp_info(){
         myMin = gotData.temp[1][0];
     }
         
-    const currDiv = document.getElementById("thisWeather");
+    /*const currDiv = document.getElementById("thisWeather");
     const pElem = document.createElement("p");
     pElem.setAttribute("class","column");
     pElem.style.textAlign = "right";
@@ -41,11 +41,13 @@ async function disp_info(){
     gotTime.sunrise[1] + "&emsp;&emsp;<img src='../svg/sunset.svg' width=32/>"+
     gotTime.sunset[0]+":"+gotTime.sunset[1];
     pElem.innerHTML = texty;
-    currDiv.appendChild(pElem);
+    currDiv.appendChild(pElem);*/
 
+    var texty = "";
     const nowTenki = document.getElementById("now_weather");
-    nowTenki.innerHTML = gotData.weather[0] + "&emsp;<img src='"+ico_url+gotData.icon[0]+".svg'/>";
-    //var currWeather = gotData.weather[1].split("　");
+    if(nowTenki !== null){
+        nowTenki.innerHTML = gotData.weather[0] + "&emsp;<img src='"+ico_url+gotData.icon[0]+".svg'/>";
+    } //var currWeather = gotData.weather[1].split("　");
     /*for(let idx=0;idx<gotData.weather.length;idx++){
         var currWeather = gotData.weather[idx].split("　");
         texty += "<h2>"+gotData.time[idx].slice(0,10)+" "+currWeather[0]+"<img src='"+ico_url+gotData.icon[idx]+".svg'/></h2>";
@@ -77,14 +79,14 @@ async function disp_info(){
     /* 2moro forecast + rain Prob */
     const myDiv = document.getElementById("foreDiv");
     const iconElm = document.createElement("div");
-    iconElm.setAttribute("class","col3");
+    iconElm.setAttribute("class","column");
     texty = "<br/><p>"+gotData.weather[1] +"</p>";
     
     texty += "<span>Min "+ myMin +"&#8451; | Max "+ myMax+"&#8451;</span>";
     iconElm.innerHTML = "<img src='"+ico_url+gotData.icon[1]+".svg'/>"+texty;
-    const tempElm = document.createElement("div");//tomorrow temp
-    tempElm.setAttribute("class","col3");
     
+    const tempElm = document.createElement("div");//tomorrow temp
+    tempElm.setAttribute("class","column");
     texty = "";
     let jdx = gotData.rain[0].length-1;
     let kdx = 0;

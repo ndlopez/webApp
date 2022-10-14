@@ -273,7 +273,7 @@ button{/*background-color:white;#4caf50;*/
   -o-transform:scaleX(-1);
   -webkit-transform:scaleX(-1);
   transform:scaleX(-1);
-  filter:FlipH;
+  /*filter:FlipH;*/
 }
 #foreDiv{background-color: #bed2e040;}
 footer{

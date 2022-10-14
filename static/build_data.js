@@ -1,4 +1,4 @@
-export let theseMonths = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+let months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 /* Fetch observation data from jma site and plot */
 const jma_url = "https://www.jma.go.jp/bosai/amedas/data/point/51106/2022";
 /*current date and time*/
@@ -223,7 +223,7 @@ function buildSVGtext(dx,dy,text){
     //var img_url = "";
     //let temp_max_min = maxmin[0];//the date: myData.curr_weather[0][0]
     const lastElm = curr_weather.length-1;
-    var text = "<h2 class='align-left'>&emsp;Nagoya, JP<br>&emsp;"+ theseMonths[monty-1] + tag +
+    var text = "<h2 class='align-left'>&emsp;Nagoya, JP<br>&emsp;"+ months[monty-1] + tag +
     " "+curr_weather[lastElm].hour_min+"</h2>";
     text += "<div class='clearfix'><span class='large'>" + 
     "&emsp;"+curr_weather[lastElm].temp + "&#8451;&emsp;</span><span id='now_weather' class='large'></span>" + 

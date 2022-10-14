@@ -36,7 +36,6 @@ $myMsg = "Good Morning";
       <div class="column">
       <h3 id="this_date"><?php echo date("l, F d")?></h3>
       <h2 id="currtime"></h2></div>
-      <div id="currIcon" class="column"></div>
     </div>
     <div class="half">
       <ul>
@@ -70,7 +69,7 @@ else{
   }
 
   echo "<div id='thisWeather' class='row'>";
-  echo "<p class='col3' style='text-align:left;'>".$myMsg.",<br/> connection to Database... OK</p></div>";
+  echo "<p class='column' style='text-align:left;'>".$myMsg.",<br/> connection to Database... OK</p></div>";
 }
 
 //$query = "DELETE FROM tenki WHERE date IS NULL;";
@@ -80,6 +79,14 @@ $getMaxMin = "SELECT MAX(temp),MIN(temp) from $dbTable WHERE date='".$heute."';"
 // echo "<p> Your Query was ...<br><code>".$query."</code></p>";
 ?>
 <!--/div clearfix-->
+
+<div id="weather_info">
+  <div id="curr_weather" class="row"></div>
+  <div id="weather_details" class="row"></div>
+  <div id="weather_bar" class="row"><h2>Observation data</h2></div><!--Today weather report row-->
+</div>
+
+
 <div class="row current" style="padding:0px;">
 <div class="column">
 
@@ -154,21 +161,14 @@ else{
 	echo "<p>Something went wrong :( <br> Contact admin@webapp.physics </p>";
 }
 ?>
-</div><!-- Column container -->
+</div><!-- column container -->
+<div class="column" id="forecaster"><h2>Weekly Forecast</h2></div>
+</div> <!--current weather div end-->
 <!--div class="column" style="text-align:center;">
   <a href="https://tenki.jp/forecast/5/26/5110/23106/1hour.html">
     <img alt="Click  to link tenki.jp" src="https://static.tenki.jp/static-images/radar/recent/pref-26-middle.jpg"/>
   </a></div-->
-<div class="column" id="forecaster"><h2>Weekly Forecast</h2></div>
-</div> <!--current weather div end-->
-<div id="weather_info">
-  <div id="curr_weather" class="row"></div>
-  <div id="weather_details" class="row"></div>
-  <div id="weather_bar" class="row"><h2>Observation data</h2></div><!--Today weather report row-->
-</div>
 
-
-<!--style="background-color:#2e4054;color:#bed2e0;"-->
 <button class="accordion">LATER TODAY</button>
 <div class="panel" style="padding:0px;">
 <table id="myday">

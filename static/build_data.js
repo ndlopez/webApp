@@ -223,8 +223,8 @@ function buildSVGtext(dx,dy,text){
     var img_url = "";
     //let temp_max_min = maxmin[0];//the date: myData.curr_weather[0][0]
     const lastElm = curr_weather.length-1;
-    var text = "<h2 class='align-left'>Nagoya, JP</h2>";
-    text += "<div class='clearfix'><span class='large'>" + curr_weather[lastElm].hour_min+
+    var text = "<h2 class='align-left'>&emsp;Nagoya, JP<br>&emsp;"+curr_weather[lastElm].hour_min+"</h2>";
+    text += "<div class='clearfix'><span class='large'>" + 
     "&emsp;"+curr_weather[lastElm].temp + "&#8451;&emsp;</span><span id='now_weather' class='large'></span>"+ img_url + 
     "<h4>Max "+ maxmin[0] + "&#8451;&emsp;Min " + maxmin[1] +  "&#8451;</h4></div>";
     document.getElementById("curr_weather").innerHTML = text;

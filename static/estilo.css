@@ -220,6 +220,10 @@ svg text{fill:#bed2e0;}
 svg line, svg path {stroke:#bed2e0;}
 .large{font-size: 30px;}
 #frontCircle{stroke:#cc274c !important;}
+.progress-ring-circle {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
 /*#thisWeather svg path{stroke: #bed2e0;fill: #bed2e0;}*/
 /*table cols title
 #myday th{

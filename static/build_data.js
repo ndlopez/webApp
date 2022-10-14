@@ -225,7 +225,7 @@ function buildSVGtext(dx,dy,text){
     const lastElm = curr_weather.length-1;
     var text = "<h2 class='align-left'>Nagoya, JP</h2>";
     text += "<div class='clearfix'><span class='large'>" + curr_weather[lastElm].hour_min+
-    "&emsp;"+curr_weather[lastElm].temp + "&#8451;&emsp;"+"Sunny"+"&emsp;</span>"+ img_url + 
+    "&emsp;"+curr_weather[lastElm].temp + "&#8451;&emsp;</span><span id='now_weather' class='large'></span>"+ img_url + 
     "<h4>Max "+ maxmin[0] + "&#8451;&emsp;Min " + maxmin[1] +  "&#8451;</h4></div>";
     document.getElementById("curr_weather").innerHTML = text;
 

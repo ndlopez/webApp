@@ -32,22 +32,19 @@ async function disp_info(){
         myMax = gotData.temp[1][1];
         myMin = gotData.temp[1][0];
     }
-    const todayIcon = document.getElementById("currIcon");
-    todayIcon.innerHTML = "<img src='"+ico_url+gotData.icon[0]+".svg' width=48/>"
+        
     const currDiv = document.getElementById("thisWeather");
-    const currElm = document.createElement("p");
     const pElem = document.createElement("p");
-    currElm.setAttribute("class","col3");
-    currElm.innerHTML = "天気 : " + gotData.weather[0];
-    currDiv.appendChild(currElm);
-
-    pElem.setAttribute("class","col3");
+    pElem.setAttribute("class","column");
     pElem.style.textAlign = "right";
     var texty = "<img src='../svg/sunrise.svg' width=32/>" + gotTime.sunrise[0] + ":" + 
     gotTime.sunrise[1] + "&emsp;&emsp;<img src='../svg/sunset.svg' width=32/>"+
     gotTime.sunset[0]+":"+gotTime.sunset[1];
     pElem.innerHTML = texty;
     currDiv.appendChild(pElem);
+
+    const nowTenki = document.getElementById("now_weather");
+    nowTenki.innerHTML = gotData.weather[0] + "&emsp;<img src='"+ico_url+gotData.icon[0]+".svg'/>";
     //var currWeather = gotData.weather[1].split("　");
     /*for(let idx=0;idx<gotData.weather.length;idx++){
         var currWeather = gotData.weather[idx].split("　");

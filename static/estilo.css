@@ -214,9 +214,7 @@ li.dropdown{display:inline-block;}
 #weather_bar{
   text-align: center;
 }
-#weather_details{
-  height: 210px;
-}
+#weather_details .col3{height: 200px;}
 /*d3JS svg*/
 svg text{fill:#bed2e0;}
 svg line, svg path {stroke:#bed2e0;}

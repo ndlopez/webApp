@@ -1,6 +1,7 @@
 let months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 /* Fetch observation data from jma site and plot */
 const jma_url = "https://www.jma.go.jp/bosai/amedas/data/point/51106/2022";
+// this position: 北緯: 35度10.0分 東経: 136度57.9分 標高: 51m
 /*current date and time*/
 let myDate = new Date();
 const monty = myDate.getMonth() + 1;

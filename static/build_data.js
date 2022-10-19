@@ -16,6 +16,11 @@ let maxmin = []; // Max/Min temp from obs data
 var dataHours = [];
 const toRadians = Math.PI/180.0;
 const maxValue = 6; //m/s when 10m/s too many scales, should display half
+
+var hours = [];
+for (let idx = 0; idx < 24; idx++) {
+    hours.push(idx);
+} 
 /* build array of hours: 0 ~ hh */
 for (let idx=0;idx < currHH;idx++){
     //hours.push(idx);
@@ -224,10 +229,10 @@ function buildSVGtext(dx,dy,text){
     //var img_url = "";
     //let temp_max_min = maxmin[0];//the date: myData.curr_weather[0][0]
     const lastElm = curr_weather.length-1;
-    var text = "<h2 class='align-left'>&emsp;Nagoya, JP<br>&emsp;"+ months[monty-1] + tag +
-    " "+curr_weather[lastElm].hour_min+"</h2>";
+    var text = "<h2 class='align-left'>&emsp;Nagoya, JP<br>&emsp;"+ months[monty-1] + " " + 
+    tag + " "+curr_weather[lastElm].hour_min+"</h2>";
     text += "<div class='clearfix'><span class='large'>" + 
-    "&emsp;"+curr_weather[lastElm].temp + "&#8451;&emsp;</span><span id='now_weather' class='large'></span>" + 
+    "&emsp;"+curr_weather[lastElm].temp + "&#8451;</span><span id='now_weather'></span>" + 
     "<h4>Max "+ maxmin[0] + "&#8451;&emsp;Min " + maxmin[1] +  "&#8451;</h4></div>";
     document.getElementById("curr_weather").innerHTML = text;
 
@@ -341,7 +346,7 @@ function build_plot(json_array){
     .attr("r",5)
     .style("fill","#cc274c");
     // add text to dots
-    let adjHeight = -11;
+    let adjHeight = 5;
     svg2.append("g").selectAll(".txtTemp").data(json_array).enter()
     .append("text").attr("class","txtTemp")
     .text((d,i)=>{if((i%2)===0){return d.temp+"\u2103";}})

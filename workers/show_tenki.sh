@@ -1,7 +1,7 @@
 #!/bin/bash
-dat=$HOME/weather_app/data/tenki_tmp.txt
+dat=../data/tenki_tmp.txt
 currDay=$(date "+%d ")
-today=2022-07-$currDay
+today=2022-10-$currDay
 currHour=$(date "+%H")
 currMin=$(date "+%M")
 

@@ -218,7 +218,7 @@ li.dropdown{display:inline-block;}
 /*d3JS svg*/
 svg text{fill:#bed2e0;}
 svg line, svg path {stroke:#bed2e0;}
-.large{font-size: 30px;}
+.large{font-size: 45px;}
 #frontCircle{stroke:#cc274c !important;}
 .progress-ring-circle {
   transform: rotate(-90deg);

@@ -48,7 +48,7 @@ async function disp_info(){
     var texty = "";
     const nowTenki = document.getElementById("now_weather");
     if(nowTenki !== null){
-        nowTenki.innerHTML = gotData.weather[0] + "&emsp;<img src='"+ico_url+gotData.icon[0]+".svg'/>";
+        nowTenki.innerHTML = "<img src='"+ico_url+gotData.icon[0]+".svg'/><br/>"+ gotData.weather[0];
     } //var currWeather = gotData.weather[1].split("　");
     /*for(let idx=0;idx<gotData.weather.length;idx++){
         var currWeather = gotData.weather[idx].split("　");

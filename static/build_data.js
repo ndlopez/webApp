@@ -52,7 +52,7 @@ function get_wind_desc(wspeed){
     var thisWind = "";
     for (let item in desc_wind) {
         if(wspeed <= desc_wind[item].speed){
-            thisWind = desc_wind[item].jp_desc;
+            thisWind = desc_wind[item].en_desc;
             break;
         }
     }
@@ -254,7 +254,7 @@ function buildSVGtext(dx,dy,text){
     tag + " "+curr_weather[lastElm].hour_min+"</h4>";
     text += "<div class='clearfix'><span class='large'>" + 
     "&emsp;"+curr_weather[lastElm].temp + "&#8451;</span><span id='now_weather'></span>" +
-    "<span>" + get_wind_desc(curr_weather[lastElm].wind) + "</span>" + 
+    "<span>, " + get_wind_desc(curr_weather[lastElm].wind) + "</span>" + 
     "<h4>Max "+ maxmin[0] + "&#8451;&emsp;Min " + maxmin[1] +  "&#8451;</h4></div>";
     document.getElementById("curr_weather").innerHTML = text;
 
@@ -271,7 +271,7 @@ function buildSVGtext(dx,dy,text){
     var kelly = Math.round(curr_weather[lastElm].wind);// ~~float_var -> int_var 
     var windDiv = buildGaugeMeter(kelly,"WIND",text);
     detailsDiv.appendChild(windDiv);
-    //console.log("now wind:",curr_weather[lastElm].wind); 
+    console.log("now wind:",curr_weather[lastElm].wind,get_wind_desc(curr_weather[lastElm].wind)); 
 })();
 
 function build_array(hour,gotData){
@@ -375,6 +375,19 @@ function build_plot(json_array){
     .attr("x",(d)=>{return xScale(d.hour)+13;})
     .attr("y",(d)=>{return yScale(d.temp)+adjHeight;})
     .attr("font-size","11px");
+    // add curve to dots
+    //const newPair = [{d.hour,d.temp}];
+    var fillLine = d3.line()
+    .x((d)=>{return xScale(d.hour);})
+    .y((d)=>{return yScale(d.temp);})
+    .curve(d3.curveCardinal);
+
+    svg2.append("path")
+    .data(json_array).enter()
+    .attr("d",fillLine)
+    .attr("fill","none")
+    .attr("stroke","#cc274c")
+    .attr("stroke-width","1px");
 
     /* windSpeed: text */
     svg2.append("g").selectAll(".txtWind").data(json_array).enter()

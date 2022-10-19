@@ -2,6 +2,8 @@ let months = ["January","February","March","April","May","June","July","August",
 /* Fetch observation data from jma site and plot */
 const jma_url = "https://www.jma.go.jp/bosai/amedas/data/point/51106/2022";
 // this position: 北緯: 35度10.0分 東経: 136度57.9分 標高: 51m
+// Kongos - Take it from me, sounds kinda country, mixed w/pop
+// NeedtoBreathe - into the mistery
 /*current date and time*/
 let myDate = new Date();
 const monty = myDate.getMonth() + 1;
@@ -15,12 +17,10 @@ let curr_weather = []; //store last entry of JSON weather data
 let maxmin = []; // Max/Min temp from obs data
 var dataHours = [];
 const toRadians = Math.PI/180.0;
-const maxValue = 6; //m/s when 10m/s too many scales, should display half
+const maxValue = 6; //m/s when 10m/s too many scales, should display half or add ticks
 
 var hours = [];
-for (let idx = 0; idx < 24; idx++) {
-    hours.push(idx);
-} 
+for (let idx = 0; idx < 24; idx++) hours.push(idx);
 /* build array of hours: 0 ~ hh */
 for (let idx=0;idx < currHH;idx++){
     //hours.push(idx);
@@ -31,7 +31,7 @@ for (let idx=0;idx < currHH;idx++){
 function zeroPad(tit){return (tit<10)?"0"+tit:tit;}
 
 /* wind Direction -> JPchar */
-const allDirs = {1:"北北東",2:"北東",3:"東北東",4:"東",5:"東南東",6:"南東",7:"南南東",8:"南",
+const allDirs = {0:"静穏",1:"北北東",2:"北東",3:"東北東",4:"東",5:"東南東",6:"南東",7:"南南東",8:"南",
 9:"南南西",10:"南西",11:"西南西",12:"西",13:"西北西",14:"北西",15:"北北西",16:"北"};
 function windChar(number){    
     for (let dat in allDirs){
@@ -39,6 +39,24 @@ function windChar(number){
             return allDirs[number];
         }
     }
+}
+// wind description according to Beaufort scale up to 6 in m/s
+const desc_wind = [{"speed":0.28,"en_desc":"calm","jp_desc":"静穏"},
+{"speed":1.38,"en_desc":"Light Air","jp_desc":"至軽風"},{"speed":3.05,"en_desc":"Light Breeze","jp_desc":"軽風"},
+{"speed":5.28,"en_desc":"Gentle Breeze","jp_desc":"軟風"},{"speed":7.78,"en_desc":"Moderate Breeze","jp_esc":"和風"},
+{"speed":10.56,"en_desc":"Fresh Breeze","jp_desc":"疾風"},{"speed":13.6,"en_desc":"Strong Breeze","jp_desc":"雄風"}];
+//more at https://www.i-kahaku.jp/friend/kagaku/0306/kaze/index.html
+
+function get_wind_desc(wspeed){
+    // wspeed is float
+    var thisWind = "";
+    for (let item in desc_wind) {
+        if(wspeed <= desc_wind[item].speed){
+            thisWind = desc_wind[item].jp_desc;
+            break;
+        }
+    }
+    return thisWind;
 }
 
 function build_path(jdx){
@@ -104,7 +122,10 @@ function buildProgressCircle(percent,title,texty) {
 }
 function buildGaugeMeter(value,title,htmlTxt){
     //Path - Text - Path
-    //const val = ~~value;
+    if(value > maxValue){
+        // Should re-scale but seems not so easy, probably change maxValue?
+        value = 6;
+    }
     const radius = 50;
     const pTitle = document.createElement("p");
     pTitle.innerText = title;
@@ -229,16 +250,17 @@ function buildSVGtext(dx,dy,text){
     //var img_url = "";
     //let temp_max_min = maxmin[0];//the date: myData.curr_weather[0][0]
     const lastElm = curr_weather.length-1;
-    var text = "<h2 class='align-left'>&emsp;Nagoya, JP<br>&emsp;"+ months[monty-1] + " " + 
-    tag + " "+curr_weather[lastElm].hour_min+"</h2>";
+    var text = "<h2 class='align-left'>Nagoya, JP</h2><h4>"+ months[monty-1] + " " + 
+    tag + " "+curr_weather[lastElm].hour_min+"</h4>";
     text += "<div class='clearfix'><span class='large'>" + 
-    "&emsp;"+curr_weather[lastElm].temp + "&#8451;</span><span id='now_weather'></span>" + 
+    "&emsp;"+curr_weather[lastElm].temp + "&#8451;</span><span id='now_weather'></span>" +
+    "<span>" + get_wind_desc(curr_weather[lastElm].wind) + "</span>" + 
     "<h4>Max "+ maxmin[0] + "&#8451;&emsp;Min " + maxmin[1] +  "&#8451;</h4></div>";
     document.getElementById("curr_weather").innerHTML = text;
 
     var detailsDiv = document.getElementById("weather_details");
-    text = "<h2><br><br>" + curr_weather[lastElm].rain + " mm</h2>";
-    var rainDiv = buildProgressCircle(curr_weather[lastElm].rain,"RAIN",text);
+    text = "<h4>mm</h4>";
+    var rainDiv = buildGaugeMeter(curr_weather[lastElm].rain,"RAIN",text);
     detailsDiv.appendChild(rainDiv);
 
     text = "<h2><br><br>" + curr_weather[lastElm].humid + "%</h2>";
@@ -246,15 +268,16 @@ function buildSVGtext(dx,dy,text){
     detailsDiv.appendChild(humidDiv);
 
     text = "<h4>m/s</h4><h2>"+ windChar(curr_weather[lastElm].windDir) + "</h2>";
-    var kelly = ~~curr_weather[lastElm].wind;
+    var kelly = Math.round(curr_weather[lastElm].wind);// ~~float_var -> int_var 
     var windDiv = buildGaugeMeter(kelly,"WIND",text);
     detailsDiv.appendChild(windDiv);
-    
+    //console.log("now wind:",curr_weather[lastElm].wind); 
 })();
 
 function build_array(hour,gotData){
+    // void function, 
+    // fills "result" array with data/hour, and "zoey" Obj with currentData
     const limit = 2;
-    //let result = [];
     for(let idx = hour; idx <= hour + limit; idx++){
         var aux = build_attrib(idx);
         if (gotData[aux] === undefined){break;}
@@ -265,16 +288,13 @@ function build_array(hour,gotData){
     //get last data of each JSON object
     var lena = Object.keys(gotData)[Object.keys(gotData).length-1];
     //console.log(hour,lena,gotData[lena].temp[0]);
-    /*if(currMin < 20){
-        currMin = 60;currHH = currHH -1;
-    }*/
+    /*if(currMin < 20){currMin = 60;currHH = currHH -1;}*/
     //console.log(lena.slice(-6,-4),lena.slice(-4,-2));
     const zoey = {"hour_min":lena.slice(-6,-4)+":"+lena.slice(-4,-2),"temp":gotData[lena].temp[0],
     "humid":gotData[lena].humidity[0],"wind":gotData[lena].wind[0],"windDir":gotData[lena].windDirection[0],
     "rain":gotData[lena].precipitation1h[0]};
     curr_weather.push(zoey);
-    //var lena = get_min_attr(idx);
-    //return result;
+
 }
 
 function build_plot(json_array){
@@ -291,7 +311,8 @@ function build_plot(json_array){
     .append("g")
     .attr("transform",`translate(${margin.left},${margin.top})`);
     var xScale=d3.scaleBand().range([0,w])
-    .domain(json_array.map(function(d){return d.hour;}))
+    //.domain(json_array.map(function(d){return d.hour;}))
+    .domain(hours)
     .padding(0.2);
     svg2.append("g")
     .attr("transform","translate(0,"+0+")")
@@ -308,7 +329,7 @@ function build_plot(json_array){
     maxmin.push(tMin);
     //console.log(tMin,tMax);
     const yScale = d3.scaleLinear()
-    .domain([~~tMin-1,~~tMax+1]).range([h,0]);
+    .domain([~~tMin-2,~~tMax+2]).range([h,0]);
     svg2.append("g").call(d3.axisLeft(yScale)).attr("font-size","12");
     svg2.append("g").append("text").text("\u2103").attr("x",-24).attr("y",-10);
     /* Y2 humid axis */
@@ -346,7 +367,7 @@ function build_plot(json_array){
     .attr("r",5)
     .style("fill","#cc274c");
     // add text to dots
-    let adjHeight = 5;
+    let adjHeight = 20;
     svg2.append("g").selectAll(".txtTemp").data(json_array).enter()
     .append("text").attr("class","txtTemp")
     .text((d,i)=>{if((i%2)===0){return d.temp+"\u2103";}})

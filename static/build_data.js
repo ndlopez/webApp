@@ -382,12 +382,13 @@ function build_plot(json_array){
     .y((d)=>{return yScale(d.temp);})
     .curve(d3.curveCardinal);
 
+    /* it causes a d3js error
     svg2.append("path")
     .data(json_array).enter()
     .attr("d",fillLine)
     .attr("fill","none")
     .attr("stroke","#cc274c")
-    .attr("stroke-width","1px");
+    .attr("stroke-width","1px");*/
 
     /* windSpeed: text */
     svg2.append("g").selectAll(".txtWind").data(json_array).enter()

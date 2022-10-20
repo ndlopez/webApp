@@ -28,6 +28,7 @@ function getDateHour(isoStr){
 async function disp_info(){
     const gotData = await get_data();
     const gotTime = await getTimes();
+    //await prediction_curve(); does not work
     var myMin = gotData.temp[1][2];
     var myMax = gotData.temp[1][3];
     if(myMax === undefined){
@@ -105,6 +106,7 @@ async function disp_info(){
     myDiv.appendChild(tempElm);
     //console.log("forecast:",gotData.forecast);
 }
+
 async function get_data(){
     const response = await fetch(jma_data);
     const data = await response.json();
@@ -134,6 +136,24 @@ async function get_data(){
     const data = await resp.json();
     return data;
 }*/
+async function prediction_curve(){
+    var hour_array = [];
+    for(let idx=0;idx<24;idx++)hour_array.push(idx);
+    const data = [{xp:0,yp:15.0},{xp:6,yp:12},{xp:14,yp:24},{xp:23,yp:14}];
+    
+    const xScale = d3.scaleBand().range([0,730]).domain(hour_array).padding(0.2);
+    const yScale = d3.scaleLinear().domain([tMin,tMax]).range([410,0]);
+    var thisCurve = d3.line()
+    .x((d)=> xScale(d.xp))
+    .y((d)=> yScale(d.yp))
+    .curve(d3.curveBasis);
+    d3.select("#weather_bar")
+    .append("path")
+    .attr("d",thisCurve(data))
+    .attr("fill","none")
+    .attr("stroke","red")
+    .attr("stroke-width","3px");
+}
 
 function convTime(unixT){
     const myTime = new Date(unixT *1000);

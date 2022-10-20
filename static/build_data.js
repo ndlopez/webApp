@@ -19,6 +19,7 @@ var dataHours = [];
 const toRadians = Math.PI/180.0;
 const maxValue = 6; //m/s when 10m/s too many scales, should display half or add ticks
 
+const prediction_data = [{xp:0,yp:14.0},{xp:6,yp:8},{xp:14,yp:28},{xp:23,yp:14}];
 var hours = [];
 for (let idx = 0; idx < 24; idx++) hours.push(idx);
 /* build array of hours: 0 ~ hh */
@@ -324,7 +325,7 @@ function build_plot(json_array){
     
     /* Y temp axis*/
     const tMin = d3.min(json_array,(d)=>{return d.temp;});
-    const tMax = d3.max(json_array,(d)=>{return d.temp;});
+    const tMax = 23;//d3.max(json_array,(d)=>{return d.temp;});
     maxmin.push(tMax);
     maxmin.push(tMin);
     //console.log(tMin,tMax);
@@ -408,6 +409,19 @@ function build_plot(json_array){
         return h + adjHeight;
     })
     .attr("font-size","11px");
+
+    //prediction curve
+    var thisCurve = d3.line()
+    .x((d)=> xScale(d.xp))
+    .y((d)=> yScale(d.yp))
+    .curve(d3.curveBasis);
+    /*d3.select("#weather_bar")*/
+    svg2.append("path")
+    .attr("d",thisCurve(prediction_data))
+    .attr("fill","none")
+    .attr("stroke","red")
+    .attr("stroke-width","3px")
+    .attr("stroke-dasharray","5,5");
 }
 /** might be helpful
 async function convToUpper(data){

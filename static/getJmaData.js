@@ -131,11 +131,6 @@ async function get_data(){
     "forecast":[weekDates,weekIcons,weekTempMin,weekTempMax]};
 }
 
-/*async function getIconCodes(){
-    const resp = await fetch("../data/w_codes.json");
-    const data = await resp.json();
-    return data;
-}*/
 async function prediction_curve(){
     var hour_array = [];
     for(let idx=0;idx<24;idx++)hour_array.push(idx);
@@ -172,3 +167,9 @@ async function getTimes(){
     
     return {"sunrise":convTime(sunRise),"sunset":convTime(sunSet)}; 
 }
+
+/*async function getIconCodes(){
+    const resp = await fetch("../data/w_codes.json");
+    const data = await resp.json();
+    return data;
+}*/

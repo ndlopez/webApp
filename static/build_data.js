@@ -19,7 +19,7 @@ var dataHours = [];
 const toRadians = Math.PI/180.0;
 const maxValue = 6; //m/s when 10m/s too many scales, should display half or add ticks
 
-const prediction_data = [{xp:0,yp:14.0},{xp:6,yp:8},{xp:14,yp:28},{xp:23,yp:14}];
+const prediction_data = [{xp:0,yp:14.0},{xp:6,yp:8},{xp:14,yp:24},{xp:23,yp:14}];
 var hours = [];
 for (let idx = 0; idx < 24; idx++) hours.push(idx);
 /* build array of hours: 0 ~ hh */
@@ -325,7 +325,7 @@ function build_plot(json_array){
     
     /* Y temp axis*/
     const tMin = d3.min(json_array,(d)=>{return d.temp;});
-    const tMax = 23;//d3.max(json_array,(d)=>{return d.temp;});
+    const tMax = d3.max(json_array,(d)=>{return d.temp;});
     maxmin.push(tMax);
     maxmin.push(tMin);
     //console.log(tMin,tMax);
@@ -345,8 +345,7 @@ function build_plot(json_array){
     svg2.selectAll("bar")
     .data(json_array).enter()
     .append("rect")
-    .attr("x",function(d){
-      return xScale(d.hour);})
+    .attr("x",function(d){return xScale(d.hour);})
     .attr("width",xScale.bandwidth())
     .attr("fill","#bed2e040")
     .attr("rx",8)

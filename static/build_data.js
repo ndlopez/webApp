@@ -43,7 +43,7 @@ function windChar(number){
 // wind description according to Beaufort scale up to 6 in m/s
 const desc_wind = [{"speed":0.28,"en_desc":"calm","jp_desc":"静穏"},
 {"speed":1.38,"en_desc":"Light Air","jp_desc":"至軽風"},{"speed":3.05,"en_desc":"Light Breeze","jp_desc":"軽風"},
-{"speed":5.28,"en_desc":"Gentle Breeze","jp_desc":"軟風"},{"speed":7.78,"en_desc":"Moderate Breeze","jp_esc":"和風"},
+{"speed":5.28,"en_desc":"Gentle Breeze","jp_desc":"軟風"},{"speed":7.78,"en_desc":"Moderate Breeze","jp_desc":"和風"},
 {"speed":10.56,"en_desc":"Fresh Breeze","jp_desc":"疾風"},{"speed":13.6,"en_desc":"Strong Breeze","jp_desc":"雄風"}];
 //more at https://www.i-kahaku.jp/friend/kagaku/0306/kaze/index.html
 
@@ -366,6 +366,18 @@ function build_plot(json_array){
     .attr("cy",function(d){return yScale(d.temp);})
     .attr("r",5)
     .style("fill","#cc274c");
+    // add curve to dots
+    //const newPair = [{d.hour,d.temp}];
+    var fillLine = d3.line()
+    .x((d)=>{return xScale(d.hour);})
+    .y((d)=>{return yScale(d.temp);})
+    .curve(d3.curveBasis);
+
+    svg2.append("path")
+    .attr("d",fillLine(json_array))
+    .attr("stroke","#cc274c")
+    .attr("stroke-width","4px")
+    .attr("fill","none");
     // add text to dots
     let adjHeight = 20;
     svg2.append("g").selectAll(".txtTemp").data(json_array).enter()
@@ -375,21 +387,7 @@ function build_plot(json_array){
     .attr("x",(d)=>{return xScale(d.hour)+13;})
     .attr("y",(d)=>{return yScale(d.temp)+adjHeight;})
     .attr("font-size","11px");
-    // add curve to dots
-    //const newPair = [{d.hour,d.temp}];
-    var fillLine = d3.line()
-    .x((d)=>{return xScale(d.hour);})
-    .y((d)=>{return yScale(d.temp);})
-    .curve(d3.curveCardinal);
-
-    /* it causes a d3js error
-    svg2.append("path")
-    .data(json_array).enter()
-    .attr("d",fillLine)
-    .attr("fill","none")
-    .attr("stroke","#cc274c")
-    .attr("stroke-width","1px");*/
-
+    
     /* windSpeed: text */
     svg2.append("g").selectAll(".txtWind").data(json_array).enter()
     .append("text").attr("class","txtWind").text(function(d){return d.wind+"m";})

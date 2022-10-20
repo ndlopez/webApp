@@ -1,10 +1,10 @@
+//export {buildProgressCircle, buildGaugeMeter};
 //let months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-export {buildProgressCircle, buildGaugeMeter};
 
 /* functions to build SVG objects */
 const toRadians = Math.PI/180.0;
 const maxValue = 6; //m/s when 10m/s too many scales, should display half or add ticks
-function buildProgressCircle(percent,title,texty) {
+export function buildProgressCircle(percent,title,texty) {
     let radius = 52;
     const pTitle = document.createElement("p");
     pTitle.innerText = title;
@@ -49,7 +49,7 @@ function buildProgressCircle(percent,title,texty) {
 
     return subDiv;
 }
-function buildGaugeMeter(value,title,htmlTxt){
+export function buildGaugeMeter(value,title,htmlTxt){
     //Path - Text - Path
     if(value > maxValue){
         // Should re-scale but seems not so easy, probably change maxValue?

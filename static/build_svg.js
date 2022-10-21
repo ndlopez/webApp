@@ -4,7 +4,7 @@
 /* functions to build SVG objects */
 const toRadians = Math.PI/180.0;
 const maxValue = 6; //m/s when 10m/s too many scales, should display half or add ticks
-export function buildProgressCircle(percent,title,texty) {
+function buildProgressCircle(percent,title,texty) {
     let radius = 52;
     const pTitle = document.createElement("p");
     pTitle.innerText = title;
@@ -49,7 +49,8 @@ export function buildProgressCircle(percent,title,texty) {
 
     return subDiv;
 }
-export function buildGaugeMeter(value,title,htmlTxt){
+
+function buildGaugeMeter(value,title,htmlTxt){
     //Path - Text - Path
     if(value > maxValue){
         // Should re-scale but seems not so easy, probably change maxValue?
@@ -160,3 +161,5 @@ function buildSVGtext(dx,dy,text){
     svgText.textContent = String(text);
     return svgText
 }
+
+export {buildProgressCircle, buildGaugeMeter};

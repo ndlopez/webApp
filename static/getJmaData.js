@@ -63,7 +63,7 @@ async function disp_info(){
     /* Weekly forecast Max/Min*/
     const colDiv = document.getElementById("forecaster");
     //create as many group div as forecast are available
-    for(let idx=0;idx<gotData.forecast[0].length;idx++){
+    for(let idx=1;idx<gotData.forecast[0].length;idx++){
         const groupDiv = document.createElement("div");
         groupDiv.setAttribute("class","row");
 
@@ -73,13 +73,17 @@ async function disp_info(){
         "<h2 class='column'>"+ aux.tag + "</h2><div class='column' style='text-align:left;padding-left:0;'><p>"+theseDays[aux.day] + 
         "</p><p><small>"+theseMonths[aux.monty-1]+"</small></p></div></div></div>";
 
-        texty += "<div class='col3' style='text-align:right;'><img src='"+ico_url+ gotData.forecast[1][idx]+".svg'/></div>";
-
-        if(idx==0){
-            tempMin = myMin;
-            tempMax = myMax;
+        texty += "<div class='col3' style='text-align:right;'><img src='"+ico_url+ 
+        gotData.forecast[1][idx]+".svg'/>"; //+"</div>";
+        
+        /*if(idx==0){
+            tempMin = myMin; tempMax = myMax;
+        }*/
+        texty += "</div><div class='col3'><h4>"+tempMin+"&#8451; | "+tempMax+"&#8451;</h4></div>";
+        if(idx == 1){//after 11AM
+            texty += "<p style='text-align:center;'>"+gotData.weather[2]+"、"+gotData.wind[2]+"</p>";
         }
-        texty += "<div class='col3'><h4>"+tempMin+"&#8451; | "+tempMax+"&#8451;</h4></div>";
+        
         groupDiv.innerHTML = texty;
         colDiv.appendChild(groupDiv);
     }

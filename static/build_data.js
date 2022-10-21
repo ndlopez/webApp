@@ -101,7 +101,7 @@ function get_min_attr(tit){
     tag + " "+curr_weather[lastElm].hour_min+"</h4>";
     text += "<div class='clearfix'><span class='large'>" + 
     "&emsp;"+curr_weather[lastElm].temp + "&#8451;</span><span id='now_weather'></span>" +
-    "<span>, " + get_wind_desc(curr_weather[lastElm].wind) + "</span>" + 
+    "<p><span id='wind_info'></span></p>" + 
     "<h4>Max "+ maxmin[0] + "&#8451;&emsp;Min " + maxmin[1] +  "&#8451;</h4></div>";
     document.getElementById("curr_weather").innerHTML = text;
 
@@ -114,7 +114,8 @@ function get_min_attr(tit){
     var humidDiv = buildProgressCircle(curr_weather[lastElm].humid,"HUMIDITY",text);
     detailsDiv.appendChild(humidDiv);
 
-    text = "<h4>m/s</h4><h2>"+ windChar(curr_weather[lastElm].windDir) + "</h2>";
+    text = "<h4>m/s</h4><h2>"+ windChar(curr_weather[lastElm].windDir) + "</h2><p>" +
+    get_wind_desc(curr_weather[lastElm].wind) +"</p>";
     var kelly = Math.round(curr_weather[lastElm].wind);// ~~float_var -> int_var 
     var windDiv = buildGaugeMeter(kelly,"WIND",text);
     detailsDiv.appendChild(windDiv);

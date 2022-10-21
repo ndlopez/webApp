@@ -50,7 +50,12 @@ async function disp_info(){
     const nowTenki = document.getElementById("now_weather");
     if(nowTenki !== null){
         nowTenki.innerHTML = "<img src='"+ico_url+gotData.icon[0]+".svg'/><br/>"+ gotData.weather[0];
-    } //var currWeather = gotData.weather[1].split("　");
+    }
+    const winds = document.getElementById("wind_info");
+    if(winds !== null){
+        winds.innerHTML = gotData.wind[0];
+    }
+    //var currWeather = gotData.weather[1].split("　");
     /*for(let idx=0;idx<gotData.weather.length;idx++){
         var currWeather = gotData.weather[idx].split("　");
         texty += "<h2>"+gotData.time[idx].slice(0,10)+" "+currWeather[0]+"<img src='"+ico_url+gotData.icon[idx]+".svg'/></h2>";
@@ -83,7 +88,7 @@ async function disp_info(){
     const myDiv = document.getElementById("foreDiv");
     const iconElm = document.createElement("div");
     iconElm.setAttribute("class","column");
-    texty = "<br/><p>"+gotData.weather[1] +"</p>";
+    texty = "<br/><p>"+gotData.weather[1] +"</p><p>" +gotData.wind[1] +"</p>";
     
     texty += "<span>Min "+ myMin +"&#8451; | Max "+ myMax+"&#8451;</span>";
     iconElm.innerHTML = "<img src='"+ico_url+gotData.icon[1]+".svg'/>"+texty;
@@ -132,6 +137,7 @@ async function get_data(){
 }
 
 async function prediction_curve(){
+    // Find svg D3JS obj and append a path
     var hour_array = [];
     for(let idx=0;idx<24;idx++)hour_array.push(idx);
     const data = [{xp:0,yp:15.0},{xp:6,yp:12},{xp:14,yp:24},{xp:23,yp:14}];

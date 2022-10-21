@@ -22,7 +22,7 @@ var dataHours = [];
 //const toRadians = Math.PI/180.0;
 //const maxValue = 6; //m/s when 10m/s too many scales, should display half or add ticks
 
-const prediction_data = [{xp:0,yp:14.0},{xp:6,yp:11},{xp:15,yp:24},{xp:23,yp:14}];
+const prediction_data = [{xp:0,yp:13.0},{xp:6,yp:10},{xp:15,yp:23},{xp:23,yp:13}];
 var hours = [];
 for (let idx = 0; idx < 24; idx++) hours.push(idx);
 /* build array of hours: 0 ~ hh */
@@ -208,7 +208,7 @@ function build_plot(json_array){
     .selectAll("dot")
     .data(json_array).enter()
     .append("rect")
-    .attr("x",(d)=>{return xScale(d.hour);})
+    .attr("x",(d)=>{return xScale(d.hour)+13;})
     .attr("y",(d)=>{return yScale(d.temp);})
     .attr("width","10")
     .attr("height","10")

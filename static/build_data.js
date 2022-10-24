@@ -22,7 +22,7 @@ var dataHours = [];
 //const toRadians = Math.PI/180.0;
 //const maxValue = 6; //m/s when 10m/s too many scales, should display half or add ticks
 
-const prediction_data = [{xp:0,yp:17.0},{xp:6,yp:10},{xp:15,yp:23},{xp:23,yp:13}];
+const prediction_data = [{xp:0,yp:17.0},{xp:6,yp:13},{xp:15,yp:23},{xp:23,yp:13}];
 var hours = [];
 for (let idx = 0; idx < 24; idx++) hours.push(idx);
 /* build array of hours: 0 ~ hh */
@@ -177,7 +177,7 @@ function build_plot(json_array){
     maxmin.push(tMin);
     //console.log(tMin,tMax);
     const yScale = d3.scaleLinear()
-    .domain([~~tMin-2,~~tMax+2]).range([h,0]);
+    .domain([Math.round(tMin)-2,Math.round(tMax)+2]).range([h,0]);
     svg2.append("g").call(d3.axisLeft(yScale)).attr("font-size","12");
     svg2.append("g").append("text").text("\u2103").attr("x",-24).attr("y",-10);
     /* Y2 humid axis */
@@ -243,7 +243,7 @@ function build_plot(json_array){
     .append("text").attr("class","txtWind").text(function(d){return d.wind+"m";})
     .attr("text-anchor","middle")
     .attr("x",(d)=>{return xScale(d.hour)+13;})
-    .attr("y",(d)=>{return h-5;})
+    .attr("y",(d)=>{return h+10;}) //prev: h-5
     .attr("font-size","11px");
 
     /* windDirection */
@@ -261,9 +261,13 @@ function build_plot(json_array){
 
     //adding sunrise/sunset img and times
     svg2.append("svg:image")
+    .attr('xlink:href','../svg/sunrise.svg')
+    .attr('width','32').attr('height','32')
+    .attr('transform','translate('+178+','+(h-50)+')');
+    svg2.append("svg:image")
     .attr('xlink:href','../svg/sunset.svg')
     .attr('width','32').attr('height','32')
-    .attr('transform','translate('+w/2+','+h/2+')');
+    .attr('transform','translate('+500+','+(h-50)+')');
 
     //prediction curve
     var thisCurve = d3.line()

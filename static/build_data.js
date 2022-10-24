@@ -22,7 +22,7 @@ var dataHours = [];
 //const toRadians = Math.PI/180.0;
 //const maxValue = 6; //m/s when 10m/s too many scales, should display half or add ticks
 
-const prediction_data = [{xp:0,yp:17.0},{xp:6,yp:13},{xp:15,yp:23},{xp:23,yp:13}];
+const prediction_data = [{xp:0,yp:17.0},{xp:6,yp:12},{xp:13,yp:21},{xp:23,yp:13}];
 var hours = [];
 for (let idx = 0; idx < 24; idx++) hours.push(idx);
 /* build array of hours: 0 ~ hh */

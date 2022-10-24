@@ -22,7 +22,7 @@ var dataHours = [];
 //const toRadians = Math.PI/180.0;
 //const maxValue = 6; //m/s when 10m/s too many scales, should display half or add ticks
 
-const prediction_data = [{xp:0,yp:13.0},{xp:6,yp:10},{xp:15,yp:23},{xp:23,yp:13}];
+const prediction_data = [{xp:0,yp:17.0},{xp:6,yp:10},{xp:15,yp:23},{xp:23,yp:13}];
 var hours = [];
 for (let idx = 0; idx < 24; idx++) hours.push(idx);
 /* build array of hours: 0 ~ hh */
@@ -258,6 +258,12 @@ function build_plot(json_array){
         return h + adjHeight;
     })
     .attr("font-size","11px");
+
+    //adding sunrise/sunset img and times
+    svg2.append("svg:image")
+    .attr('xlink:href','../svg/sunset.svg')
+    .attr('width','32').attr('height','32')
+    .attr('transform','translate('+w/2+','+h/2+')');
 
     //prediction curve
     var thisCurve = d3.line()

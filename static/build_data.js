@@ -260,10 +260,12 @@ function build_plot(json_array){
     .attr("font-size","11px");
 
     //adding sunrise/sunset img and times
+    svg2.append("g").append("text").text("6:03").attr("x",180).attr("y",h-5).style('fill','#cc274c');
     svg2.append("svg:image")
     .attr('xlink:href','../svg/sunrise.svg')
     .attr('width','32').attr('height','32')
     .attr('transform','translate('+178+','+(h-50)+')');
+    svg2.append("g").append("text").text("17:09").attr("x",496).attr("y",h-5).style('fill','#cc274c');
     svg2.append("svg:image")
     .attr('xlink:href','../svg/sunset.svg')
     .attr('width','32').attr('height','32')

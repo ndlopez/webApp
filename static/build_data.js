@@ -22,7 +22,7 @@ var dataHours = [];
 //const toRadians = Math.PI/180.0;
 //const maxValue = 6; //m/s when 10m/s too many scales, should display half or add ticks
 
-const prediction_data = [{xp:0,yp:17.0},{xp:6,yp:12},{xp:13,yp:21},{xp:23,yp:13}];
+const prediction_data = [{xp:0,yp:13.0},{xp:6,yp:10},{xp:13,yp:19},{xp:23,yp:12}];
 var hours = [];
 for (let idx = 0; idx < 24; idx++) hours.push(idx);
 /* build array of hours: 0 ~ hh */
@@ -260,16 +260,16 @@ function build_plot(json_array){
     .attr("font-size","11px");
 
     //adding sunrise/sunset img and times
-    svg2.append("g").append("text").text("6:03").attr("x",180).attr("y",h-5).style('fill','#cc274c');
+    svg2.append("g").append("text").text("6:07").attr("x",180).attr("y",-20).style('fill','#E8B720');
     svg2.append("svg:image")
     .attr('xlink:href','../svg/sunrise.svg')
     .attr('width','32').attr('height','32')
-    .attr('transform','translate('+178+','+(h-50)+')');
-    svg2.append("g").append("text").text("17:09").attr("x",496).attr("y",h-5).style('fill','#cc274c');
+    .attr('transform','translate('+178+','+0+')');
+    svg2.append("g").append("text").text("17:05").attr("x",490).attr("y",-20).style('fill','#E8B720');
     svg2.append("svg:image")
     .attr('xlink:href','../svg/sunset.svg')
     .attr('width','32').attr('height','32')
-    .attr('transform','translate('+500+','+(h-50)+')');
+    .attr('transform','translate('+490+','+0+')');
 
     //prediction curve
     var thisCurve = d3.line()

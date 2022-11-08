@@ -2,7 +2,9 @@ import {buildProgressCircle, buildGaugeMeter } from "./build_svg.js";
 
 let months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 /* Fetch observation data from jma site and plot */
-const jma_url = "https://www.jma.go.jp/bosai/amedas/data/point/51106/2022";
+const nagoya_url = "https://www.jma.go.jp/bosai/amedas/data/point/51106/2022";
+const jma_url = "https://www.jma.go.jp/bosai/amedas/data/point/52146/2022";//takayama
+const cities = ["Nagoya","Takayama"];
 // this position: 北緯: 35度10.0分 東経: 136度57.9分 標高: 51m
 // Kongos - Take it from me, sounds kinda country, mixed w/pop
 // NeedtoBreathe - into the mistery
@@ -22,7 +24,7 @@ var dataHours = [];
 //const toRadians = Math.PI/180.0;
 //const maxValue = 6; //m/s when 10m/s too many scales, should display half or add ticks
 
-const prediction_data = [{xp:0,yp:13.0},{xp:6,yp:10},{xp:13,yp:19},{xp:23,yp:12}];
+const prediction_data = [{xp:0,yp:3.0},{xp:6,yp:2.0},{xp:14,yp:13.0},{xp:23,yp:4.0}];
 var hours = [];
 for (let idx = 0; idx < 24; idx++) hours.push(idx);
 /* build array of hours: 0 ~ hh */
@@ -97,7 +99,7 @@ function get_min_attr(tit){
     //var img_url = "";
     //let temp_max_min = maxmin[0];//the date: myData.curr_weather[0][0]
     const lastElm = curr_weather.length-1;
-    var text = "<h2 class='align-left'>Nagoya, JP</h2><h4>"+ months[monty-1] + " " + 
+    var text = "<h2 class='align-left'>"+cities[1]+", JP</h2><h4>"+ months[monty-1] + " " + 
     tag + " "+curr_weather[lastElm].hour_min+"</h4>";
     text += "<div class='clearfix'><span class='large'>" + 
     "&emsp;"+curr_weather[lastElm].temp + "&#8451;</span><span id='now_weather'></span>" +

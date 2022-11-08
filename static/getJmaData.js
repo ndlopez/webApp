@@ -1,6 +1,8 @@
 //import { theseMonths } from "./build_data.js"; SyntaxError!
 /* Fetching data from JMA.go.jp */
 const jma_data = "https://www.jma.go.jp/bosai/forecast/data/forecast/230000.json";
+const data_takayama = "https://www.jma.go.jp/bosai/forecast/data/forecast/210000.json";
+// Hida: 210020
 // data per hour for current day here:
 // https://www.jma.go.jp/bosai/amedas/data/point/51106/20221007_09.json
 // format seems to be yyyymmdd_hh.json, hh< currHour, hh=0,3,6,9,...
@@ -27,7 +29,7 @@ function getDateHour(isoStr){
 
 async function disp_info(){
     const gotData = await get_data();
-    const gotTime = await getTimes();
+    //const gotTime = await getTimes();
     //await prediction_curve(); does not work
     var myMin = gotData.temp[1][2];
     var myMax = gotData.temp[1][3];
@@ -117,9 +119,10 @@ async function disp_info(){
 }
 
 async function get_data(){
-    const response = await fetch(jma_data);
+    const response = await fetch(data_takayama);
     const data = await response.json();
     //0: currDay, 1: nextDay, 2:dayAfter2moro
+    var location = data[1].timeSeries[1].areas[1].area.name;
     var upTime = data[0].timeSeries[0].timeDefines;
     var thisWeather = data[0].timeSeries[0].areas[0].weathers;
     var weatherIcon = data[0].timeSeries[0].areas[0].weatherCodes;
@@ -135,6 +138,7 @@ async function get_data(){
     var weekTempMin = data[1].timeSeries[1].areas[0].tempsMin;
     var weekTempMax = data[1].timeSeries[1].areas[0].tempsMax;
     //console.log(currWeather[0],weatherIcon);
+    console.log("got this location",location);
     return {"time":upTime,"weather":thisWeather,"icon":weatherIcon,
     "wind":winds,"rain":[rainTimes,rainProb],"temp":[tempTimes,temp],
     "forecast":[weekDates,weekIcons,weekTempMin,weekTempMax]};

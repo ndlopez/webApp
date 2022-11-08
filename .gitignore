@@ -5,3 +5,6 @@ data/*
 libs/*
 
 rest-api/uploads/*
+
+# ignore this folder
+www/*

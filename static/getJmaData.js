@@ -1,7 +1,9 @@
 //import { theseMonths } from "./build_data.js"; SyntaxError!
 /* Fetching data from JMA.go.jp */
-const jma_data = "https://www.jma.go.jp/bosai/forecast/data/forecast/230000.json";
-const data_takayama = "https://www.jma.go.jp/bosai/forecast/data/forecast/210000.json";
+//const jma_data = ;
+const city_idx = [0,1]; //0:Nagoya,1:Takayama
+const jma_data = ["https://www.jma.go.jp/bosai/forecast/data/forecast/230000.json",
+"https://www.jma.go.jp/bosai/forecast/data/forecast/210000.json"];
 // Hida: 210020
 // data per hour for current day here:
 // https://www.jma.go.jp/bosai/amedas/data/point/51106/20221007_09.json
@@ -119,10 +121,10 @@ async function disp_info(){
 }
 
 async function get_data(){
-    const response = await fetch(data_takayama);
+    const response = await fetch(jma_data[0]);
     const data = await response.json();
     //0: currDay, 1: nextDay, 2:dayAfter2moro
-    var location = data[1].timeSeries[1].areas[1].area.name;
+    var location = data[1].timeSeries[1].areas[0].area.name;
     var upTime = data[0].timeSeries[0].timeDefines;
     var thisWeather = data[0].timeSeries[0].areas[0].weathers;
     var weatherIcon = data[0].timeSeries[0].areas[0].weatherCodes;

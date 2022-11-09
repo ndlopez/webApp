@@ -50,7 +50,7 @@ function buildProgressCircle(percent,title,texty) {
     return subDiv;
 }
 
-function buildGaugeMeter(value,title,htmlTxt){
+function buildGaugeMeter(value=0,title,htmlTxt){
     //Path - Text - Path
     if(value > maxValue){
         // Should re-scale but seems not so easy, probably change maxValue?

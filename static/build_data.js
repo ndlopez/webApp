@@ -2,8 +2,8 @@ import {buildProgressCircle, buildGaugeMeter } from "./build_svg.js";
 
 let months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 /* Fetch observation data from jma site and plot */
-const nagoya_url = "https://www.jma.go.jp/bosai/amedas/data/point/51106/2022";
-const jma_url = "https://www.jma.go.jp/bosai/amedas/data/point/52146/2022";//takayama
+const jma_url = "https://www.jma.go.jp/bosai/amedas/data/point/51106/2022";
+const takayama_url = "https://www.jma.go.jp/bosai/amedas/data/point/52146/2022";//takayama
 const cities = ["Nagoya","Takayama"];
 // this position: 北緯: 35度10.0分 東経: 136度57.9分 標高: 51m
 // Kongos - Take it from me, sounds kinda country, mixed w/pop

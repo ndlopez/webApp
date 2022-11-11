@@ -51,6 +51,9 @@ async function disp_info(){
     currDiv.appendChild(pElem);*/
 
     var texty = "";
+    const this_city = document.getElementById("this_place");
+    if(this_city !== null)
+        this_city.innerText = gotData.place;
     const nowTenki = document.getElementById("now_weather");
     if(nowTenki !== null){
         nowTenki.innerHTML = "<img src='"+ico_url+gotData.icon[0]+".svg'/><br/>"+ gotData.weather[0];
@@ -141,7 +144,7 @@ async function get_data(){
     var weekTempMax = data[1].timeSeries[1].areas[0].tempsMax;
     //console.log(currWeather[0],weatherIcon);
     console.log("got this location",location);
-    return {"time":upTime,"weather":thisWeather,"icon":weatherIcon,
+    return {"place":location,"time":upTime,"weather":thisWeather,"icon":weatherIcon,
     "wind":winds,"rain":[rainTimes,rainProb],"temp":[tempTimes,temp],
     "forecast":[weekDates,weekIcons,weekTempMin,weekTempMax]};
 }

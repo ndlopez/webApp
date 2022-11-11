@@ -2,15 +2,16 @@ import {buildProgressCircle, buildGaugeMeter } from "./build_svg.js";
 
 let months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 /* Fetch observation data from jma site and plot */
-const jma_url = "https://www.jma.go.jp/bosai/amedas/data/point/51106/2022";
-const takayama_url = "https://www.jma.go.jp/bosai/amedas/data/point/52146/2022";//takayama
-const cities = ["Nagoya","Takayama"];
+const jma_url = "https://www.jma.go.jp/bosai/amedas/data/point/";
+const city_idx = [{city:"Nagoya",code:51106},{city:"Takayama",code:52146}];
+
 // this position: 北緯: 35度10.0分 東経: 136度57.9分 標高: 51m
 // Kongos - Take it from me, sounds kinda country, mixed w/pop
 // NeedtoBreathe - into the mistery
 // JENNIFER McCARTER - Better Be Home Soon
 /*current date and time*/
 let myDate = new Date();
+const yearn = myDate.getFullYear();
 const monty = myDate.getMonth() + 1;
 const tag = myDate.getDate();
 var currHH = myDate.getHours();
@@ -67,17 +68,18 @@ function get_wind_desc(wspeed){
 /* Functions to build data Paths */
 function build_path(jdx){
     //0 < jdx < 8:
-    var path = jma_url + zeroPad(monty) + zeroPad(tag) + "_"+zeroPad(dataHours[jdx]) + ".json";
+    var path = jma_url + city_idx[0].code + "/"+ yearn + zeroPad(monty) + zeroPad(tag) + "_"+zeroPad(dataHours[jdx]) + ".json";
+    console.log("thisURL",path);
     return path;
 }
 function build_attrib(tit){
-    return "2022"+zeroPad(monty)+zeroPad(tag)+zeroPad(tit)+"0000";
+    return yearn+zeroPad(monty)+zeroPad(tag)+zeroPad(tit)+"0000";
 }
 function get_min_attr(tit){
     if((currMin%10) == 0){
-        return "2022"+zeroPad(monty)+zeroPad(tag)+zeroPad(tit)+zeroPad(currMin)+"00";
+        return yearn+zeroPad(monty)+zeroPad(tag)+zeroPad(tit)+zeroPad(currMin)+"00";
     }else{
-        return "2022"+zeroPad(monty)+zeroPad(tag)+zeroPad(tit)+zeroPad(currMin)+"00";
+        return yearn+zeroPad(monty)+zeroPad(tag)+zeroPad(tit)+zeroPad(currMin)+"00";
     }
 }
 
@@ -99,7 +101,7 @@ function get_min_attr(tit){
     //var img_url = "";
     //let temp_max_min = maxmin[0];//the date: myData.curr_weather[0][0]
     const lastElm = curr_weather.length-1;
-    var text = "<h2 class='align-left'>"+cities[1]+", JP</h2><h4>"+ months[monty-1] + " " + 
+    var text = "<h2 id='this_place' class='align-left'>Nagoya"+"</h2><h4>"+ months[monty-1] + " " + 
     tag + " "+curr_weather[lastElm].hour_min+"</h4>";
     text += "<div class='clearfix'><span class='large'>" + 
     "&emsp;"+curr_weather[lastElm].temp + "&#8451;</span><span id='now_weather'></span>" +
@@ -148,6 +150,7 @@ function build_array(hour,gotData){
 }
 
 function build_plot(json_array){
+    console.log("json_data",json_array);
     /*d3js bar plot-> https://jsfiddle.net/matehu/w7h81xz2/38/*/
     const xSize = 750,ySize=500;
     var margin = {top:40,right:20,bottom:50,left:40},

@@ -24,6 +24,11 @@ const theseDays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","
 
 disp_info();
 
+function get_any_data(idx){
+    //var got_idx = idx;
+    console.log("Got his index",idx);
+    return idx;
+}
 function getDateHour(isoStr){
     // inStr: ISO format
     const gotDate = new Date(isoStr);

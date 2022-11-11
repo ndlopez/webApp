@@ -107,7 +107,7 @@ function get_min_attr(tit){
     //var img_url = "";
     //let temp_max_min = maxmin[0];//the date: myData.curr_weather[0][0]
     const lastElm = curr_weather.length-1;
-    var text = "<h2 id='this_place' class='align-left'>Nagoya"+"</h2><h4>"+ months[monty-1] + " " + 
+    var text = "<h2 id='this_place' class='align-left'>Takayama"+"</h2><h4>"+ months[monty-1] + " " + 
     tag + " "+curr_weather[lastElm].hour_min+"</h4>";
     text += "<div class='clearfix'><span class='large'>" + 
     "&emsp;"+curr_weather[lastElm].temp + "&#8451;</span><span id='now_weather'></span>" +

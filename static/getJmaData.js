@@ -2,6 +2,7 @@
 /* Fetching data from JMA.go.jp */
 //const jma_data = ;
 const city_idx = [0,1]; //0:Nagoya,1:Takayama
+const cdx = 1;
 const jma_data = ["https://www.jma.go.jp/bosai/forecast/data/forecast/230000.json",
 "https://www.jma.go.jp/bosai/forecast/data/forecast/210000.json"];
 // Hida: 210020
@@ -124,24 +125,24 @@ async function disp_info(){
 }
 
 async function get_data(){
-    const response = await fetch(jma_data[0]);
+    const response = await fetch(jma_data[1]);
     const data = await response.json();
     //0: currDay, 1: nextDay, 2:dayAfter2moro
-    var location = data[1].timeSeries[1].areas[0].area.name;
-    var upTime = data[0].timeSeries[0].timeDefines;
-    var thisWeather = data[0].timeSeries[0].areas[0].weathers;
-    var weatherIcon = data[0].timeSeries[0].areas[0].weatherCodes;
-    var winds = data[0].timeSeries[0].areas[0].winds;
-    var rainTimes = data[0].timeSeries[1].timeDefines;//6:every 6hrs
-    var rainProb = data[0].timeSeries[1].areas[0].pops;//6 data
+    var location = data[1].timeSeries[1].areas[cdx].area.name;
+    var upTime = data[0].timeSeries[cdx].timeDefines;
+    var thisWeather = data[0].timeSeries[0].areas[cdx].weathers;
+    var weatherIcon = data[0].timeSeries[0].areas[cdx].weatherCodes;
+    var winds = data[0].timeSeries[0].areas[cdx].winds;
+    var rainTimes = data[0].timeSeries[cdx].timeDefines;//6:every 6hrs
+    var rainProb = data[0].timeSeries[1].areas[cdx].pops;//6 data
     var tempTimes = data[0].timeSeries[2].timeDefines;//max/min only
-    var temp = data[0].timeSeries[2].areas[0].temps;//currDay:0,1; nextDay:2,3
+    var temp = data[0].timeSeries[2].areas[cdx].temps;//currDay:0,1; nextDay:2,3
     //weekly forecast
     var weekDates = data[1].timeSeries[0].timeDefines;// 7dates
-    var weekIcons = data[1].timeSeries[0].areas[0].weatherCodes; // 7 code Icons
+    var weekIcons = data[1].timeSeries[0].areas[cdx].weatherCodes; // 7 code Icons
     //var weekTempDates = data[1].timeSeries[1].timeDefines; //7dates
-    var weekTempMin = data[1].timeSeries[1].areas[0].tempsMin;
-    var weekTempMax = data[1].timeSeries[1].areas[0].tempsMax;
+    var weekTempMin = data[1].timeSeries[1].areas[cdx].tempsMin;
+    var weekTempMax = data[1].timeSeries[1].areas[cdx].tempsMax;
     //console.log(currWeather[0],weatherIcon);
     console.log("got this location",location);
     return {"place":location,"time":upTime,"weather":thisWeather,"icon":weatherIcon,

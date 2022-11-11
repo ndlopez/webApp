@@ -4,6 +4,7 @@ let months = ["January","February","March","April","May","June","July","August",
 /* Fetch observation data from jma site and plot */
 const jma_url = "https://www.jma.go.jp/bosai/amedas/data/point/";
 const city_idx = [{city:"Nagoya",code:51106},{city:"Takayama",code:52146}];
+const cdx = 1;
 
 // this position: 北緯: 35度10.0分 東経: 136度57.9分 標高: 51m
 // Kongos - Take it from me, sounds kinda country, mixed w/pop
@@ -65,10 +66,14 @@ function get_wind_desc(wspeed){
     }
     return thisWind;
 }
+function get_any_data(idx){
+    var got_idx = idx;
+    return got_idx;
+}
 /* Functions to build data Paths */
 function build_path(jdx){
     //0 < jdx < 8:
-    var path = jma_url + city_idx[0].code + "/"+ yearn + zeroPad(monty) + zeroPad(tag) + "_"+zeroPad(dataHours[jdx]) + ".json";
+    var path = jma_url + city_idx[cdx].code + "/"+ yearn + zeroPad(monty) + zeroPad(tag) + "_"+zeroPad(dataHours[jdx]) + ".json";
     //console.log("thisURL",path);
     return path;
 }

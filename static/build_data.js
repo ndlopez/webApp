@@ -66,10 +66,11 @@ function get_wind_desc(wspeed){
     }
     return thisWind;
 }
-function get_any_data(idx){
-    var got_idx = idx;
-    return got_idx;
-}
+/*function get_any_data(idx){
+    //var got_idx = idx;
+    console.log("Got his index",idx);
+    return idx;
+}*/
 /* Functions to build data Paths */
 function build_path(jdx){
     //0 < jdx < 8:

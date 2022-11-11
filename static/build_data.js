@@ -69,11 +69,12 @@ function get_wind_desc(wspeed){
 function build_path(jdx){
     //0 < jdx < 8:
     var path = jma_url + city_idx[0].code + "/"+ yearn + zeroPad(monty) + zeroPad(tag) + "_"+zeroPad(dataHours[jdx]) + ".json";
-    console.log("thisURL",path);
+    //console.log("thisURL",path);
     return path;
 }
 function build_attrib(tit){
-    return yearn+zeroPad(monty)+zeroPad(tag)+zeroPad(tit)+"0000";
+    //console.log("gotTHIS",String(yearn),zeroPad(monty),zeroPad(tag),zeroPad(tit),"0000");
+    return String(yearn)+zeroPad(monty)+zeroPad(tag)+zeroPad(tit)+"0000";
 }
 function get_min_attr(tit){
     if((currMin%10) == 0){
@@ -93,7 +94,7 @@ function get_min_attr(tit){
             var newHour = parseInt(dataHours[jdx]);
             build_array(newHour,data);
         } catch (error) {
-            console.log(error);
+            console.log("GotErr",error);
         }
     }
     //console.log("curr",curr_weather.length);
@@ -132,11 +133,13 @@ function build_array(hour,gotData){
     const limit = 2;
     for(let idx = hour; idx <= hour + limit; idx++){
         var aux = build_attrib(idx);
+        //console.log("this_attrib",aux);
         if (gotData[aux] === undefined){break;}
         const abby = {"hour":idx,"temp":gotData[aux].temp[0],"humid":gotData[aux].humidity[0],
         "wind":Math.round(gotData[aux].wind[0]) ,"windDir":gotData[aux].windDirection[0],"rain":gotData[aux].precipitation1h[0]};
         result.push(abby);
     }
+    //console.log("json_data",result);
     //get last data of each JSON object
     var lena = Object.keys(gotData)[Object.keys(gotData).length-1];
     //console.log(hour,lena,gotData[lena].temp[0]);
@@ -150,7 +153,7 @@ function build_array(hour,gotData){
 }
 
 function build_plot(json_array){
-    console.log("json_data",json_array);
+    
     /*d3js bar plot-> https://jsfiddle.net/matehu/w7h81xz2/38/*/
     const xSize = 750,ySize=500;
     var margin = {top:40,right:20,bottom:50,left:40},

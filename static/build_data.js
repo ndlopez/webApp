@@ -26,7 +26,7 @@ var dataHours = [];
 //const toRadians = Math.PI/180.0;
 //const maxValue = 6; //m/s when 10m/s too many scales, should display half or add ticks
 
-const prediction_data = [{xp:0,yp:3.0},{xp:6,yp:2.0},{xp:14,yp:13.0},{xp:23,yp:4.0}];
+const prediction_data = [{xp:0,yp:3.0},{xp:7,yp:2.0},{xp:14,yp:9.0},{xp:23,yp:4.0}];
 var hours = [];
 for (let idx = 0; idx < 24; idx++) hours.push(idx);
 /* build array of hours: 0 ~ hh */
@@ -66,11 +66,7 @@ function get_wind_desc(wspeed){
     }
     return thisWind;
 }
-/*function get_any_data(idx){
-    //var got_idx = idx;
-    console.log("Got his index",idx);
-    return idx;
-}*/
+
 /* Functions to build data Paths */
 function build_path(jdx){
     //0 < jdx < 8:

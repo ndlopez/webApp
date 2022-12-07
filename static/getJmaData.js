@@ -34,8 +34,11 @@ function getDateHour(isoStr){
     const gotDate = new Date(isoStr);
     return {"monty":gotDate.getMonth() + 1,"tag":gotDate.getDate(),"day":gotDate.getDay(),"heure":gotDate.getHours()};
 }
-
+async function sleepy(msec){
+    return new Promise(resolve =>setTimeout(resolve,msec));
+}
 async function disp_info(){
+    await sleepy(1500);
     const gotData = await get_data();
     //const gotTime = await getTimes();
     //await prediction_curve(); does not work
@@ -62,7 +65,8 @@ async function disp_info(){
         this_city.innerText = gotData.place;
     const nowTenki = document.getElementById("now_weather");
     if(nowTenki !== null){
-        nowTenki.innerHTML = "<img src='"+ico_url+gotData.icon[0]+".svg'/><br/>"+ gotData.weather[0];
+        nowTenki.innerHTML = "<img src='" + ico_url + gotData.icon[0] + 
+        ".svg' onerror='this.onerror=null;this.src=\"../svg/cloudy_all.svg\"'/><br/>"+ gotData.weather[0];
     }
     const winds = document.getElementById("wind_info");
     if(winds !== null){

@@ -79,19 +79,19 @@ async function disp_info(){
     }*/
     /* Weekly forecast Max/Min*/
     const colDiv = document.getElementById("forecaster");
-    //create as many group div as forecast are available
-    for(let idx=1;idx<gotData.forecast[0].length;idx++){
+    //create as many group div as forecast info are available
+    for(let idx = 1; idx < gotData.forecast[0].length; idx++){
         const groupDiv = document.createElement("div");
         groupDiv.setAttribute("class","row");
 
         var aux = getDateHour(gotData.forecast[0][idx]);
         var tempMin = gotData.forecast[2][idx], tempMax = gotData.forecast[3][idx];
         texty = "<div class='col3' style='margin:0;border-radius:inherit;'><div class='row'>" + 
-        "<h2 class='column'>"+ aux.tag + "</h2><div class='column' style='text-align:left;padding-left:0;'><p>"+theseDays[aux.day] + 
-        "</p><p><small>"+theseMonths[aux.monty-1]+"</small></p></div></div></div>";
+        "<h2 class='column'>" + aux.tag + "</h2><div class='column' style='text-align:left;padding-left:0;'><p>"+theseDays[aux.day] + 
+        "</p><p><small>" + theseMonths[aux.monty-1] + "</small></p></div></div></div>";
 
-        texty += "<div class='col3' style='text-align:right;'><img src='"+ico_url+ 
-        gotData.forecast[1][idx]+".svg'/>"; //+"</div>";
+        texty += "<div class='col3' style='text-align:right;'><img src='" + ico_url + gotData.forecast[1][idx]+
+        ".svg' onerror='this.onerror=null;this.src=\"../svg/cloudy_all.svg\"'/>"; //+"</div>";
         
         /*if(idx==0){
             tempMin = myMin; tempMax = myMax;
@@ -112,7 +112,8 @@ async function disp_info(){
     texty = "<br/><p>"+gotData.weather[1] +"</p><p>" +gotData.wind[1] +"</p>";
     
     texty += "<span>Min "+ myMin +"&#8451; | Max "+ myMax+"&#8451;</span>";
-    iconElm.innerHTML = "<img src='"+ico_url+gotData.icon[1]+".svg'/>"+texty;
+    iconElm.innerHTML = "<img src='"+ico_url+gotData.icon[1] + 
+    ".svg' onerror='this.onerror=null;this.src=\"../svg/cloudy_all.svg\"'/>" + texty;
     
     const tempElm = document.createElement("div");//tomorrow temp
     tempElm.setAttribute("class","column");

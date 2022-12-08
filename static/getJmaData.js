@@ -38,7 +38,6 @@ async function sleepy(msec){
 async function disp_info(){
     await sleepy(1500);
     const gotData = await get_data();
-    //const gotTime = await getTimes();
     //await prediction_curve(); does not work
     var myMin = gotData.temp[1][2];
     var myMax = gotData.temp[1][3];

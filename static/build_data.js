@@ -101,8 +101,9 @@ function get_min_attr(tit){
             console.log("GotErr",error);
         }
     }
+    const gotTime = await getTimes();
     //console.log("curr",curr_weather.length);
-    build_plot(result);
+    build_plot(result,gotTime);
     //var img_url = "";
     //let temp_max_min = maxmin[0];//the date: myData.curr_weather[0][0]
     const lastElm = curr_weather.length-1;
@@ -157,8 +158,10 @@ function build_array(hour,gotData){
 
 }
 
-function build_plot(json_array){
+function build_plot(json_array,getTime){
     /*d3js bar plot-> https://jsfiddle.net/matehu/w7h81xz2/38/*/
+    const sun_time = [getTime.sunrise,getTime.sunset];
+    console.log("SunTimes:",sun_time);
     const xSize = 750,ySize=500;
     var margin = {top:40,right:20,bottom:50,left:40},
     w = xSize - margin.left - margin.right,
@@ -272,12 +275,12 @@ function build_plot(json_array){
     .attr("font-size","11px");
 
     //adding sunrise/sunset img and times
-    svg2.append("g").append("text").text("6:07").attr("x",180).attr("y",-20).style('fill','#E8B720');
+    svg2.append("g").append("text").text(sun_time[0]).attr("x",180).attr("y",-20).style('fill','#E8B720');
     svg2.append("svg:image")
     .attr('xlink:href','../svg/sunrise.svg')
     .attr('width','32').attr('height','32')
     .attr('transform','translate('+178+','+0+')');
-    svg2.append("g").append("text").text("17:05").attr("x",490).attr("y",-20).style('fill','#E8B720');
+    svg2.append("g").append("text").text(sun_time[1]).attr("x",490).attr("y",-20).style('fill','#E8B720');
     svg2.append("svg:image")
     .attr('xlink:href','../svg/sunset.svg')
     .attr('width','32').attr('height','32')
@@ -309,10 +312,8 @@ function build_plot(json_array){
 function convTime(unixT){
     const myTime = new Date(unixT *1000);
     var minut = myTime.getMinutes();
-    if(minut < 10){
-        minut = "0" + minut;
-    }
-    return [myTime.getHours(), minut];
+    if(minut < 10){minut = "0" + minut;}
+    return myTime.getHours() + ":" + minut;
 }
 
 async function getTimes(){

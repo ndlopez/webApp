@@ -4,6 +4,8 @@ let months = ["January","February","March","April","May","June","July","August",
 /* Fetch observation data from jma site and plot */
 const jma_url = "https://www.jma.go.jp/bosai/amedas/data/point/";
 const city_idx = [{city:"Nagoya",code:51106},{city:"Takayama",code:52146}];
+const sun_time = ["https://dayspedia.com/api/widget/city/11369/?lang=en",
+"https://dayspedia.com/api/widget/city/4311/?lang=en"];
 const cdx = 1;
 
 // this position: 北緯: 35度10.0分 東経: 136度57.9分 標高: 51m
@@ -138,7 +140,8 @@ function build_array(hour,gotData){
         //console.log("this_attrib",aux);
         if (gotData[aux] === undefined){break;}
         const abby = {"hour":idx,"temp":gotData[aux].temp[0],"humid":gotData[aux].humidity[0],
-        "wind":Math.round(gotData[aux].wind[0]) ,"windDir":gotData[aux].windDirection[0],"rain":gotData[aux].precipitation1h[0]};
+        "wind":Math.round(gotData[aux].wind[0]) ,"windDir":gotData[aux].windDirection[0],
+        "rain":gotData[aux].precipitation1h[0],"snow":gotData[aux].snow1h[0]};
         result.push(abby);
     }
     //console.log("json_data",result);
@@ -155,7 +158,6 @@ function build_array(hour,gotData){
 }
 
 function build_plot(json_array){
-    
     /*d3js bar plot-> https://jsfiddle.net/matehu/w7h81xz2/38/*/
     const xSize = 750,ySize=500;
     var margin = {top:40,right:20,bottom:50,left:40},
@@ -281,6 +283,16 @@ function build_plot(json_array){
     .attr('width','32').attr('height','32')
     .attr('transform','translate('+490+','+0+')');
 
+    /* snow amount in the last hour */
+    svg2.append("g").selectAll(".txtSnow").data(json_array).enter()
+    .append("text").attr("class","txtSnow")
+    .text((d)=>{return d.snow+"cm";})
+    .attr("text-anchor","middle")
+    .attr("x",(d)=>{return xScale(d.hour)+11;})
+    .attr("y",(d)=>{return h-15;})
+    .style("fill","#87ceeb")
+    .attr("font-size","11px");
+    
     //prediction curve
     var thisCurve = d3.line()
     .x((d)=> xScale(d.xp))
@@ -293,6 +305,23 @@ function build_plot(json_array){
     .attr("stroke","red")
     .attr("stroke-width","3px")
     .attr("stroke-dasharray","5,5");
+}
+function convTime(unixT){
+    const myTime = new Date(unixT *1000);
+    var minut = myTime.getMinutes();
+    if(minut < 10){
+        minut = "0" + minut;
+    }
+    return [myTime.getHours(), minut];
+}
+
+async function getTimes(){
+    const response = await fetch(sun_time[1]);
+    const data = await response.json();
+    let sunRise = data["sunrise"];
+    let sunSet = data["sunset"];
+    
+    return {"sunrise":convTime(sunRise),"sunset":convTime(sunSet)}; 
 }
 /** might be helpful
 async function convToUpper(data){

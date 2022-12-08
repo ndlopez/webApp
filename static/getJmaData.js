@@ -12,10 +12,8 @@ const jma_data = ["https://www.jma.go.jp/bosai/forecast/data/forecast/230000.jso
 // also https://www.jma.go.jp/bosai/amedas/#area_type=offices&area_code=230000&amdno=51106&format=table1h&elems=53414
 
 const ico_url = "https://www.jma.go.jp/bosai/forecast/img/";
-const radar_url = "https://static.tenki.jp/static-images/radar/recent/pref-24-large.jpg";
-const sun_time = ["https://dayspedia.com/api/widget/city/11369/?lang=en",
-"https://dayspedia.com/api/widget/city/4311/?lang=en"];
-
+const radar_url = ["https://static.tenki.jp/static-images/radar/recent/pref-24-large.jpg",
+"https://www.jma.go.jp/bosai/nowc/m_index.html#zoom:11/lat:36.178079/lon:137.106628/colordepth:normal/elements:hrpns&slmcs"];
 const hh = [6,12,18,23];
 
 const theseMonths = ["January","February","March","April","May","June","July",
@@ -80,7 +78,7 @@ async function disp_info(){
     const radar_img = document.getElementById("radar_img");
     if(gotData.rain[1][0] > 0){
         radar_img.innerHTML ='<p>Click on the img for 1hour forecast</p><a href="' + 
-        radar_url + '" title="Redirects to JMA.go.jp" target="_blank"><img src="' + radar_url + '"></a>';
+        radar_url[1] + '" title="Redirects to JMA.go.jp" target="_blank"><img src="' + radar_url[0] + '"></a>';
     }
     /* Weekly forecast Max/Min*/
     const colDiv = document.getElementById("forecaster");
@@ -183,24 +181,6 @@ async function prediction_curve(){
     .attr("fill","none")
     .attr("stroke","red")
     .attr("stroke-width","3px");
-}
-
-function convTime(unixT){
-    const myTime = new Date(unixT *1000);
-    var minut = myTime.getMinutes();
-    if(minut < 10){
-        minut = "0" + minut;
-    }
-    return [myTime.getHours(), minut];
-}
-
-async function getTimes(){
-    const response = await fetch(sun_time[1]);
-    const data = await response.json();
-    let sunRise = data["sunrise"];
-    let sunSet = data["sunset"];
-    
-    return {"sunrise":convTime(sunRise),"sunset":convTime(sunSet)}; 
 }
 
 /*async function getIconCodes(){

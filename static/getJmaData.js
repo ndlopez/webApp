@@ -1,16 +1,15 @@
-//import { theseMonths } from "./build_data.js"; SyntaxError!
-/* Fetching data from JMA.go.jp */
-//const jma_data = ;
+/* Fetching data from JMA.go.jp 
+Hida: 210020
+data per hour for current day here:
+ https://www.jma.go.jp/bosai/amedas/data/point/51106/20221007_09.json
+ format seems to be yyyymmdd_hh.json, hh< currHour, hh=0,3,6,9,...
+ also https://www.jma.go.jp/bosai/amedas/#area_type=offices&area_code=230000&amdno=51106&format=table1h&elems=53414
+*/
+
 const city_idx = [0,1]; //0:Nagoya,1:Takayama
 const cdx = 1;
 const jma_data = ["https://www.jma.go.jp/bosai/forecast/data/forecast/230000.json",
 "https://www.jma.go.jp/bosai/forecast/data/forecast/210000.json"];
-// Hida: 210020
-// data per hour for current day here:
-// https://www.jma.go.jp/bosai/amedas/data/point/51106/20221007_09.json
-// format seems to be yyyymmdd_hh.json, hh< currHour, hh=0,3,6,9,...
-// also https://www.jma.go.jp/bosai/amedas/#area_type=offices&area_code=230000&amdno=51106&format=table1h&elems=53414
-
 const ico_url = "https://www.jma.go.jp/bosai/forecast/img/";
 const radar_url = ["https://static.tenki.jp/static-images/radar/recent/pref-24-large.jpg",
 "https://www.jma.go.jp/bosai/nowc/m_index.html#zoom:11/lat:36.178079/lon:137.106628/colordepth:normal/elements:hrpns&slmcs"];

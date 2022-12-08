@@ -274,17 +274,25 @@ function build_plot(json_array,getTime){
     })
     .attr("font-size","11px");
 
-    //adding sunrise/sunset img and times
-    svg2.append("g").append("text").text(sun_time[0]).attr("x",180).attr("y",-20).style('fill','#E8B720');
+    /*adding sunrise/sunset img and times
+    Position on graph is kinda correct, oldX: 180, 490*/
+    const offset = 28;//28px between hours
+    const riseObj = sun_time[0][0]+":"+sun_time[0][1], setObj = sun_time[1][0]+":"+sun_time[1][1];
+    const posXr = (sun_time[0][0]*w/24) + sun_time[0][1]/60*offset, 
+    posXs = (sun_time[1][0]*w/24) + sun_time[1][1]/60*offset;
+    svg2.append("g").append("text")
+    .text(riseObj).attr("x",posXr)
+    .attr("y",-20).style('fill','#E8B720');
     svg2.append("svg:image")
     .attr('xlink:href','../svg/sunrise.svg')
     .attr('width','32').attr('height','32')
-    .attr('transform','translate('+178+','+0+')');
-    svg2.append("g").append("text").text(sun_time[1]).attr("x",490).attr("y",-20).style('fill','#E8B720');
+    .attr('transform','translate('+posXr+','+0+')');
+    svg2.append("g").append("text")
+    .text(setObj).attr("x",posXs).attr("y",-20).style('fill','#E8B720');
     svg2.append("svg:image")
     .attr('xlink:href','../svg/sunset.svg')
     .attr('width','32').attr('height','32')
-    .attr('transform','translate('+490+','+0+')');
+    .attr('transform','translate('+posXs+','+0+')');
 
     /* snow amount in the last hour */
     svg2.append("g").selectAll(".txtSnow").data(json_array).enter()
@@ -313,7 +321,7 @@ function convTime(unixT){
     const myTime = new Date(unixT *1000);
     var minut = myTime.getMinutes();
     if(minut < 10){minut = "0" + minut;}
-    return myTime.getHours() + ":" + minut;
+    return [myTime.getHours(), minut];
 }
 
 async function getTimes(){

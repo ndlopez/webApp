@@ -100,7 +100,7 @@ if ($result = mysqli_query($conn,$query)){
 	foreach ($result as $row){
     $nowTenki = trim($row['weather'],'"');
     $weatherIcon = "";
-    $weatherLbl = "Sunny";
+    $weatherLbl = " Cloudy";
     switch($nowTenki){
       case "曇り":
         $weatherIcon = "cloudy_all.svg";
@@ -122,6 +122,10 @@ if ($result = mysqli_query($conn,$query)){
         $weatherIcon = "rainy.svg";
         $weatherLbl = " Heavy Rain";
         break;
+      case "みぞれ":
+        $weatherIcon = "SnowCloudy.svg";
+        $weatherLbl = " Sleet Rain";
+        break;
       case "晴れ":
         $weatherIcon = "SunnyDayV3.svg";
         $weatherLbl = " Clear and Sunny";
@@ -132,7 +136,7 @@ if ($result = mysqli_query($conn,$query)){
     /*echo "<h3><br>".date("l F d ").$row['hour'].":".date("i")."</h3>";*/
     $pageTitle = $nowTenki." ".$row['temp']."&#8451;";
     // <!--current weather div start-->
-    echo "<div class='row'><div class='column'><h2>Nagoya, JP</h2><p>".date("H:i").$weatherLbl.
+    echo "<div class='row'><div class='column'><h2>Takayama, JP</h2><p>".date("H:i").$weatherLbl.
     "</p><h1>".$pageTitle."</h1></div>";
     echo "<div class='column'><img src='svg/".$weatherIcon."' width='120'></></div></div>";
 	}
@@ -304,15 +308,15 @@ mysqli_close($conn);
 <div class="row" style="padding:0px;">
 <div class="column">
 <p>Data from <em>tenki.jp</em> scraped using <i>Shell, curl and SED</i> and <em>JMA.go.jp</em></p>
-<p>Apache/2.4.54 (Debian) Server at <em>webapp.physics</em></p>
+<p>Apache/2.4.54 (Debian) Server on WSL</p>
 </div>
 <!--div class="column">empty div</div-->
 <div class="column" style="text-align:right;">
-<p>Hello from
+<p><img src="svg/globe-asia.svg" width="32"/> Hello from
   <a target="blank" href="https://www.openstreetmap.org/search?query=35.17271%2C136.89547#map=18/35.17271/136.89547">
-    N35 10'53" E136 54'23"</a></p>
+    N35 10' E136 54'</a></p>
 </div></div>
-<p style="text-align:center;"><span class="copy-left">&copy;</span><span> copyLeft ndzerglink 2022-09-30</span></p>
+<p style="text-align:center;"><span class="copy-left">&copy;</span><span> copyLeft ndzerglink 2022-12-22</span></p>
 <!--?php echo date("Y-m-d");?-->
 </footer>
 </html>

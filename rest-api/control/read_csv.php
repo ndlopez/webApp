@@ -42,6 +42,8 @@ if(file_exists($data_dir.$data_file)){
     require_once "../inc/config.php";
     $dbHandle = mysqli_connect(DB_HOST,DB_USER,$_POST["my_pass"],DB_NAME);
     if(mysqli_connect_errno()){
+        echo "<div class='clearfix'>";
+        echo "<h2 class='col'>Go back <a href='/'>home</a></h2></div>";
         die("Couldnt connect to DB,".mysqli_connect_error());
     }
     $fileHandle = fopen($data_dir.$data_file,"r");
@@ -84,8 +86,8 @@ echo "</div>";
 
 echo "<div class='clearfix'>";
 echo "<h2 class='col'>Go back <a href='/'>home</a></h2>";
-echo "<h2 class='col'>Update <a href='/rest-api/updata.html'>more</a> data?</h2>";
-echo "</div>"
+// echo "<h2 class='col'>Update <a href='/rest-api/updata.html'>more</a> data?</h2>";
+echo "</div>";
 // Redirect to home
 // sleep(15);
 // ob_start();

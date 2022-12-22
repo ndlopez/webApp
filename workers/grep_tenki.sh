@@ -13,9 +13,10 @@
 # According to tenki.jp hour=24 is considered part
 # of the current day, it should've been the next day 
 # 
-area=23109 #home, 23106 Naka-ku
+area=21217 #26/5110/23109 home, 23106 Naka-ku
+region=24/5220
 rate=1hour #3hours
-_url=https://tenki.jp/forecast/5/26/5110/${area}/${rate}.html
+_url=https://tenki.jp/forecast/5/${region}/${area}/${rate}.html
 #_url1hr=https://tenki.jp/forecast/5/26/5110/23109/1hour.html
 #神戸市の天気 https://tenki.jp/forecast/6/31/6310/28100/3hours.html
 #img_url=https://static.tenki.jp/static-images/radar/recent/pref-26-large.jpg
